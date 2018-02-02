@@ -1,4 +1,5 @@
 import React from 'react';
+import AvailableJobsList from './AvailableJobList';
 
 class ProviderPage extends React.Component{
 
@@ -11,6 +12,9 @@ class ProviderPage extends React.Component{
         return(
     
             <div>
+                <ul className="job-list">
+                    <AvailableJobsList />
+                </ul>
             </div>
             
         );
