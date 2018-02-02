@@ -4,24 +4,23 @@ const CreateJobForm = props => {
 
     return (
 
-    <form className="search">
+    <form className="jobCreation">
     <div className="form-group">
-      <label htmlFor="breeds">Search:</label>
+      <label htmlFor="jobs">Search:</label>
       <input
-        name="breed"
-        onChange={this._handleInputChange}
+        name="jobTitle"
+        onChange={props.handleInputChange}
         type="text"
         className="form-control"
-        placeholder="Search For a Breed"
-        id="breed"
-        list="breeds"
-      />
+        placeholder="Enter Job Title"
+        id="jobTitle"
+        />
       <br />
       <button 
         type="submit"
-        onClick={this._handleSearch}
+        onClick={props.handleJobCreation}
         className="btn btn-primary">
-        Search
+        Submit Job
       </button>
       </div>
       </form>

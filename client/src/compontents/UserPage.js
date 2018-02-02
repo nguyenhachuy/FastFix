@@ -8,13 +8,24 @@ class UserPage extends React.Component{
         
     };
 
+    _handleInputChange = event => {
+
+    };
+
+    _handleJobCreation = event => {
+
+    };
+
     render() {
 
         return(
 
             <div>
-                
-            <CreateJobForm />
+
+            <CreateJobForm 
+            handleInputChange={this._handleInputChange}
+            handleJobCreation={this._handleJobCreation}
+            />
 
             <PendingBids />
 
