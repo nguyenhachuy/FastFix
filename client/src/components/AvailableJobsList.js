@@ -1,5 +1,5 @@
 import React from 'react';
-import Job from './Job';
+import AvailableJob from './AvailableJob';
 
 const AvailableJobsList = props => {
 
