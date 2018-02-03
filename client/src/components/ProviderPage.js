@@ -2,6 +2,10 @@ import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
 
 class ProviderPage extends React.Component{
+    
+    constructor(props){
+        super(props);
+    };
 
     state = {
 
@@ -10,13 +14,12 @@ class ProviderPage extends React.Component{
     render() {
 
         return(
-    
-            <div>
-                <h1>Provider Page Placeholder</h1>
-                <ul className="job-list">
-                    <AvailableJobsList />
-                </ul>
-            </div>
+            
+                <AvailableJobsList />
+            
+          
+
+ 
             
         );
 

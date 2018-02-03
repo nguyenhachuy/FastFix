@@ -6,7 +6,7 @@ const CreateJobForm = props => {
 
     <form className="jobCreation">
     <div className="form-group">
-      <label htmlFor="jobs">Search:</label>
+      <label htmlFor="jobs">Create New Job:</label>
       <input
         name="jobTitle"
         onChange={props.handleInputChange}
@@ -14,6 +14,15 @@ const CreateJobForm = props => {
         className="form-control"
         placeholder="Enter Job Title"
         id="jobTitle"
+        />
+      <br />
+      <input
+        name="zipCode"
+        onChange={props.handleInputChange}
+        type="text"
+        className="form-control"
+        placeholder="Enter Zipcode"
+        id="zipCode"
         />
       <br />
       <button 
