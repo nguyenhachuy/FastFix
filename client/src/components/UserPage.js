@@ -26,9 +26,9 @@ class UserPage extends React.Component{
             handleInputChange={this._handleInputChange}
             handleJobCreation={this._handleJobCreation}
             />
-
-            <PendingBids />
-
+            <ul className="job-list">
+                <PendingBids />
+            </ul>
             </div>
 
         )
