@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import LoginPage from './components/Login';
+import { Container, Row, Col } from "./components/Grid";
 
 class App extends Component {
   render() {
@@ -10,9 +12,14 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React!</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Container>
+        <Row className="justify-content-center">
+          <Col className ="col-5">
+            <LoginPage>
+            </LoginPage>  
+          </Col>
+        </Row>     
+      </Container>
       </div>
     );
   }
