@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm';
-
+import { Container, Row, Col } from "./../Grid";
 class LoginPage extends React.Component{
     
     handleLogin = event => {
@@ -11,16 +11,18 @@ class LoginPage extends React.Component{
     }
     render() {
         return (
-            <div>
-                <h1> 
-                    Login Page hooray    
-                </h1>
-                <LoginForm 
-                handleLogin={this.handleLogin}
-                handleSignup={this.handleSignup}
-                >
-                </LoginForm>
-            </div>
+            <Row className="row">
+                <Col className="col-xs-6 col-xs-offset-3">
+                    <h1> 
+                        Login Page hooray    
+                    </h1>
+                    <LoginForm 
+                    handleLogin={this.handleLogin}
+                    handleSignup={this.handleSignup}
+                    >
+                    </LoginForm>
+                </Col>
+            </Row>
         )    
     }
 }
