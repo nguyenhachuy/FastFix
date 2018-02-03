@@ -6,7 +6,7 @@ const AvailableJobsList = props => {
     
     return props.availableJobs.map( (job) => {
 
-        <Job 
+        <AvailableJob 
         title={job.title}
         zipCode={job.zipCode}
         id={job._id}
