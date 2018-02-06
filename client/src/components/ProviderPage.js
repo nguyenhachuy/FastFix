@@ -1,5 +1,6 @@
 import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
+import PendingBidList from './PendingBidList';
 
 class ProviderPage extends React.Component{
     
@@ -12,12 +13,13 @@ class ProviderPage extends React.Component{
     };
 
     render() {
-
+ 
         return(
-            
+            <div>
                 <AvailableJobsList />
-            
-          
+
+                <PendingBidList />
+            </div>
 
  
             

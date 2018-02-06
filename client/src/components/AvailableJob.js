@@ -1,13 +1,13 @@
 import React from 'react';
 
 const AvailableJob = props => 
-        <div class="panel panel-default" data-value={props.id}>   
-            <div class="panel-heading">
-              <h3 class="panel-title">{props.id} | {props.title} - {props.zipCode}</h3>
+        <div className="panel panel-default" data-value={props.id}>   
+            <div className="panel-heading">
+              <h3 className="panel-title">{props.id} | {props.title} - {props.zipCode}</h3>
             </div>
-            <div class="panel-body">
+            <div className="panel-body">
               {props.description}<br />
-              <button class="btn btn-primary">Bid On This Job</button>
+              <button className="btn btn-primary">Bid On This Job</button>
             </div>
             </div>;
 
