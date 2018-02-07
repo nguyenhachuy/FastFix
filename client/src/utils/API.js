@@ -41,12 +41,16 @@ export default {
   updateContractor: function(contractorData) {
     return axios.put("/api/contractor", contractorData);
   },
-  // Create(Bid) a task
+  // Create a Quote (Bid a task)
   createQuote: function(quoteData) {
     return axios.post("/api/quote", quoteData);
   },
   // Update a Quote
   updateQuote: function(quoteData) {
     return axios.put("/api/quote", quoteData);
+  },
+  // Gets a quote by Contractor ID
+  updateQuote: function(id) {
+    return axios.get("/api/quote/contractor/" + id);
   }
 };
