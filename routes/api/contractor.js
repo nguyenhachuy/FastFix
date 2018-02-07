@@ -3,12 +3,12 @@ const contractorController = require("../../controllers/contractorController");
 
 // Matches with "/api/contractor"
 router
-  .route("contractor/")
+  .route("/")
   .get(contractorController.findAll)
 
 // Matches with "/api/contractor/:id"
 router
-  .route("contractor/:id")
+  .route("/:id")
   .get(contractorController.findById)
   .put(contractorController.update)
   .delete(contractorController.remove);

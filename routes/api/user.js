@@ -3,12 +3,12 @@ const userController = require("../../controllers/userController");
 
 // Matches with "/api/user"
 router
-  .route("user/")
+  .route("/")
   .get(userController.findAll)
 
 // Matches with "/api/user/:id"
 router
-  .route("user/:id")
+  .route("/:id")
   .get(userController.findById)
   .put(userController.update)
   .delete(userController.remove);

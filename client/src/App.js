@@ -10,6 +10,7 @@ import './App.css';
 import LoginPage from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
+import Test from './components/test';
 
 
 
