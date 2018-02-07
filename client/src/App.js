@@ -34,11 +34,13 @@ class App extends Component {
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
         <Route exact path="landing" component={LandingPage}/>
+
       </Wrapper>
 
   </div>
     
   </Router>
+
   }
 };
 
