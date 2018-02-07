@@ -3,25 +3,25 @@ const taskController = require("../../controllers/taskController");
 
 // Matches with "/api/task"
 router
-  .route("task/")
+  .route("/")
   .get(taskController.findAll)
   .post(taskController.create);
 
 // Matches with "/api/task/:id"
 router
-  .route("task/:id")
+  .route("/:id")
   .get(taskController.findById)
   .put(taskController.update)
   .delete(taskController.remove);
 
 // Matches with "/api/task/user/:id"
 router
-  .route("task/user/:id")
+  .route("/user/:id")
   .get(taskController.findByUserId)
 
 // Matches with "/api/task/contractor/:id"
 router
-  .route("task/contractor/:id")
+  .route("/contractor/:id")
   .get(taskController.findByContractorId)
 
 module.exports = router;

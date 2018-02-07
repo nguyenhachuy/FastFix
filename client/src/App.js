@@ -9,6 +9,7 @@ import logo from './logo.svg';
 import './App.css';
 import LoginPage from './components/Login';
 import { Container, Row, Col } from "./components/Grid";
+import Test from './components/test';
 
 class App extends Component {
   state = {
@@ -30,6 +31,7 @@ class App extends Component {
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
         <Route exact path="/landing" component={LoginPage}/>
+        <Route exact path="/test" component={Test}/>
       </Wrapper>
 
   </div>
