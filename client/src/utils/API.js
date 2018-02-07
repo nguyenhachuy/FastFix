@@ -37,7 +37,7 @@ export default {
   createContractor: function(contractorData) {
     return axios.post("/api/contractor", contractorData);
   },
-  // Create a User
+  // Create a Contractor
   updateContractor: function(contractorData) {
     return axios.put("/api/contractor", contractorData);
   },
