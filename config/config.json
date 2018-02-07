@@ -1,0 +1,31 @@
+{
+  "development": {
+    "username": "root",
+    "password": "localhost",
+    "database": "fastfix",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "root",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "cleardb": {
+    "use_env_variable": false,
+    "username": "ba61758e08bfc7",
+    "password": "c764cd6e",
+    "database": "heroku_1305bfa26fe2f4d",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "dialect": "mysql"
+  }
+}
