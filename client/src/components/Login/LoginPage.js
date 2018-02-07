@@ -6,7 +6,7 @@ class LoginPage extends React.Component{
     handleLogin = event => {
         alert('hi');
     }
-    handleSignup = even => {
+    handleSignup = event => {
         alert('hello');
     }
     render() {

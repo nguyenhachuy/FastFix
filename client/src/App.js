@@ -20,7 +20,6 @@ class App extends Component {
   };
 
   render() {
-<<<<<<< bd9c69a977687083bd9419aee491a30135472f53
     return <Router>
     <div>
       <Navbar 
@@ -29,29 +28,13 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/user" component={UserPage} />
         <Route exact path="/contractor" component={ProviderPage} />
+        <Route exact path="/login" component={LoginPage}/>
+        <Route exact path="/landing" component={LandingPage}/>
       </Wrapper>
 
   </div>
     
   </Router>;
-=======
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React!</h1>
-        </header>
-      <Container>
-        <Row className="justify-content-center">
-          <Col className ="col-5">
-            <LoginPage>
-            </LoginPage>  
-          </Col>
-        </Row>     
-      </Container>
-      </div>
-    );
->>>>>>> Added bootstrap and login form
   }
 };
 
