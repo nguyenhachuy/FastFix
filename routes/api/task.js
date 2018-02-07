@@ -24,4 +24,9 @@ router
   .route("/contractor/:id")
   .get(taskController.findByContractorId)
 
+// Matches with "/api/task/available"
+router
+  .route("/available")
+  .get(taskController.findAvailable)
+
 module.exports = router;
