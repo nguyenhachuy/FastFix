@@ -5,25 +5,48 @@ export default {
   getAllTasks: function() {
     return axios.get("/api/task");
   },
+  // Gets Tasks by User ID
   getTasksByUserID: function(id) {
     return axios.get("/api/task/user/" + id);
   },
+  // Gets Tasks by Contractor ID
   getTasksByContracotrID: function(id) {
     return axios.get("/api/task/contractor/" + id);
   },
-  updateTask: function(taskData) {
-    return axios.put("/api/task", taskData);
+  // Gets Available Tasks (status: "open")
+  getAvailableTasks: function() {
+    return axios.get("/api/task/available");
   },
-  updateTask: function(taskData) {
-    return axios.put("/api/task", taskData);
-  },
-  saveTask: function(taskData) {
+  // Create a Task
+  createTask: function(taskData) {
     return axios.post("/api/task", taskData);
   },
+  // Update a Task
+  updateTask: function(taskData) {
+    return axios.put("/api/task", taskData);
+  },
+  // Create a User
   createUser: function(userData) {
     return axios.post("/api/user", userData);
   },
+  // Create a User
   updateUser: function(userData) {
     return axios.put("/api/user", userData);
+  },
+  // Create a Contractor
+  createContractor: function(contractorData) {
+    return axios.post("/api/contractor", contractorData);
+  },
+  // Create a User
+  updateContractor: function(contractorData) {
+    return axios.put("/api/contractor", contractorData);
+  },
+  // Create(Bid) a task
+  createQuote: function(quoteData) {
+    return axios.post("/api/quote", quoteData);
+  },
+  // Update a Quote
+  updateQuote: function(quoteData) {
+    return axios.put("/api/quote", quoteData);
   }
 };
