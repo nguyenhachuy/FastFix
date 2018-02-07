@@ -1,6 +1,7 @@
 import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
 import PendingBidList from './PendingBidList';
+import InProgressJob from './InProgressJob';
 
 class ProviderPage extends React.Component{
     
@@ -16,6 +17,8 @@ class ProviderPage extends React.Component{
  
         return(
             <div>
+                <InProgressJob isUser={false} />
+
                 <AvailableJobsList />
 
                 <PendingBidList />

@@ -10,15 +10,23 @@ class UserPage extends React.Component{
     };
 
     state = {
-        
+        newJob: {}
     };
 
     _handleInputChange = event => {
-
-    };
-
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value
+          });          
+        };
+        
+        
+        
     _handleJobCreation = event => {
-
+        console.log(this.state.newJob);
+            
     };
 
     render() {
@@ -32,11 +40,11 @@ class UserPage extends React.Component{
                 handleJobCreation={this._handleJobCreation}
                 />
                 <hr />
-                <InProgressJob />
+                <InProgressJob isUser={true}/>
                 <hr />
                 
                 <PendingJobsList />
-                //HOW DO YOU MAP THROUGH TWO DIFFERENT DBs INTO SAME COMPONENT
+
             </div>
 
         )

@@ -27,21 +27,21 @@ class PendingBidList extends React.Component {
 
   render() {
       return(
-    <div>
-    <h4>You Currently Have the Following Open Bids:</h4>
-    {fakePendingBids.map( (job) => {
-            return <PendingBid 
-                title={job.title}
-                zipCode={job.zipCode}
-                id={job._id}
-                description={job.description}
-            />
-            
-            }
-        )
-    }
-    </div>
-        )
+        <div>
+        <h4>You Currently Have the Following Open Bids:</h4>
+        {fakePendingBids.map( (job) => {
+                return <PendingBid 
+                    title={job.title}
+                    zipCode={job.zipCode}
+                    id={job._id}
+                    description={job.description}
+                />
+                
+                }
+            )
+        }
+        </div>
+            )
     }
 };
 

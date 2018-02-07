@@ -1,7 +1,7 @@
 import React from 'react';
 import AvailableJob from './AvailableJob';
 import ProviderInfo from './ProviderInfo';
-
+import UserInfo from './UserInfo';
 
 const fakeInProgressJob = {
         _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
@@ -28,19 +28,25 @@ class InProgressJob extends React.Component{
     // }
 
     render() {
+        const props = this.props;
+        const isUserPage = props.isUser;
+
         return(
             <div>
                 <h2>You Currently Have The Following Job In Progress</h2>
-                <div className="panel panel-default" data-value={this.state.jobData._id}>   
+                <div className="panel panel-success" data-value={this.state.jobData._id}>   
                     <div className="panel-heading">
-                        <h3 className="panel-title">{this.state.jobData._id} | {this.state.jobData.title} - {this.state.jobData.zipCode}</h3>
+                        <h3 className="panel-title"><span className="glyphicon glyphicon-asterisk" aria-hidden="true"></span> {this.state.jobData._id} | {this.state.jobData.title} - {this.state.jobData.zipCode}</h3>
                     </div>
-                    <div className="panel-body">
+                    <div className="panel-body panel-success">
                         {this.state.jobData.description}<br />
                     </div>
                     <div className="panel-body">
-                        <h5>You Selected The Following Service Provider:</h5>
-                        <ProviderInfo />
+                        
+        {props.isUser ? <UserInfo /> : <ProviderInfo />}
+   
+                        
+
                     </div>
                 </div>
             </div>

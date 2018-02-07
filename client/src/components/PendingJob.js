@@ -3,7 +3,7 @@ import PendingJobBid from './PendingJobBid';
 
 const PendingJob = props => {
   return <div className="well" data-value={props.id}>   
-            <p>{props.id} | {props.title} - {props.zipCode}</p>
+            <p><span className="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {props.id} | {props.title} - {props.zipCode}</p>
            
              
               <PendingJobBid 
