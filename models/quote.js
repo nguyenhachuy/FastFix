@@ -8,3 +8,5 @@ const quoteSchema = new Schema({
 });
 
 const Quote = mongoose.model("Quote", quoteSchema);
+
+module.exports = Quote;
