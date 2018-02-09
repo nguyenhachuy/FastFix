@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-//const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,33 +14,14 @@ app.use(express.static("client/build"));
 app.use(routes);
 
 // Set up promises with mongoose
-//mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
-/*
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/nytreact",
+  process.env.MONGODB_URI || "mongodb://localhost/fastfix",
   {
     useMongoClient: true
   }
 );
-*/
-
-/*
-// heroku
-mongoose.connect("mongodb://heroku_4x6kq435:icsppsff20oehk7jd2ob9koaaf@ds117148.mlab.com:17148/heroku_4x6kq435",{
-  keepAlive: true,
-  reconnectTries: Number.MAX_VALUE,
-  useMongoClient: true
-});
-*/
-
-
-var db = require("./models");
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
-});
 
 // Start the API server
 app.listen(PORT, function() {

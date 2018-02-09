@@ -1,6 +1,6 @@
 module.exports = {
-  Contractor: require("./Contractor"),
-  User: require("./User"),
-  Task: require("./Task"),
-  Quote: require("./Quote")
+  Contractor: require("./contractor"),
+  User: require("./user"),
+  Task: require("./task"),
+  Quote: require("./quote")
 };

@@ -24,7 +24,7 @@ class Test extends Component{
 
   render() {
     return (
-              <div>aa
+              <div>catch
               </div>
     )}
 
