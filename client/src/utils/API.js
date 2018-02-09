@@ -3,6 +3,7 @@ import axios from "axios";
 export default {
   // Gets all Tasks
   getAllTasks: function() {
+    console.log("get all tasks");
     return axios.get("/api/task");
   },
   // Gets Tasks by User ID

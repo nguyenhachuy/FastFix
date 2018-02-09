@@ -1,33 +1,33 @@
-import React from 'react';
+import React, { Component } from "react";
 
 import API from "../utils/API";
 
 
-const CreateJobForm = props => {
+class Test extends Component{
 
+  state = {
+    tasks: []
+  };
+
+  componentDidMount() {
+    this.loadTasks();
+  }
+
+  loadTasks = () => {
+    API.getAllTasks()
+      .then(res =>
+        console.log(res.data)
+        //this.setState({ tasks: res.data })
+      )
+      .catch(err => console.log(err));
+  };
+
+  render() {
     return (
+              <div>aa
+              </div>
+    )}
 
-    <form className="jobCreation">
-    <div className="form-group">
-      <label htmlFor="jobs">Search:</label>
-      <input
-        name="jobTitle"
-        onChange={props.handleInputChange}
-        type="text"
-        className="form-control"
-        placeholder="Enter Job Title"
-        id="jobTitle"
-        />
-      <br />
-      <button 
-        type="submit"
-        onClick={props.handleJobCreation}
-        className="btn btn-primary">
-        Submit Job
-      </button>
-      </div>
-      </form>
-    )
 }
 
-export default CreateJobForm;
+export default Test;
