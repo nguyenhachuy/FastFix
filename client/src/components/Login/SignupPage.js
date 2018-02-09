@@ -1,27 +1,32 @@
 import React from 'react';
-import {LoginForm} from './LoginForm';
+import {SignupForm} from './SignupForm';
 import { Container, Row, Col } from "./../Grid";
 
-class LoginPage extends React.Component{
+class SignupPage extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: ''
+            user: {
+                firstName: 'Gus',
+                lastName: 'Nguyen',
+                username: 'wut',
+                password: '',
+                confirmPassword: '',
+            },
+            errors: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    
     }
     
     handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        const field = event.target.name;
+        const user = this.state.user;
+        user[field] = event.target.value;
         this.setState({
-            [name]: value
-          });          
-    
+          user
+        });
+        
     }
     
     handleSubmit(event) {
@@ -42,13 +47,12 @@ class LoginPage extends React.Component{
         return (
             <Row className="row">
                 <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
-
-                    <LoginForm
+                    <SignupForm
                     handleChange={this.handleChange}
                     handleSignup={this.handleSignup}
                     handleSubmit={this.handleSubmit}
-                    username={this.state.username}
-                    password={this.state.password}
+                    user={this.state.user}
+                    errors={this.state.errors}
                     />
                 </Col>
             </Row>
@@ -57,4 +61,4 @@ class LoginPage extends React.Component{
 }
 
 
-export {LoginPage};
+export {SignupPage};

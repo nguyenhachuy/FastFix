@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 const LoginForm = ({handleChange, handleSignup, handleSubmit, username, password}) => {
     return (
         <form class="form-signin" onSubmit={handleSubmit}>
@@ -23,9 +23,12 @@ const LoginForm = ({handleChange, handleSignup, handleSubmit, username, password
             </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="Submit">Sign in</button>
-            <button class="btn btn-lg btn-primary btn-block" type="button" onClick={handleSignup}>Sign up</button>
+
+            <div class="alert alert-warning" role="alert" id="signup_message">
+                    <Link to={'/signup'}>Sign Up</Link>
+            </div>   
         </form>    
     )
 }
 
-export default LoginForm;
+export {LoginForm};

@@ -7,7 +7,7 @@ import ProviderPage from "./components/ProviderPage";
 import Navbar from "./components/Navbar";
 import logo from './logo.svg';
 import './App.css';
-import LoginPage from './components/Login';
+import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 
@@ -31,6 +31,7 @@ class App extends Component {
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
         <Route exact path="/landing" component={LandingPage}/>
+        <Route exact path="/signup" component={SignupPage}/>
       </Wrapper>
 
   </div>
