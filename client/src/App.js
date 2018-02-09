@@ -4,11 +4,11 @@ import Wrapper from "./components/Wrapper";
 import Home from "./components/Home";
 import UserPage from "./components/UserPage";
 import ProviderPage from "./components/ProviderPage";
-import Navbar from "./components/Navbar";
-import logo from './logo.svg';
+//import Navbar from "./components/Navbar";
+//import logo from './logo.svg';
 import './App.css';
 import LoginPage from './components/Login';
-import { Container, Row, Col } from "./components/Grid";
+//import { Container, Row, Col } from "./components/Grid";
 import Test from './components/test';
 
 class App extends Component {
@@ -16,15 +16,9 @@ class App extends Component {
     currentPage: "Home"
   };
 
-  handlepagechange = page => {
-    this.setState({ currentPage: page });
-  };
-
   render() {
     return <Router>
     <div>
-      <Navbar 
-        handlePageChange={this._handlePageChange} />
       <Wrapper>
         <Route exact path="/" component={Home} />
         <Route exact path="/user" component={UserPage} />

@@ -51,7 +51,7 @@ export default {
     return axios.put("/api/quote", quoteData);
   },
   // Gets a quote by Contractor ID
-  updateQuote: function(id) {
+  getQuote: function(id) {
     return axios.get("/api/quote/contractor/" + id);
   }
 };
