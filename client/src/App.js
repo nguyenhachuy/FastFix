@@ -10,6 +10,7 @@ import './App.css';
 import LoginPage from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
+import Test from './components/test';
 
 
 class App extends Component {
@@ -34,6 +35,7 @@ class App extends Component {
         <Route exact path="landing" component={LandingPage}/>
         <Route exact path="/landing" component={LoginPage}/>
  
+
       </Wrapper>
 
   </div>

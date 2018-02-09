@@ -7,15 +7,21 @@
     "client": "node scripts/start-client.js",
     "start": "node ./scripts/build-and-run.js",
     "build": "node scripts/build.js",
+    "seed": "node scripts/seedDB.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
+    "child_process": "^1.0.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "jade": "~1.11.0",
+    "mongoose": "^5.0.3",
     "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.32.6",
     "serve-favicon": "~2.4.5"
   }
 }

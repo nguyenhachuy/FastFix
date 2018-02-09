@@ -54,4 +54,8 @@ export default {
   updateQuote: function(id) {
     return axios.get("/api/quote/contractor/" + id);
   }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> hugh-back-end
