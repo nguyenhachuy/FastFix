@@ -8,16 +8,9 @@ import Navbar from "./components/Navbar";
 import logo from './logo.svg';
 import './App.css';
 import LoginPage from './components/Login';
-<<<<<<< HEAD
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 
-
-
-=======
-import { Container, Row, Col } from "./components/Grid";
-import Test from './components/test';
->>>>>>> edobb-front-end
 
 class App extends Component {
   state = {
@@ -38,12 +31,9 @@ class App extends Component {
         <Route exact path="/user" component={UserPage} />
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
-<<<<<<< HEAD
         <Route exact path="landing" component={LandingPage}/>
-=======
         <Route exact path="/landing" component={LoginPage}/>
-        <Route exact path="/test" component={Test}/>
->>>>>>> edobb-front-end
+ 
       </Wrapper>
 
   </div>
