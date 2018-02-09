@@ -1,22 +1,30 @@
 import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
+import PendingBidList from './PendingBidList';
+import InProgressJob from './InProgressJob';
 
 class ProviderPage extends React.Component{
+    
+    constructor(props){
+        super(props);
+    };
 
     state = {
 
     };
 
     render() {
-
+ 
         return(
-    
             <div>
-                <h1>Provider Page Placeholder</h1>
-                <ul className="job-list">
-                    <AvailableJobsList />
-                </ul>
+                <InProgressJob isUser={false} />
+
+                <AvailableJobsList />
+
+                <PendingBidList />
             </div>
+
+ 
             
         );
 
