@@ -10,9 +10,10 @@ module.exports = {
   },
   findAll: function(req, res) {
     console.log("findAll");
+    console.log(req.query)
     db.Task
-      .find(req.query)
-      .sort({ date: -1 })
+      .find()
+      // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
