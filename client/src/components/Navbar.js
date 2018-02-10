@@ -57,6 +57,15 @@ const Navbar = props =>
     >
       <Link to="/signup" handlePageChange={props.handleagechange}>Sign Up</Link>
     </li>
+    <li
+      className={
+       window.location.pathname === "/chat"
+          ? "active"
+          : ""
+      }
+    >
+      <Link to="/chat" handlePageChange={props.handleagechange}>Chat</Link>
+    </li>
 
   </ul>
 </div>
