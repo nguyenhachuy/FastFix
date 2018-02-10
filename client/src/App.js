@@ -13,8 +13,6 @@ import { Container, Row, Col } from "./components/Grid";
 import Test from './components/test';
 
 
-
-
 class App extends Component {
   state = {
     currentPage: "Home"
@@ -29,6 +27,7 @@ class App extends Component {
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
         <Route exact path="landing" component={LandingPage}/>
+
 
       </Wrapper>
 
