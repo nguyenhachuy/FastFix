@@ -4,7 +4,7 @@ import Wrapper from "./components/Wrapper";
 import Home from "./components/Home";
 import UserPage from "./components/UserPage";
 import ProviderPage from "./components/ProviderPage";
-//import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 //import logo from './logo.svg';
 import './App.css';
 import LoginPage from './components/Login';
@@ -21,6 +21,7 @@ class App extends Component {
   render() {
     return <Router>
     <div>
+      <Navbar />
       <Wrapper>
         <Route exact path="/" component={Home} />
         <Route exact path="/user" component={UserPage} />
