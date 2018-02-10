@@ -10,7 +10,7 @@ import Home from "./components/Home";
 import UserPage from "./components/UserPage";
 import ProviderPage from "./components/ProviderPage";
 import Navbar from "./components/Navbar";
-//import logo from './logo.svg';
+import Chat from "./components/Chat";
 import './App.css';
 import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
@@ -33,6 +33,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/user" component={UserPage} />
         <Route exact path="/contractor" component={ProviderPage} />
+        <Route exact path="/chat" component={Chat}/>
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>

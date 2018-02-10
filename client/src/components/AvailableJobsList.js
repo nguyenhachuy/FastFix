@@ -1,5 +1,5 @@
 import React from 'react';
-//import AvailableJob from './AvailableJob';
+import AvailableJob from './AvailableJob';
 
 
 const fakeJobs = 
