@@ -1,30 +1,32 @@
 import React from 'react';
-import {LoginForm} from './LoginForm';
+import {SignupForm} from './SignupForm';
 import { Container, Row, Col } from "./../Grid";
 
-class LoginPage extends React.Component{
+class SignupPage extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            errors: {},
             user: {
-              username: '',
-              password: ''
-            }
+                firstName: '',
+                lastName: '',
+                username: '',
+                password: '',
+                confirmPassword: '',
+            },
+            errors: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    
     }
     
     handleChange(event) {
         const field = event.target.name;
         const user = this.state.user;
         user[field] = event.target.value;
-    
         this.setState({
           user
         });
+        
     }
     
     handleSubmit(event) {
@@ -35,15 +37,22 @@ class LoginPage extends React.Component{
         });
         event.preventDefault();
     }
+    
+    
+    handleSignup(event) {
+        alert('Hello');
+        event.preventDefault();
+    }
     render() {
         return (
             <Row className="row">
                 <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
-
-                    <LoginForm
+                    <SignupForm
                     handleChange={this.handleChange}
+                    handleSignup={this.handleSignup}
                     handleSubmit={this.handleSubmit}
                     user={this.state.user}
+                    errors={this.state.errors}
                     />
                 </Col>
             </Row>
@@ -52,4 +61,4 @@ class LoginPage extends React.Component{
 }
 
 
-export {LoginPage};
+export {SignupPage};
