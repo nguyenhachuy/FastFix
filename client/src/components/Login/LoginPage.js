@@ -31,12 +31,13 @@ class LoginPage extends React.Component{
     }
     
     handleSubmit(event) {
-        console.log('A name was submitted: ' + this.state.username + " " + this.state.password);
+        event.preventDefault();
+        let user = this.state.user;        
+        console.log('A name was submitted: ' + user.username + " " + user.password);
         this.setState({
             username: '',
             password: ''
         });
-        event.preventDefault();
         fakeAuth.authenticate(() => {
             this.setState({ redirectToReferrer: true });
         });

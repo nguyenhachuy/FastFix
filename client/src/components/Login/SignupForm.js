@@ -8,7 +8,7 @@ const SignupForm = ({
 }) => {
     return (
 
-        <form class="well form-horizontal" action=" " method="post" id="signup_form">
+        <form class="well form-horizontal" action="" method="post" id="signup_form" onSubmit={handleSubmit}>
             <fieldset>
                 <legend>
                     <center>

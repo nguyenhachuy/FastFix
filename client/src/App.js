@@ -18,7 +18,8 @@ import { Container, Row, Col } from "./components/Grid";
 
 class App extends Component {
   state = {
-    currentPage: "Home"
+    currentPage: "Home",
+    isAuthenticated: false
   };
 
   handlepagechange = page => {
@@ -38,7 +39,7 @@ class App extends Component {
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
-        <PrivateRoute path="/protected" component={LandingPage} />
+        <PrivateRoute path="/landing" component={LandingPage} />
 
       </Wrapper>
 
@@ -58,7 +59,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         <Redirect
           to={{
             pathname: "/login",
-            state: { from: props.location }
+            state: { 
+              from: props.location,
+              
+            }
           }}
         />
       )
