@@ -1,5 +1,6 @@
 import React from 'react';
-//import AvailableJob from './AvailableJob';
+import AvailableJob from './AvailableJob';
+
 
 
 const fakeJobs = 
@@ -21,19 +22,18 @@ class AvailableJobsList extends React.Component {
     constructor(props){
         super(props);
     };
-
-
-    
+      
 
   render() {
       return(
-    fakeJobs.map( (job) => {
+    this.props.availableJobs.map( (job) => {
             return (
            
                <AvailableJob 
-                title={job.title}
+                title={job.jobTitle}
                 zipCode={job.zipCode}
                 id={job._id}
+                timeFrame={job.timeFrame}
                 description={job.description}
                 />
         

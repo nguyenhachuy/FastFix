@@ -4,8 +4,7 @@ import Wrapper from "./components/Wrapper";
 import Home from "./components/Home";
 import UserPage from "./components/UserPage";
 import ProviderPage from "./components/ProviderPage";
-//import Navbar from "./components/Navbar";
-//import logo from './logo.svg';
+import Navbar from "./components/Navbar";
 import './App.css';
 import LoginPage from './components/Login';
 import LandingPage from './components/Landing';
@@ -22,6 +21,7 @@ class App extends Component {
     return <Router>
     <div>
       <Wrapper>
+        <Navbar />
         <Route exact path="/" component={Home} />
         <Route exact path="/user" component={UserPage} />
         <Route exact path="/contractor" component={ProviderPage} />

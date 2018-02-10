@@ -1,7 +1,16 @@
 import React from 'react';
 
-const CreateJobForm = props => {
+class CreateJobForm extends React.Component{
 
+  state = {
+    newJob: {}
+  };
+
+    constructor(props){
+      super(props);
+    };
+
+    render() {
     return (
 
     <form className="jobCreation">
@@ -9,7 +18,7 @@ const CreateJobForm = props => {
       <label htmlFor="jobs">Create New Job:</label>
       <input
         name="jobTitle"
-        onChange={props.handleInputChange}
+        onChange={this._handleInputChange}
         type="text"
         className="form-control"
         placeholder="Enter Job Title"
@@ -18,7 +27,7 @@ const CreateJobForm = props => {
       <br />
       <input
         name="zipCode"
-        onChange={props.handleInputChange}
+        onChange={this._handleInputChange}
         type="text"
         className="form-control"
         placeholder="Enter Zipcode"
@@ -27,7 +36,7 @@ const CreateJobForm = props => {
       <br />
       <input
         name="budget"
-        onChange={props.handleInputChange}
+        onChange={this._handleInputChange}
         type="text"
         className="form-control"
         placeholder="Enter Your Budget"
@@ -36,7 +45,7 @@ const CreateJobForm = props => {
       <br />
       <input
         name="timeFrame"
-        onChange={props.handleInputChange}
+        onChange={this._handleInputChange}
         type="text"
         className="form-control"
         placeholder="Must Be Completed By"
@@ -45,13 +54,14 @@ const CreateJobForm = props => {
       <br />
       <button 
         type="submit"
-        onClick={props.handleJobCreation}
+        onClick={this._handleJobCreation}
         className="btn btn-primary">
         Submit Job
       </button>
       </div>
       </form>
     )
-}
+  }
+};
 
 export default CreateJobForm;

@@ -2,7 +2,7 @@ import React from 'react';
 import CreateJobForm from './CreateJobForm';
 import PendingJobsList from './PendingJobsList';
 import InProgressJob from './InProgressJob';
-
+import API from '../utils/API';
 class UserPage extends React.Component{
 
     constructor(props){
@@ -10,8 +10,19 @@ class UserPage extends React.Component{
     };
 
     state = {
-        newJob: {}
+        jobTitle: '',
+        zipCode: '',
+        budget: '',
+        timeFrame: ''
     };
+
+
+    componentDidMount() {
+        console.log("butt");
+        API.getAllTasks()
+            .then(res => this.setState({availableJobs: res.data}) , console.log(this.state))
+            .catch(err => console.log(err));
+    };    
 
     _handleInputChange = event => {
         const target = event.target;
@@ -20,12 +31,12 @@ class UserPage extends React.Component{
         this.setState({
             [name]: value
           });          
+          console.log(this.state);
         };
         
-        
-        
     _handleJobCreation = event => {
-        console.log(this.state.newJob);
+        alert(this.state.newJob);
+        event.preventDefault();
             
     };
 
