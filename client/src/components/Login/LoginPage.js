@@ -6,8 +6,11 @@ class LoginPage extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: ''
+            errors: {},
+            user: {
+              username: '',
+              password: ''
+            }
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,13 +18,13 @@ class LoginPage extends React.Component{
     }
     
     handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        this.setState({
-            [name]: value
-          });          
+        const field = event.target.name;
+        const user = this.state.user;
+        user[field] = event.target.value;
     
+        this.setState({
+          user
+        });
     }
     
     handleSubmit(event) {
@@ -32,12 +35,6 @@ class LoginPage extends React.Component{
         });
         event.preventDefault();
     }
-    
-    
-    handleSignup(event) {
-        alert('Hello');
-        event.preventDefault();
-    }
     render() {
         return (
             <Row className="row">
@@ -45,10 +42,8 @@ class LoginPage extends React.Component{
 
                     <LoginForm
                     handleChange={this.handleChange}
-                    handleSignup={this.handleSignup}
                     handleSubmit={this.handleSubmit}
-                    username={this.state.username}
-                    password={this.state.password}
+                    user={this.state.user}
                     />
                 </Col>
             </Row>

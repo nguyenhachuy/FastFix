@@ -7,9 +7,9 @@ class SignupPage extends React.Component{
         super(props);
         this.state = {
             user: {
-                firstName: 'Gus',
-                lastName: 'Nguyen',
-                username: 'wut',
+                firstName: '',
+                lastName: '',
+                username: '',
                 password: '',
                 confirmPassword: '',
             },
