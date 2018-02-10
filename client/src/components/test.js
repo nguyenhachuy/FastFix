@@ -16,15 +16,22 @@ class Test extends Component{
   loadTasks = () => {
     API.getAllTasks()
       .then(res =>
-        console.log(res.data)
-        //this.setState({ tasks: res.data })
+        //console.log(res.data)
+        this.setState({ tasks: res.data })
       )
       .catch(err => console.log(err));
   };
 
   render() {
     return (
-              <div>catch
+              <div>
+                {this.state.tasks.map(tasks => (
+                      <strong
+                        key = {tasks._id}
+                      >
+                        {tasks.jobTitle}
+                      </strong>
+                ))}
               </div>
     )}
 
