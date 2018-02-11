@@ -23,3 +23,7 @@ class LandingPage extends React.Component {
 }
 
 export default LandingPage;
+<<<<<<< HEAD
+=======
+
+>>>>>>> edobb-front-end

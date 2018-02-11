@@ -12,6 +12,7 @@
     "installDeps": "yarn && cd client && yarn"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "body-parser": "~1.18.2",
     "child_process": "^1.0.2",
     "concurrently": "^3.5.1",
