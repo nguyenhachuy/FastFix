@@ -19,7 +19,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/" handlePageChange={props.handlepagechange}>Home</Link>
+      <Link to="/" handlepagechange={props.handlepagechange}>Home</Link>
     </li>
     <li
       className={
@@ -28,7 +28,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/user" handlePageChange={props.handleagechange}>User</Link>
+      <Link to="/user" handlepagechange={props.handlepagechange}>User</Link>
     </li>
     <li
       className={
@@ -37,7 +37,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/contractor" handlePageChange={props.handleagechange}>Contractor</Link>
+      <Link to="/contractor" handlepagechange={props.handlepagechange}>Contractor</Link>
     </li>
     
   </ul>

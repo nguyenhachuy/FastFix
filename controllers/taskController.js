@@ -37,6 +37,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAvailable: function(req, res) {
+    console.log("findAvailable");
     db.Task
       .find({status: "open"})
       .then(dbModel => res.json(dbModel))
