@@ -6,10 +6,6 @@ import axios from 'axios';
 import API from '../utils/API';
 
 class ProviderPage extends React.Component{
-    
-    constructor(props){
-        super(props);
-    };
 
     state = {
         availableJobs: []
@@ -19,8 +15,7 @@ class ProviderPage extends React.Component{
         API.getAllTasks()
             .then(res => {
                 this.setState({availableJobs: res.data});
-                console.log(res.data);
-                console.log(this.state.availableJobs);
+
             })
             .catch(err => console.log(err));
     };  
