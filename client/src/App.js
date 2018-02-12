@@ -27,9 +27,8 @@ class App extends Component {
         <Route exact path="/user" component={UserPage} />
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
-        <Route exact path="landing" component={LandingPage}/>
+        <Route exact path="/landing" component={LoginPage}/>
         <Route exact path="/test" component={Test}/>
-
 
       </Wrapper>
 

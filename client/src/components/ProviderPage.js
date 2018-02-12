@@ -1,9 +1,18 @@
 import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
+<<<<<<< HEAD
 import { List, ListItem } from "./List";
 import API from "../utils/API";
+=======
+import PendingBidList from './PendingBidList';
+import InProgressJob from './InProgressJob';
+>>>>>>> edobb-front-end
 
 class ProviderPage extends React.Component{
+    
+    constructor(props){
+        super(props);
+    };
 
     state = {
         tasks: []
@@ -23,18 +32,18 @@ class ProviderPage extends React.Component{
     };
 
     render() {
-
+ 
         return(
 
-              <List>
-                {this.state.tasks.map(tasks => (
-                  <ListItem key={tasks._id}>
-                      <strong>
-                        {tasks.jobTitle} || {tasks.zipCode}
-                      </strong>
-                  </ListItem>
-                ))}
-              </List>
+            <div>
+                <InProgressJob isUser={false} />
+
+                <AvailableJobsList />
+
+                <PendingBidList />
+            </div>
+
+ 
         );
 
     }

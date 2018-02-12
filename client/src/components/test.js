@@ -62,6 +62,23 @@ class Test extends Component{
     return (
               <div>
                 <input type="file" onChange={(e) => this.handleChangeFile(e)}/>
+                <FormBtn
+                  onClick={this.handleFormSubmit}
+                >
+                Submit
+                </FormBtn>
+                
+                {this.state.tasks.map(tasks => (
+                      <strong
+                        key = {tasks._id}
+                      >
+                        {tasks.jobTitle}
+                      </strong>
+                ))}
+              </div>
+    )}
+
+    /*
                 <ImgUpload
                   value={this.state.imgfile}
                   onChange={this.handleInputChange}
@@ -74,15 +91,7 @@ class Test extends Component{
                 >
                 Submit
                 </FormBtn>
-                {this.state.tasks.map(tasks => (
-                      <strong
-                        key = {tasks._id}
-                      >
-                        {tasks.jobTitle}
-                      </strong>
-                ))}
-              </div>
-    )}
+    */
 
 }
 
