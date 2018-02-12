@@ -10,7 +10,10 @@ class UserPage extends React.Component{
     };
 
     state = {
+        status: 'open',
+        user_id: 'TestGuy',
         jobTitle: '',
+        jobDescription: '',
         zipCode: '',
         budget: '',
         timeFrame: ''
@@ -31,12 +34,28 @@ class UserPage extends React.Component{
         this.setState({
             [name]: value
           });          
-          console.log(this.state);
+          
         };
         
     _handleJobCreation = event => {
-        alert(this.state.newJob);
-        event.preventDefault();
+        const newTask = this.state;
+        console.log(newTask);
+        API.createTask(newTask)
+        .then(res => {
+            this.setState(
+                {
+                    jobTitle: '',
+                    zipCode: '',
+                    jobDescription: '',
+                    budget: '',
+                    timeFrame: ''
+                }
+            );
+
+        })
+        .catch(err => console.log(err));
+
+    event.preventDefault();
             
     };
 
@@ -49,6 +68,12 @@ class UserPage extends React.Component{
                 <CreateJobForm 
                 handleInputChange={this._handleInputChange}
                 handleJobCreation={this._handleJobCreation}
+                budget={this.state.budget}
+                jobTitle={this.state.jobTitle}
+                zipCode={this.state.zipCode}
+                jobDescription={this.state.jobDescription}
+                timeFrame={this.state.timeFrame}
+                budget={this.state.budget}
                 />
                 <hr />
                 <InProgressJob isUser={true}/>
