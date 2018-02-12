@@ -1,40 +1,39 @@
 import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
-import { List, ListItem } from "./List";
-import API from "../utils/API";
-
+import PendingBidList from './PendingBidList';
+import InProgressJob from './InProgressJob';
+import API from '../utils/API';
 class ProviderPage extends React.Component{
 
     state = {
-        tasks: []
+        availableJobs: []
     };
-
+    
     componentDidMount() {
-        this.loadTasks();
-    }
-
-    loadTasks = () => {
         API.getAvailableTasks()
-            .then(res =>
-            //console.log(res.data)
-            this.setState({ tasks: res.data })
-            )
+            .then(res => {
+                this.setState({availableJobs: res.data});
+
+            })
             .catch(err => console.log(err));
-    };
+    };  
 
+    
     render() {
-
+ 
         return(
+            <div>
+                <InProgressJob isUser={false} />
 
-              <List>
-                {this.state.tasks.map(tasks => (
-                  <ListItem key={tasks._id}>
-                      <strong>
-                        {tasks.jobTitle} || {tasks.zipCode}
-                      </strong>
-                  </ListItem>
-                ))}
-              </List>
+                <AvailableJobsList 
+                availableJobs={this.state.availableJobs}
+                />
+
+                <PendingBidList />
+            </div>
+
+ 
+            
         );
 
     }

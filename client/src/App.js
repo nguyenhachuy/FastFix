@@ -12,17 +12,10 @@ import ProviderPage from "./components/ProviderPage";
 import Navbar from "./components/Navbar";
 //import logo from './logo.svg';
 import './App.css';
-<<<<<<< HEAD
 import LoginPage from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 import Test from './components/test';
-=======
-// import { LoginPage, SignupPage } from './components/Login';
-import LandingPage from './components/Landing';
-import { Container, Row, Col } from "./components/Grid";
-// import Test from './components/test';
->>>>>>> edobb-front-end
 
 
 class App extends Component {

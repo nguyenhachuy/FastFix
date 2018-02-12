@@ -38,6 +38,16 @@ const taskSeed = [
     contractor_id: "2",
     budget: 545,
     timeFrame: 7,
+    status: "closed",
+    openData: new Date(Date.now()),
+    payment: false
+  },
+  {
+    jobTitle: "Paint house",
+    user_id: "3",
+    contractor_id: "2",
+    budget: 545,
+    timeFrame: 7,
     status: "open",
     openData: new Date(Date.now()),
     payment: false
