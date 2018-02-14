@@ -15,7 +15,7 @@ mongoose.connect(
 const taskSeed = [
   {
     jobTitle: "House chore",
-    user_id: "1",
+    user_id: "5a83a2e6c2f7fe031bafe4ec",
     contractor_id: "1",
     budget: 100,
     timeFrame: 4,
@@ -25,7 +25,7 @@ const taskSeed = [
   },
   {
     jobTitle: "Fix frige",
-    user_id: "3",
+    user_id: "5a83a2e6c2f7fe031bafe4ec",
     contractor_id: "2",
     budget: 50,
     timeFrame: 4,
@@ -74,8 +74,9 @@ const userSeed = [
           firstName: 'Johnny',
           lastName: 'American',
           streetAddress: '123 Fake Street',
-          zipCode: '90210'
-      
+          zipCode: '90210',
+          email: "johnny@test.com",
+          password: "test"
         }
       ]
 

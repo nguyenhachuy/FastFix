@@ -48,7 +48,6 @@ class Test extends Component{
         <h1>File Upload</h1>
         <input type="file" onChange={this.onChange} />
         <button type="submit" onClick={this.handleChangeFile}>Upload</button>
-        <img src={this.status.imgUrl} />
       </form>
     )}
 
