@@ -31,6 +31,7 @@ class SignupPage extends React.Component{
     
     handleSubmit(event) {
         let user = this.state.user;
+        
         this.setState({
             user: {
                 firstName: '',
