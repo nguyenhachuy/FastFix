@@ -1,12 +1,9 @@
 import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
-<<<<<<< HEAD
 import { List, ListItem } from "./List";
 import API from "../utils/API";
-=======
 import PendingBidList from './PendingBidList';
 import InProgressJob from './InProgressJob';
->>>>>>> edobb-front-end
 
 class ProviderPage extends React.Component{
     
