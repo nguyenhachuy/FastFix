@@ -57,7 +57,7 @@ const Navbar = props =>
     >
       <Link to="/signup" handlePageChange={props.handleagechange}>Sign Up</Link>
     </li>
-
+    
   </ul>
 </div>
 </nav>;
