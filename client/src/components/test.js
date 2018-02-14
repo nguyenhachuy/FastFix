@@ -18,6 +18,14 @@ class Test extends Component{
   }
 
   loadTasks = () => {
+    API.getUserByName("Hugh")
+      .then(res =>
+        console.log(res.data)
+      )
+      .catch(err => console.log(err));
+  }
+  /*
+  loadTasks = () => {
     API.getAvailableTasks()
       .then(res =>
         //console.log(res.data)
@@ -25,7 +33,9 @@ class Test extends Component{
       )
       .catch(err => console.log(err));
   }
+  */
 
+  /*
   onChange(e) {
     console.log(e.target.files[0]);
     //this.setState({ imgfile:"" })
@@ -41,17 +51,34 @@ class Test extends Component{
         )
         .catch(err => console.log(err));
   }
+  */
 
   render() {
     return (
+      <div>
+        <input type="file" onChange={(e) => this.handleChangeFile(e)}/>
+        <FormBtn
+          onClick={this.handleFormSubmit}
+        >
+        Submit
+        </FormBtn>
+        
+        {this.state.tasks.map(tasks => (
+              <strong
+                key = {tasks._id}
+              >
+                {tasks.jobTitle}
+              </strong>
+        ))}
+      </div>
+    )}
+
+    /*
       <form onSubmit={this.onFormSubmit}>
         <h1>File Upload</h1>
         <input type="file" onChange={this.onChange} />
         <button type="submit" onClick={this.handleChangeFile}>Upload</button>
       </form>
-    )}
-
-    /*
       <div>
         <ImgUpload
           value={this.state.imgfile}
@@ -65,22 +92,6 @@ class Test extends Component{
         Submit
         </FormBtn>
       </div>
-              <div>
-                <input type="file" onChange={(e) => this.handleChangeFile(e)}/>
-                <FormBtn
-                  onClick={this.handleFormSubmit}
-                >
-                Submit
-                </FormBtn>
-                
-                {this.state.tasks.map(tasks => (
-                      <strong
-                        key = {tasks._id}
-                      >
-                        {tasks.jobTitle}
-                      </strong>
-                ))}
-              </div>
     */
 
 }

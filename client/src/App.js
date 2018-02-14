@@ -17,6 +17,7 @@ import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 import PrivateRoute from './components/PrivateRoute';
+import Test from './components/test';
 class App extends Component {
   state = {
     currentPage: "Home",
@@ -40,6 +41,7 @@ class App extends Component {
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
         <PrivateRoute path="/user" component={UserPage} />
+        <PrivateRoute path="/test" component={Test} />
 
       </Wrapper>
 
