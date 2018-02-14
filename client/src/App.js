@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Cookies from 'js-cookie';
+import { 
+  BrowserRouter as Router, Route,
+  Link,
+  Redirect,
+  withRouter
+} from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Home from "./components/Home";
 import UserPage from "./components/UserPage";
@@ -7,28 +13,30 @@ import ProviderPage from "./components/ProviderPage";
 import Navbar from "./components/Navbar";
 //import logo from './logo.svg';
 import './App.css';
-import LoginPage from './components/Login';
+import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
-import Test from './components/test';
-
-
+import PrivateRoute from './components/PrivateRoute';
 class App extends Component {
   state = {
-    currentPage: "Home"
+    currentPage: "Home",
+    isAuthenticated: false
   };
 
   render() {
     return <Router>
     <div>
-      <Navbar />
+      <Navbar 
+        handlePageChange={this._handlePageChange} />
+      <AuthButton/>
       <Wrapper>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/user" component={UserPage} />
+        <Route exact path="/" component={LandingPage} />
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
-        <Route exact path="/landing" component={LoginPage}/>
-        <Route exact path="/test" component={Test}/>
+
+        {/* <Route exact path="/landing" component={LandingPage}/> */}
+        <Route exact path="/signup" component={SignupPage}/>
+        <PrivateRoute path="/user" component={UserPage} />
 
       </Wrapper>
 
@@ -38,5 +46,25 @@ class App extends Component {
 
   }
 };
+
+const AuthButton = withRouter(
+  ({ history }) =>
+    Cookies.get('token') ? (
+      <p>
+        Welcome!{" "}
+        <button
+          onClick={() => {
+            Cookies.remove('token');
+            history.push('/');
+          }}
+        >
+          Sign out
+        </button>
+      </p>
+    ) : (
+      <p>You are not logged in.</p>
+    )
+);
+
 
 export default App;

@@ -1,1 +1,2 @@
-export {default} from './LandingPage';
+
+export { default } from './LandingPage';

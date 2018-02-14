@@ -1,71 +1,64 @@
 import React from 'react';
+import {SignupForm} from './SignupForm';
+import { Container, Row, Col } from "./../Grid";
 
-import {Redirect} from 'react-router-dom';
-import {LoginForm} from './LoginForm';
-import {Row, Col } from "./../Grid";
-import Cookies from 'js-cookie';
-class LoginPage extends React.Component{
+class SignupPage extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            errors: {},
             user: {
-              username: '',
-              password: ''
+                firstName: '',
+                lastName: '',
+                username: '',
+                password: '',
+                confirmPassword: '',
             },
-            redirectToReferrer: false
-            
+            errors: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    
     }
-
+    
     handleChange(event) {
         const field = event.target.name;
         const user = this.state.user;
         user[field] = event.target.value;
-    
         this.setState({
           user
         });
+        
     }
     
     handleSubmit(event) {
-        event.preventDefault();
-        let user = this.state.user;        
-        console.log('A name was submitted: ' + user.username + " " + user.password);
+        alert('A name was submitted: ' + this.state.username + " " + this.state.password);
         this.setState({
             username: '',
             password: ''
         });
-        Cookies.set('token', 'password');
-        this.state.redirectToReferrer = true;
-      
+        event.preventDefault();
+    }
+    
+    
+    handleSignup(event) {
+        alert('Hello');
+        event.preventDefault();
     }
     render() {
-        const { from } = this.props.location.state || { from: { pathname: "/" } };
-        const { redirectToReferrer } = this.state;
-        if (redirectToReferrer) {
-            return <Redirect to={from} />;
-          }
-      
-          
         return (
             <Row className="row">
                 <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
-                    <p>You must log in to view the page at {from.pathname}</p>
-
-                    <LoginForm
+                    <SignupForm
                     handleChange={this.handleChange}
+                    handleSignup={this.handleSignup}
                     handleSubmit={this.handleSubmit}
                     user={this.state.user}
+                    errors={this.state.errors}
                     />
                 </Col>
             </Row>
         )    
     }
 }
-  
 
-export {LoginPage};
+
+export {SignupPage};
