@@ -1,6 +1,8 @@
 const Auth = {
     isAuthenticated: false,
-    authenticate(cb) {
+    authenticate({user, cb}) {
+        Cookie.get('id');
+        Cookie.get('token');
         this.isAuthenticated = true;
         setTimeout(cb, 100); // fake async
     },
