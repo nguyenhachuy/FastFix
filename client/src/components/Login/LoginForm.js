@@ -2,11 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 const LoginForm = ({
     handleChange, 
-    handleSignup, 
+    handleSubmit, 
     user
 }) => {
     return (
-        <form class="well form-horizontal" action=" " method="post" id="login_form">
+        <form class="well form-horizontal" action=" " method="post" id="login_form" onSubmit={handleSubmit}>
             <fieldset>
                 <legend>
                     <center>
