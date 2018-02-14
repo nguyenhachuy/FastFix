@@ -1,24 +1,27 @@
 import React from 'react';
 import LoadingIcon from './LoadingIcon';
-import { Container, Row, Col } from "./../Grid";
+import { Row, Col } from "./../Grid";
 import './Landing.css';
+import Cookies from 'js-cookie';
 class LandingPage extends React.Component {
     handleOnclickUser = event => {
-        alert('Transfer to user login page')
+        Cookies.set('type', 'user');
     }
     handleOnclickProvider = event => {
-        alert('Transfer to provider login page')
-        
+        Cookies.set('type', 'provider');
     }
     render() {
         return (
-            <Row className="row">
-                <Col className={['col-xs-12', 'col-centered'].join(" ")}>
-                    <LoadingIcon onClick={this.handleOnclickUser} type="user" link="/login"/>
-                    <LoadingIcon onClick={this.handleOnclickProvider} type="wrench" link="/login"/>
-                </Col>
-            </Row>
+            <div>
+                <Row className="row">
+                    <Col className={['col-xs-12', 'col-centered'].join(" ")}>
+                        <LoadingIcon onClick={this.handleOnclickUser} type="user" link="/login" />
+                        <LoadingIcon onClick={this.handleOnclickProvider} type="wrench" link="/login" />
+                    </Col>
+                </Row>
+            </div>
         )
     }
 }
+
 export default LandingPage;

@@ -30,10 +30,15 @@ class SignupPage extends React.Component{
     }
     
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.username + " " + this.state.password);
+        let user = this.state.user;
         this.setState({
-            username: '',
-            password: ''
+            user: {
+                firstName: '',
+                lastName: '',
+                username: '',
+                password: '',
+                confirmPassword: '',
+            }
         });
         event.preventDefault();
     }

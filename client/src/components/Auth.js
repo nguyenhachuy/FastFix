@@ -1,10 +1,8 @@
 const Auth = {
     isAuthenticated: false,
-    authenticate({user, cb}) {
-        Cookie.get('id');
-        Cookie.get('token');
+    authenticate(user, cb) {
         this.isAuthenticated = true;
-        setTimeout(cb, 100); // fake async
+        setTimeout(cb('lol'), 100); // fake async
     },
     signout(cb) {
         this.isAuthenticated = false;
