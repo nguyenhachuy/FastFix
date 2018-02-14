@@ -79,7 +79,7 @@ export default {
     return axios.put("/api/task", taskData);
   },
   // Get a User By ID
-  getUserByName: function(id) {
+  getUserByID: function(id) {
     return axios.get("/api/user/id/" + id);
   },
   // Get a User By name
@@ -95,11 +95,11 @@ export default {
     return axios.put("/api/user", userData);
   },
   // Get a Contractor By ID
-  getUserByID: function(id) {
+  getContractorByID: function(id) {
     return axios.get("/api/contractor/id/" + id);
   },
   // Get a Contractor By name
-  getUserByName: function(name) {
+  getContractorByName: function(name) {
     return axios.get("/api/contractor/name/" + name);
   },
   // Create a Contractor

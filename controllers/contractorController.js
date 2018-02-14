@@ -22,7 +22,7 @@ module.exports = {
   },
   findByName: function(req, res) {
     db.Contractor
-      .findById({ contractorname: req.params.name })
+      .find({ contractorname: req.params.name })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

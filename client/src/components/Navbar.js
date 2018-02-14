@@ -46,7 +46,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/login" handlePageChange={props.handleagechange}>Log In</Link>
+      <Link to="/login" handlepagechange={props.handleagechange}>Log In</Link>
     </li>
     <li
       className={
@@ -55,7 +55,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/signup" handlePageChange={props.handleagechange}>Sign Up</Link>
+      <Link to="/signup" handlepagechange={props.handleagechange}>Sign Up</Link>
     </li>
 
   </ul>

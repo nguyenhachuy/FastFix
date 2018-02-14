@@ -13,7 +13,7 @@ router
   .put(userController.update)
   .delete(userController.remove);
 
-// Matches with "/api/user/name/:id"
+// Matches with "/api/user/name/:name"
 router
   .route("/name/:name")
   .get(userController.findByName)
