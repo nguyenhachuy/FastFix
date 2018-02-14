@@ -22,6 +22,16 @@ const CreateJobForm = props => {
         />
       <br />
       <input
+        name="jobDescription"
+        onChange={props.handleInputChange}
+        value={props.jobDescription}
+        type="text"
+        className="form-control"
+        placeholder="Enter Job Description"
+        id="jobDescription"
+        />
+      <br />
+      <input
         name="zipCode"
         onChange={props.handleInputChange}
         value={props.zipCode}

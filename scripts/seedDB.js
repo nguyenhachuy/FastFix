@@ -104,7 +104,7 @@ const userSeed = [
           username: "Hugh",
           streetAddress: '123 Fake Street',
           zipCode: '90214',
-        },
+        }
       ]
 
 db.User
