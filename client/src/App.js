@@ -10,17 +10,20 @@ import Home from "./components/Home";
 import UserPage from "./components/UserPage";
 import ProviderPage from "./components/ProviderPage";
 import Navbar from "./components/Navbar";
-//import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
-import Test from './components/test';
-
 
 class App extends Component {
   state = {
-    currentPage: "Home"
+    currentPage: "Home",
+    isAuthenticated: false
+  };
+
+  handlepagechange = page => {
+    this.setState({ currentPage: page });
   };
 
   render() {
@@ -36,7 +39,7 @@ class App extends Component {
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
-        <PrivateRoute path="/protected" component={LandingPage} />
+        <PrivateRoute path="/landing" component={LandingPage} />
 
       </Wrapper>
 
@@ -56,7 +59,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         <Redirect
           to={{
             pathname: "/login",
-            state: { from: props.location }
+            state: { 
+              from: props.location,
+              
+            }
           }}
         />
       )

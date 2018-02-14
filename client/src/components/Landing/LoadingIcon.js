@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from './../Button';
-import '../style/Style.css'
-const LoadingIcon = ({type, onClick, link}) => {
+
+const LoadingIcon = ({link, title}) => {
     return (
-        <Button className="btn-lg button-centered" onClick={onClick} link={link}>
-            <span className={["glyphicon", `glyphicon-${type}`, "glyph-link"].join(' ')} aria-hidden="true"></span>
-        </Button>        
+        <a href={link} title={title}>
+            This is an icon
+        </a>
+        
     )
 };
 

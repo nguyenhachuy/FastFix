@@ -7,13 +7,6 @@ router
   .get(taskController.findAll)
   .post(taskController.create);
 
-// Matches with "/api/task/:id"
-router
-  .route("/:id")
-  .get(taskController.findById)
-  .put(taskController.update)
-  .delete(taskController.remove);
-
 // Matches with "/api/task/user/:id"
 router
   .route("/user/:id")
@@ -28,5 +21,13 @@ router
 router
   .route("/available")
   .get(taskController.findAvailable)
+  
+// Matches with "/api/task/id/:id"
+router
+  .route("/id/:id")
+  .get(taskController.findById)
+  .put(taskController.update)
+  .delete(taskController.remove);
+
 
 module.exports = router;

@@ -8,7 +8,7 @@ const SignupForm = ({
 }) => {
     return (
 
-        <form class="well form-horizontal" action=" " method="post" id="signup_form">
+        <form class="well form-horizontal" action="" method="post" id="signup_form" onSubmit={handleSubmit}>
             <fieldset>
                 <legend>
                     <center>
@@ -99,8 +99,6 @@ const SignupForm = ({
                         </div>
                     </div>
                 </div>
-
-
                 <div class="form-group">
                     <label class="col-md-4 control-label">Contact No.</label>
                     <div class="col-md-4 inputGroupContainer">

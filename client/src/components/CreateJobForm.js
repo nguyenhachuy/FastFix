@@ -2,6 +2,10 @@ import React from 'react';
 
 const CreateJobForm = props => {
 
+
+
+
+  
     return (
 
     <form className="jobCreation">
@@ -10,6 +14,7 @@ const CreateJobForm = props => {
       <input
         name="jobTitle"
         onChange={props.handleInputChange}
+        value={props.jobTitle}
         type="text"
         className="form-control"
         placeholder="Enter Job Title"
@@ -19,6 +24,7 @@ const CreateJobForm = props => {
       <input
         name="zipCode"
         onChange={props.handleInputChange}
+        value={props.zipCode}
         type="text"
         className="form-control"
         placeholder="Enter Zipcode"
@@ -28,6 +34,7 @@ const CreateJobForm = props => {
       <input
         name="budget"
         onChange={props.handleInputChange}
+        value={props.budget}
         type="text"
         className="form-control"
         placeholder="Enter Your Budget"
@@ -37,6 +44,7 @@ const CreateJobForm = props => {
       <input
         name="timeFrame"
         onChange={props.handleInputChange}
+        value={props.timeFrame}
         type="text"
         className="form-control"
         placeholder="Must Be Completed By"
@@ -52,6 +60,7 @@ const CreateJobForm = props => {
       </div>
       </form>
     )
-}
+  
+};
 
 export default CreateJobForm;
