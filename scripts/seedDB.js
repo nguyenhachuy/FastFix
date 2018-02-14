@@ -73,10 +73,38 @@ const userSeed = [
         {
           firstName: 'Johnny',
           lastName: 'American',
+          username: "Johnny",
           streetAddress: '123 Fake Street',
           zipCode: '90210',
-
-        }
+        },
+        {
+          firstName: 'Tom',
+          lastName: 'American',
+          username: "Tom",
+          streetAddress: '123 Fake Street',
+          zipCode: '90211',
+        },
+        {
+          firstName: 'Ken',
+          lastName: 'American',
+          username: "Ken",
+          streetAddress: '123 Fake Street',
+          zipCode: '90212',
+        },
+        {
+          firstName: 'Gus',
+          lastName: 'American',
+          username: "Gus",
+          streetAddress: '123 Fake Street',
+          zipCode: '90213',
+        },
+        {
+          firstName: 'Hugh',
+          lastName: 'Japanese',
+          username: "Hugh",
+          streetAddress: '123 Fake Street',
+          zipCode: '90214',
+        },
       ]
 
 db.User
