@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatForm from './ChatForm';
+import ChatSendForm from './ChatSendForm';
 
 class Chat extends React.Component {
 
@@ -25,7 +25,7 @@ class Chat extends React.Component {
                 <h5>FastFix Chat</h5>
                 <p>Chatting with: INSERT DYNAMIC DATA</p>
                 <hr />
-                <ChatForm 
+                <ChatSendForm
                 handleChatMessage={this._handleChatMessage}
                 />
 
