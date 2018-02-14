@@ -8,11 +8,19 @@ export default {
   },
   // Gets Tasks by User ID
   getTasksByUserID: function(id) {
-    return axios.get("/api/task/user/" + id);
+    return axios.get("/api/task/userid/" + id);
+  },
+  // Gets Tasks by User Name
+  getTasksByUserName: function(name) {
+    return axios.get("/api/task/username/" + name);
   },
   // Gets Tasks by Contractor ID
   getTasksByContractorID: function(id) {
-    return axios.get("/api/task/contractor/" + id);
+    return axios.get("/api/task/contractorid/" + id);
+  },
+  // Gets Tasks by Contractor Name
+  getTasksByContractorName: function(id) {
+    return axios.get("/api/task/contractorname/" + id);
   },
   // Gets Available Tasks (status: "open")
   getAvailableTasks: function() {
