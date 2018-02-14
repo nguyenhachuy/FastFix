@@ -50,10 +50,24 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findAvailableByUser: function(req, res) {
+    console.log("findAvailable");
+    db.Task
+      .find({status: "open", username: req.username})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findAvailableByContractorId: function(req, res) {
     console.log("findAvailable");
     db.Task
       .find({status: "open", contractor_id: req.contractor_id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findAvailableByContractor: function(req, res) {
+    console.log("findAvailable");
+    db.Task
+      .find({status: "open", contractorname: req.contractor})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -71,10 +85,24 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findInProgressByUser: function(req, res) {
+    console.log("findAvailable");
+    db.Task
+      .find({status: "in progress", username: req.username})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findInProgressByContractorID: function(req, res) {
     console.log("findAvailable");
     db.Task
       .find({status: "in progress", contractor_id: req.contractor_id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findInProgressByContractor: function(req, res) {
+    console.log("findAvailable");
+    db.Task
+      .find({status: "in progress", contractorname: req.contractorname})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -92,10 +120,24 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findClosedByUser: function(req, res) {
+    console.log("findAvailable");
+    db.Task
+      .find({status: "closed", username: req.username})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findClosedByContractorID: function(req, res) {
     console.log("findAvailable");
     db.Task
       .find({status: "closed", contractor_id: req.contractor_id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findClosedByContractor: function(req, res) {
+    console.log("findAvailable");
+    db.Task
+      .find({status: "closed", contractorname: req.contractorname})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

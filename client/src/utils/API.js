@@ -18,6 +18,50 @@ export default {
   getAvailableTasks: function() {
     return axios.get("/api/task/available");
   },
+  getAvailableTasksByUserID: function(id) {
+    return axios.get("/api/task/available/userid/" + id);
+  },
+  getAvailableTasksByUserName: function(username) {
+    return axios.get("/api/task/available/username/" + username);
+  },
+  getAvailableTasksByContractorID: function(id) {
+    return axios.get("/api/task/available/contractorid/" + id);
+  },
+  getAvailableTasksByContractorName: function(contractorname) {
+    return axios.get("/api/task/available/contractorname/" + contractorname);
+  },
+  // Gets In Progress Tasks (status: "in progress")
+  getInProgressTasks: function() {
+    return axios.get("/api/task/inprogress");
+  },
+  getInProgressTasksByUserID: function(id) {
+    return axios.get("/api/task/inprogress/userid/" + id);
+  },
+  getInProgressTasksByUserName: function(username) {
+    return axios.get("/api/task/inprogress/username/" + username);
+  },
+  getInProgressTasksByContractorID: function(id) {
+    return axios.get("/api/task/inprogress/contractorid/" + id);
+  },
+  getInProgressTasksByContractorName: function(contractorname) {
+    return axios.get("/api/task/inprogress/contractorname/" + contractorname);
+  },
+  // Gets Closed Tasks (status: "closed")
+  getClosedTasks: function() {
+    return axios.get("/api/task/closed");
+  },
+  getClosedTasksByUserID: function(id) {
+    return axios.get("/api/task/closed/userid/" + id);
+  },
+  getClosedTasksByUserName: function(username) {
+    return axios.get("/api/task/closed/username/" + username);
+  },
+  getClosedTasksByContractorID: function(id) {
+    return axios.get("/api/task/closed/contractorid/" + id);
+  },
+  getClosedTasksByContractorName: function(contractorname) {
+    return axios.get("/api/task/closed/contractorname/" + contractorname);
+  },
   // Create a Task
   createTask: function(taskData) {
     return axios.post("/api/task", taskData);
