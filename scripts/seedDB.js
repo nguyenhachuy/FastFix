@@ -75,7 +75,12 @@ const userSeed = [
           lastName: 'American',
           streetAddress: '123 Fake Street',
           zipCode: '90210'
-      
+        },
+        {
+          firstName: 'Ray',
+          lastName: 'Ray',
+          streetAddress: '99 Pretend Way',
+          zipCode: '90210' 
         }
       ]
 

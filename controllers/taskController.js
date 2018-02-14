@@ -26,13 +26,13 @@ module.exports = {
   },
   findByUserId: function(req, res) {
     db.Task
-      .findById({ user_id: req.params.id })
+      .find({ user_id: req.params.id, status: 'open' })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findByContractorId: function(req, res) {
     db.Task
-      .findById({ contractor_id: req.params.id })
+      .find({ contractor_id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -40,6 +40,13 @@ module.exports = {
     console.log("findAvailable");
     db.Task
       .find({status: "open"})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findClosedbyUser: function(req, res) {
+    console.log("findAvailable");
+    db.Task
+      .find({status: "closed", user_id: "TestGuy"})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
