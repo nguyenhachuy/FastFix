@@ -2,7 +2,7 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {LoginForm} from './LoginForm';
 import {Row, Col } from "./../Grid";
-
+import Cookies from 'js-cookie';
 class LoginPage extends React.Component{
     constructor(props) {
         super(props);
@@ -38,9 +38,8 @@ class LoginPage extends React.Component{
             username: '',
             password: ''
         });
-        fakeAuth.authenticate(() => {
-            this.setState({ redirectToReferrer: true });
-        });
+        Cookies.set('token', 'password');
+        this.state.redirectToReferrer = true;
       
     }
     render() {
@@ -66,18 +65,6 @@ class LoginPage extends React.Component{
         )    
     }
 }
-const fakeAuth = {
-    isAuthenticated: false,
-    authenticate(cb) {
-      this.isAuthenticated = true;
-      setTimeout(cb, 100); // fake async
-    },
-    signout(cb) {
-      this.isAuthenticated = false;
-      setTimeout(cb, 100);
-    }
-};
-  
   
 
 export {LoginPage};

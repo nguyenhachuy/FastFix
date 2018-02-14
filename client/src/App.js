@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cookies from 'js-cookie';
 import { 
   BrowserRouter as Router, Route,
   Link,
@@ -15,7 +16,7 @@ import './App.css';
 import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
-
+import PrivateRoute from './components/PrivateRoute';
 class App extends Component {
   state = {
     currentPage: "Home",
@@ -33,13 +34,12 @@ class App extends Component {
         handlePageChange={this._handlePageChange} />
       <AuthButton/>
       <Wrapper>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/user" component={UserPage} />
+        <Route exact path="/" component={LandingPage} />
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
-        <PrivateRoute path="/landing" component={LandingPage} />
+        <PrivateRoute path="/user" component={UserPage} />
 
       </Wrapper>
 
@@ -49,46 +49,15 @@ class App extends Component {
   }
 };
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      fakeAuth.isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { 
-              from: props.location,
-              
-            }
-          }}
-        />
-      )
-    }
-  />
-);
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    this.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
-
 const AuthButton = withRouter(
   ({ history }) =>
-    fakeAuth.isAuthenticated ? (
+    Cookies.get('token') ? (
       <p>
         Welcome!{" "}
         <button
           onClick={() => {
-            fakeAuth.signout(() => history.push("/"));
+            Cookies.remove('token');
+            history.push('/');
           }}
         >
           Sign out
