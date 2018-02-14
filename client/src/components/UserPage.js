@@ -2,7 +2,7 @@ import React from 'react';
 import CreateJobForm from './CreateJobForm';
 import PendingJobsList from './PendingJobsList';
 import InProgressJob from './InProgressJob';
-
+import API from '../utils/API';
 class UserPage extends React.Component{
 
     constructor(props){
@@ -10,8 +10,22 @@ class UserPage extends React.Component{
     };
 
     state = {
-        newJob: {}
+        status: 'open',
+        user_id: 'TestGuy',
+        jobTitle: '',
+        jobDescription: '',
+        zipCode: '',
+        budget: '',
+        timeFrame: ''
     };
+
+
+    componentDidMount() {
+        console.log("butt");
+        API.getAllTasks()
+            .then(res => this.setState({availableJobs: res.data}) , console.log(this.state))
+            .catch(err => console.log(err));
+    };    
 
     _handleInputChange = event => {
         const target = event.target;
@@ -20,12 +34,28 @@ class UserPage extends React.Component{
         this.setState({
             [name]: value
           });          
+          
         };
         
-        
-        
     _handleJobCreation = event => {
-        console.log(this.state.newJob);
+        const newTask = this.state;
+        console.log(newTask);
+        API.createTask(newTask)
+        .then(res => {
+            this.setState(
+                {
+                    jobTitle: '',
+                    zipCode: '',
+                    jobDescription: '',
+                    budget: '',
+                    timeFrame: ''
+                }
+            );
+
+        })
+        .catch(err => console.log(err));
+
+    event.preventDefault();
             
     };
 
@@ -38,6 +68,12 @@ class UserPage extends React.Component{
                 <CreateJobForm 
                 handleInputChange={this._handleInputChange}
                 handleJobCreation={this._handleJobCreation}
+                budget={this.state.budget}
+                jobTitle={this.state.jobTitle}
+                zipCode={this.state.zipCode}
+                jobDescription={this.state.jobDescription}
+                timeFrame={this.state.timeFrame}
+                budget={this.state.budget}
                 />
                 <hr />
                 <InProgressJob isUser={true}/>

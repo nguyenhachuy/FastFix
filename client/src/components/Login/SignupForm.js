@@ -99,8 +99,11 @@ const SignupForm = ({
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> edobb-front-end
                 <div class="form-group">
                     <label class="col-md-4 control-label">Contact No.</label>
                     <div class="col-md-4 inputGroupContainer">

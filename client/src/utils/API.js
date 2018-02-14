@@ -11,7 +11,7 @@ export default {
     return axios.get("/api/task/user/" + id);
   },
   // Gets Tasks by Contractor ID
-  getTasksByContracotrID: function(id) {
+  getTasksByContractorID: function(id) {
     return axios.get("/api/task/contractor/" + id);
   },
   // Gets Available Tasks (status: "open")

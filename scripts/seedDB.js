@@ -75,8 +75,7 @@ const userSeed = [
           lastName: 'American',
           streetAddress: '123 Fake Street',
           zipCode: '90210',
-          email: "johnny@test.com",
-          password: "test"
+
         }
       ]
 

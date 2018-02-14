@@ -11,7 +11,7 @@ import Home from "./components/Home";
 import UserPage from "./components/UserPage";
 import ProviderPage from "./components/ProviderPage";
 import Navbar from "./components/Navbar";
-//import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
@@ -21,6 +21,10 @@ class App extends Component {
   state = {
     currentPage: "Home",
     isAuthenticated: false
+  };
+
+  handlepagechange = page => {
+    this.setState({ currentPage: page });
   };
 
   render() {
@@ -33,7 +37,6 @@ class App extends Component {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
-
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
         <PrivateRoute path="/user" component={UserPage} />
@@ -42,8 +45,7 @@ class App extends Component {
 
   </div>
     
-  </Router>
-
+  </Router>;
   }
 };
 
