@@ -10,12 +10,12 @@ router
 // Matches with "/api/task/user/:id"
 router
   .route("/user/:id")
-  .get(taskController.findByUserId);
+  .get(taskController.findByUserID);
 
 // Matches with "/api/task/contractor/:id"
 router
   .route("/contractor/:id")
-  .get(taskController.findByContractorId);
+  .get(taskController.findByContractorID);
 
 // Matches with "/api/task/available"
 router

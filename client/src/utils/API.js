@@ -78,19 +78,35 @@ export default {
   updateTask: function(taskData) {
     return axios.put("/api/task", taskData);
   },
+  // Get a User By ID
+  getUser: function(id) {
+    return axios.get("/api/user/id/" + id);
+  },
+  // Get a User By name
+  getUser: function(name) {
+    return axios.get("/api/user/name/" + name);
+  },
   // Create a User
   createUser: function(userData) {
     return axios.post("/api/user", userData);
   },
-  // Create a User
+  // Update a User
   updateUser: function(userData) {
     return axios.put("/api/user", userData);
+  },
+  // Get a Contractor By ID
+  getUser: function(id) {
+    return axios.get("/api/contractor/id/" + id);
+  },
+  // Get a Contractor By name
+  getUser: function(name) {
+    return axios.get("/api/contractor/name/" + name);
   },
   // Create a Contractor
   createContractor: function(contractorData) {
     return axios.post("/api/contractor", contractorData);
   },
-  // Create a Contractor
+  // Update a Contractor
   updateContractor: function(contractorData) {
     return axios.put("/api/contractor", contractorData);
   },

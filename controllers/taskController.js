@@ -24,13 +24,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByUserId: function(req, res) {
+  findByUserID: function(req, res) {
     db.Task
       .find({ user_id: req.params.id, status: 'open' })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByContractorId: function(req, res) {
+  findByContractorID: function(req, res) {
     db.Task
       .find({ contractor_id: req.params.id })
       .then(dbModel => res.json(dbModel))

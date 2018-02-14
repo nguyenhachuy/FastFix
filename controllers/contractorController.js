@@ -14,9 +14,15 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
+  findByID: function(req, res) {
     db.Contractor
       .findById({ _id: req.params.id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByName: function(req, res) {
+    db.Contractor
+      .findById({ contractorname: req.params.name })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
