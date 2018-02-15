@@ -7,12 +7,13 @@ class ChatSendForm extends Component {
     }
 
     state = {
-        message: ''
+        message: 'Type your message here ...'
     };
 
     clickHandler = (event) => {
         event.preventDefault();
         this.props.sendChat(this.state.message);
+        this.setState({ message: "" });
     }
 
     changeHandler = (event) => {
@@ -22,12 +23,11 @@ class ChatSendForm extends Component {
 
     render() {
         return <form>
-	            <input
-	                type="text"
+	            <textarea rows="4" cols="60"
 	                name="Your Message"
 	                value={this.state.message}
-	                onChange={this.changeHandler} />
-	            	<button onClick={this.clickHandler}> Submit </button>
+	                onChange={this.changeHandler} /> <br />
+	            	<button onClick={this.clickHandler}> Submit Message </button>
 	        </form>
     }
 }

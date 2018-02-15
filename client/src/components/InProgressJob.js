@@ -7,7 +7,6 @@ import ChatRecvForm from './ChatRecvForm';
 import chat from '../chat';
 var fb = require('../fb');
 
-
 const fakeInProgressJob = {
         _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
     }
@@ -17,67 +16,73 @@ class InProgressJob extends React.Component{
     constructor(props){
         super(props);
         this.sendChat = this.sendChat.bind(this);
+        this.displayResponse = this.displayResponse.bind(this);
     };
 
-
     state = {
-        chatInit: false,
         jobData : fakeInProgressJob,
         providerData: {},
         chatSendMsg: "",
-        chatRcvMsg: ""
+        chatRecvMsg: []
     };
 
-
     componentDidMount() {
-    //  receive latest message from Firebase
-    
-        fb.ref('/').on("child_added", function(childSnapshot, prevChildKey) {
+
+        let folder = chat.getRef();
+
+        //  receive latest message from Firebase
+        fb.ref(folder).on("child_added", function(childSnapshot, prevChildKey) {
 
             console.log("Msg from Firebase");
             console.log(childSnapshot.val());
 
-            if (this.state.chatInit === true)
-            {
-                this.processChat(childSnapshot.val().sender, childSnapshot.val().msg);
-            }
-
+            this.processChat(childSnapshot.val().sender, childSnapshot.val().msg);
         }.bind(this));
     };
 
+
     processChat(sender, msg) {
-        if (sender === "client")
+
+        if (sender === "user")
         {
             if (this.props.isUser === false)
             {
+              this.displayResponse(msg);
               console.log("Sending msg to contractor: ");
-              var text = this.state.chatRecvMsg +"\n" + "\r"+ msg;
-              this.setState({ chatRecvMsg: text});
             }
         }
         else 
         {
             if (this.props.isUser === true)
             {
-              console.log("Sending msg to client: ");
-              var text = this.state.chatRecvMsg +"\n" + "\r"+ msg;
-              this.setState({ chatRecvMsg: text});
+              this.displayResponse(msg);
+              console.log("Sending msg to user: ");
             }
         }
     } 
 
+
+    displayResponse(msg) {
+        let content = this.state.chatRecvMsg;
+        msg += "\n";
+        content[content.length] = msg;
+        this.setState({ chatRecvMsg: content});
+        let response = document.getElementById('response');
+        response.scrollTop = response.scrollHeight;
+    }
+
+
     sendChat(msg) {
         var sender;
         if (this.props.isUser === true)
-            sender = "client";
+            sender = "user";
         else
             sender = "contractor";
 
         this.state.chatInit = true;
 
         chat.post(sender, msg);
-        //this.setState({ chatSendMsg: msg});
-        //this.setState({ chatRecvMsg: msg});
+        this.setState({ chatSendMsg: ""});
     }
 
     // componentDidMount() {
@@ -106,25 +111,18 @@ class InProgressJob extends React.Component{
                     <div className="panel-body">
                         {props.isUser ? <UserInfo /> : <ProviderInfo />}
                     </div>
-
+                </div>
+                <hr />
+                <div>
                     <div>
-                        <form>
-                            {props.isUser ?
-                                <input
-                                type="text"
-                                name="Received Message"
-                                value={this.state.chatRecvMsg} /> :
-                               <input
-                                type="text"
-                                name="Received Message"
-                                value={this.state.chatRecvMsg} /> }
-                        </form>
+                        <textarea readOnly id = "response" rows="4" cols="60"
+                            value={this.state.chatRecvMsg}/>         
                     </div>
+                    <hr />
                     <div>
-                        {props.isUser ?                             
-                                <ChatSendForm sendChat={this.sendChat} /> :
-                                <ChatSendForm sendChat={this.sendChat} /> }
+                        <ChatSendForm sendChat={this.sendChat} />
                     </div>
+                    <hr />
                 </div>
             </div>
         )

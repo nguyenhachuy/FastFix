@@ -5,13 +5,22 @@ var fb = require('./fb');
 //====================================================================
 function post(sender, msg) {
     console.log(sender + " posting: " + msg);
-    fb.ref('/').push({
+
+    let folder = getRef();
+    fb.ref(folder).push({
         sender: sender,
         msg: msg
   });
 }
 
+function getRef() {
+	let ref = '/' + "tempuser" + "tempcontractor";
+	return ref;
+}
+
+
 export default {
-    post: post
+    post: post,
+    getRef: getRef
 }
 
