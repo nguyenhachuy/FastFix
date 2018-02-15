@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import {LoginForm} from './LoginForm';
 import {Row, Col } from "./../Grid";
 import Cookies from 'js-cookie';
+import API from "../../utils/API";
 class LoginPage extends React.Component{
     constructor(props) {
         super(props);
@@ -13,6 +14,7 @@ class LoginPage extends React.Component{
               username: '',
               password: ''
             },
+            userInfo: [],
             redirectToReferrer: false
             
         };
@@ -31,8 +33,39 @@ class LoginPage extends React.Component{
         });
     }
     
+    userExistCheck(data) {
+        let password = this.state.user.password;
+        console.log(data);
+        if (data.length === 0){
+            alert("User doesn't exist")
+        }
+        else {
+            // Password Check
+            console.log(data[0].password);
+            if (data[0].password !== password) {
+                alert("Password is wrong")
+            }
+            else {
+                // Move to User page
+            }
+        }
+    }
+
     handleSubmit(event) {
         event.preventDefault();
+        let user = this.state.user;
+        let userInfo = [];
+        console.log(user.username);
+
+        API.getUserByName(user.username)
+          .then(res =>
+            //console.log(res.data)
+            //this.setState({ userInfo: res.data})
+            this.userExistCheck(res.data)
+          )
+          .catch(err => console.log(err));
+
+        /*
         let user = this.state.user;        
         console.log('A name was submitted: ' + user.username + " " + user.password);
         this.setState({
@@ -41,6 +74,7 @@ class LoginPage extends React.Component{
         });
         Cookies.set('token', 'password');
         this.state.redirectToReferrer = true;
+        */
       
     }
     render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+
 const LoginForm = ({
     handleChange, 
     handleSubmit, 
@@ -78,7 +79,7 @@ const LoginForm = ({
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4"><br />
-                        <button type="submit" class="btn btn-warning">Log In <span class="glyphicon glyphicon-send"></span></button>
+                        <button type="submit" class="btn btn-warning" onClick={this.handleFormSubmit}>Log In <span class="glyphicon glyphicon-send"></span></button>
                     </div>
                 </div>
                 <div class="alert alert-warning" role="alert" id="signup_message">
