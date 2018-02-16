@@ -24,9 +24,11 @@ class UserPage extends React.Component{
     };    
 
     getUserTasks = user => {
-        API.getTasksByUserID(user)
-            .then(res => {this.setState({openJobs: res.data})
-                console.log(this.state.openJobs)})
+        //API.getTasksByUserID(user)
+        API.getTasksByUserName("Johnny")
+            //.then(res => {this.setState({openJobs: res.data})
+            //    console.log(this.state.openJobs)})
+            .then(res => console.log(res.data))
             .catch(err => console.log(err));
     };
 

@@ -30,6 +30,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByUserName: function(req, res) {
+    db.Task
+      .find({ username: req.params.username, status: 'open' })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findByContractorID: function(req, res) {
     db.Task
       .find({ contractor_id: req.params.id })

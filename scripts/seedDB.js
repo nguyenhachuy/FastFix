@@ -16,6 +16,7 @@ const taskSeed = [
   {
     jobTitle: "House chore",
     user_id: "5a83a2e6c2f7fe031bafe4ec",
+    usename:"Johnny",
     contractor_id: "1",
     budget: 100,
     timeFrame: 4,
@@ -26,6 +27,7 @@ const taskSeed = [
   {
     jobTitle: "Fix frige",
     user_id: "5a83a2e6c2f7fe031bafe4ec",
+    usename:"Johnny",
     contractor_id: "2",
     budget: 50,
     timeFrame: 4,
@@ -36,6 +38,7 @@ const taskSeed = [
   {
     jobTitle: "Fix roof",
     user_id: "3",
+    usename:"Tom",
     contractor_id: "2",
     budget: 545,
     timeFrame: 7,
@@ -46,6 +49,7 @@ const taskSeed = [
   {
     jobTitle: "Paint house",
     user_id: "3",
+    usename:"Hugh",
     contractor_id: "2",
     budget: 545,
     timeFrame: 7,

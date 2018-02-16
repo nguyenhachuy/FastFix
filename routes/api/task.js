@@ -12,6 +12,11 @@ router
   .route("/user/:id")
   .get(taskController.findByUserID);
 
+// Matches with "/api/task/user/:id"
+router
+  .route("/username/:name")
+  .get(taskController.findByUserName);
+
 // Matches with "/api/task/contractor/:id"
 router
   .route("/contractor/:id")
