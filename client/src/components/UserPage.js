@@ -15,7 +15,8 @@ class UserPage extends React.Component{
         zipCode: '',
         budget: '',
         timeFrame: '',
-        openJobs: []
+        openJobs: [],
+        InProgressJobs: []
     };
 
 
@@ -28,7 +29,13 @@ class UserPage extends React.Component{
         API.getTasksByUserName("Johnny")
             //.then(res => {this.setState({openJobs: res.data})
             //    console.log(this.state.openJobs)})
-            .then(res => console.log(res.data))
+            .then(res => this.setState({openJobs: res.data}))
+            .catch(err => console.log(err));
+
+        API.getInProgressTasksByUserName("Johnny")
+            //.then(res => {this.setState({openJobs: res.data})
+            //    console.log(this.state.openJobs)})
+            .then(res => this.setState({InProgressJobs: res.data}))
             .catch(err => console.log(err));
     };
 

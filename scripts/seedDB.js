@@ -81,6 +81,7 @@ const userSeed = [
           password: "Johnny",
           streetAddress: '123 Fake Street',
           zipCode: '90210',
+          attribute: 'User'
         },
         {
           firstName: 'Tom',
@@ -89,6 +90,7 @@ const userSeed = [
           password: "Tom",
           streetAddress: '123 Fake Street',
           zipCode: '90211',
+          attribute: 'Contractor'
         },
         {
           firstName: 'Ken',
@@ -97,6 +99,7 @@ const userSeed = [
           password: "Ken",
           streetAddress: '123 Fake Street',
           zipCode: '90212',
+          attribute: 'Contractor'
         },
         {
           firstName: 'Gus',
@@ -105,6 +108,7 @@ const userSeed = [
           password: "Ken",
           streetAddress: '123 Fake Street',
           zipCode: '90213',
+          attribute: 'User'
         },
         {
           firstName: 'Hugh',
@@ -113,6 +117,7 @@ const userSeed = [
           password: "Hugh",
           streetAddress: '123 Fake Street',
           zipCode: '90214',
+          attribute: 'User'
         }
       ]
 

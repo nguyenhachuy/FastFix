@@ -47,6 +47,7 @@ class LoginPage extends React.Component{
             }
             else {
                 // Move to User page
+                this.state.redirectToReferrer = true;
             }
         }
     }

@@ -11,8 +11,17 @@ const userSchema = new Schema({
   email: String,
   password: String,
   image: { data: Buffer, contentType: String },
+  date: { type: Date, default: Date.now },
+  // User or Contractor
+  attribute: String,
+  // For User
   billingInfo: String,
-  date: { type: Date, default: Date.now }
+  // For Contractor
+  licenseNumber: String,
+  hourlyRate: String,
+  qualifications: String,
+  coverLocation: String,
+  description: String
 });
 
 
