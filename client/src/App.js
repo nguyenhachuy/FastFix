@@ -21,7 +21,7 @@ import Test from './components/test';
 class App extends Component {
   state = {
     currentPage: "Home",
-    isAuthenticated: false
+    isAuthenticated: true
   };
 
   handlepagechange = page => {
