@@ -94,22 +94,6 @@ export default {
   updateUser: function(userData) {
     return axios.put("/api/user", userData);
   },
-  // Get a Contractor By ID
-  getContractorByID: function(id) {
-    return axios.get("/api/contractor/id/" + id);
-  },
-  // Get a Contractor By name
-  getContractorByName: function(name) {
-    return axios.get("/api/contractor/name/" + name);
-  },
-  // Create a Contractor
-  createContractor: function(contractorData) {
-    return axios.post("/api/contractor", contractorData);
-  },
-  // Update a Contractor
-  updateContractor: function(contractorData) {
-    return axios.put("/api/contractor", contractorData);
-  },
   // Create a Quote (Bid a task)
   createQuote: function(quoteData) {
     return axios.post("/api/quote", quoteData);

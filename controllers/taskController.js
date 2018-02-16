@@ -24,21 +24,27 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByUserID: function(req, res) {
+  findByUserID: function(req, res) { //All Tasks
     db.Task
-      .find({ user_id: req.params.id, status: 'open' })
+      .find({ user_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByUserName: function(req, res) {
+  findByUserName: function(req, res) { //All Tasks
     db.Task
-      .find({ username: req.params.username, status: 'open' })
+      .find({ username: req.params.username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByContractorID: function(req, res) {
+  findByContractorID: function(req, res) { //All Tasks
     db.Task
       .find({ contractor_id: req.params.id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByContractorName: function(req, res) { //All Tasks
+    db.Task
+      .find({ contractorname: req.params.username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
