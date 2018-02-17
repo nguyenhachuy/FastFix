@@ -7,22 +7,6 @@ import {
   withRouter
 } from "react-router-dom";
 
-const AuthButton = withRouter(
-  ({ history }) =>
-    Cookies.get('token') ? (
-        <a
-          onClick={() => {
-            Cookies.remove('token');
-            history.push('/');
-          }}
-          className="float-right"
-          href="#"
-        >
-          Sign out
-        </a>
-    ) : ( null
-      )
-);
 
 const Navbar = props =>
 
@@ -41,7 +25,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/" handlepagechange={props.handlepagechange}>Home</Link>
+      <Link to="/" handlePageChange={props.handlePageChange}>Home</Link>
     </li>
     <li
       className={
@@ -50,7 +34,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/user" handlepagechange={props.handlepagechange}>User</Link>
+      <Link to="/user" handlePageChange={props.handlePageChange}>User</Link>
     </li>
     <li
       className={
@@ -59,7 +43,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/contractor" handlepagechange={props.handlepagechange}>Contractor</Link>
+      <Link to="/contractor" handlePageChange={props.handlePageChange}>Contractor</Link>
     </li>
     <li
       className={
@@ -68,7 +52,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/login" handlePageChange={props.handleagechange}>Log In</Link>
+      <Link to="/login" handlePageChange={props.handlePageChange}>Log In</Link>
     </li>
     <li
       className={
@@ -77,12 +61,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/signup" handlePageChange={props.handleagechange}>Sign Up</Link>
-    </li>
-    <li
-      className=""
-    >
-      <AuthButton/>
+      <Link to="/signup" handlePageChange={props.handlePageChange}>Sign Up</Link>
     </li>
 
   </ul>

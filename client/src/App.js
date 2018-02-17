@@ -41,7 +41,7 @@ class App extends Component {
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
         <PrivateRoute path="/user" component={UserPage} />
-        <PrivateRoute path="/contractor" component={UserPage} />
+        <PrivateRoute path="/contractor" component={ProviderPage} />
 
         </Wrapper>
 
@@ -50,6 +50,27 @@ class App extends Component {
     </Router>;
   }
 };
+
+const AuthButton = withRouter(
+  ({ history }) =>
+    Auth.isAuthenticated ? (
+      <p>
+        Welcome!{" "}
+        <button
+          onClick={() => {
+            Auth.signout(() => {
+            })
+            history.push('/');              
+            
+          }}
+        >
+          Sign out
+        </button>
+      </p>
+    ) : (
+      <p>You are not logged in.</p>
+    )
+);
 
 
 export default App;

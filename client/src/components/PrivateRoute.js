@@ -8,15 +8,21 @@ import {
 } from "react-router-dom";
 
 import Auth from './Auth';
-
+const verifyPath = (props) => {
+  if(props.location.pathname === ('/' + Cookies.get('type')))
+    return true;
+  else {
+    return false;
+  }
+}
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
       render={props => 
-        Auth.isAuthenticated ? (
+        (Auth.isAuthenticated && verifyPath(props)) ? (
           <Component {...props} />
         ) : (
-          <Redirect
+          <Redirect 
             to={{
               pathname: "/login",
               state: { 

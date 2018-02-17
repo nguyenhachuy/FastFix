@@ -46,6 +46,23 @@ const LoginForm = ({
                     </div>
                 </div>
 
+                <div className="form-group">
+                    <label className="col-md-4 control-label">Type</label>
+                    <div className="col-md-6 inputGroupContainer">
+                        <div className="input-group">
+                            <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
+                            <select className="form-control" name="type"
+                                required
+                                onChange={handleChange}
+                                value={user.type}
+                            >
+                                <option>User</option>
+                                <option>Contractor</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 {/* <div className="form-group">
                     <label className="col-md-4 control-label">E-Mail</label>
                     <div className="col-md-4 inputGroupContainer">
@@ -85,7 +102,7 @@ const LoginForm = ({
                 <div className="alert alert-warning" role="alert" id="signup_message">
                     <Link to={'/signup'}>Sign Up</Link>
                 </div>
-                {   loginFailed &&
+                {loginFailed &&
                     <div className="alert alert-danger" role="alert" id="signup_message">
                         Sign In failed. Please try again or Sign Up!
                     </div>
