@@ -72,19 +72,19 @@ class LoginPage extends React.Component {
         /*
         let user = this.state.user;        
         console.log('A name was submitted: ' + user.username + " " + user.password);
-=======
+
+        */
+    }
+
     handleAuthSuccess() {
         this.clearUser();
->>>>>>> gus-front-end
         this.setState({
             redirectToReferrer: true,
             loginFailed: false
             
         });
-<<<<<<< HEAD
         Cookies.set('token', 'password');
         this.state.redirectToReferrer = true;
-        */
       
     }
 

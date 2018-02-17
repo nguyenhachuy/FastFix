@@ -18,7 +18,9 @@ class Test extends Component{
   }
 
   loadTasks = () => {
-    API.getUserByName("Hugh")
+
+    //API.getTasksByUserName("Johnny")
+    API.getInProgressTasksByUserName("Johnny")
       .then(res =>
         console.log(res.data)
       )
