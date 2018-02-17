@@ -6,12 +6,16 @@ import Cookies from 'js-cookie';
 import API from '../utils/API';
 class UserPage extends React.Component{
 
-
+    constructor(props) {
+        super(props);
+        this._handleJobRemoval = this._handleJobRemoval.bind(this);
+    }
 
     state = {
-        user: 'edobb',
+        user: Cookies.get('id'),
         status: 'open',
-        user_id: 'TestGuy',
+        username: Cookies.get('id'),
+        user_id: Cookies.get('id'),
         jobTitle: '',
         jobDescription: '',
         zipCode: '',
@@ -25,8 +29,8 @@ class UserPage extends React.Component{
     componentDidMount() {
         this.setState({user: Cookies.get('id')});
         console.log(this.state);
-        this.getUserTasks(this.state.user);
-        this.getInProgressTasks(this.state.user);
+        this.getInProgressTasks(Cookies.get('id'));
+        this.getUserTasks(Cookies.get('id'));
     };
 
     getInProgressTasks = user => {
@@ -80,8 +84,14 @@ class UserPage extends React.Component{
             
     };
 
-    render() {
+    _handleJobRemoval = event => {
+        // API.deleteTask(this.state.jobTitle);
+        alert("button pressed");
+            
+    }
 
+    render() {
+        console.log(this.state.InProgressJobs);
         return(
 
             <div>
@@ -100,7 +110,9 @@ class UserPage extends React.Component{
                 <InProgressJob isUser={true}/>
                 <hr />
                 
-                <PendingJobsList userJobs={this.state.openJobs}
+                <PendingJobsList 
+                userJobs={this.state.openJobs}
+                handleJobRemoval={this._handleJobRemoval}
                 />
 
             </div>

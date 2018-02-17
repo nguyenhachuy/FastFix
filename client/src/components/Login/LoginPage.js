@@ -13,7 +13,8 @@ class LoginPage extends React.Component {
             errors: {},
             user: {
                 username: '',
-                password: ''
+                password: '',
+                type:'User'
             },
             userInfo: [],
             redirectToReferrer: false,
@@ -30,7 +31,6 @@ class LoginPage extends React.Component {
         const field = event.target.name;
         const user = this.state.user;
         user[field] = event.target.value;
-
         this.setState({
             user
         });
@@ -94,6 +94,7 @@ class LoginPage extends React.Component {
         let user = this.state.user;
         user.username = '';
         user.password ='';
+        user.type = '';
         this.setState({
             user
         })        
@@ -108,6 +109,7 @@ class LoginPage extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         let user = this.state.user;
+        console.log(user);
         Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
     }
     render() {

@@ -67,7 +67,7 @@ const SignupForm = ({
                     <div className="col-md-6 inputGroupContainer">
                         <div className="input-group">
                             <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
-                            <select id="type" class="form-control"
+                            <select id="type" className="form-control" name="type"
                                 required
                                 onChange={handleChange}
                                 value={user.type}

@@ -1,5 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Cookies from 'js-cookie';
+import {
+  BrowserRouter as Router, Route,
+  Link,
+  Redirect,
+  withRouter
+} from "react-router-dom";
 
 
 const Navbar = props =>
@@ -19,7 +25,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/" handlepagechange={props.handlepagechange}>Home</Link>
+      <Link to="/" handlePageChange={props.handlePageChange}>Home</Link>
     </li>
     <li
       className={
@@ -28,7 +34,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/user" handlepagechange={props.handlepagechange}>User</Link>
+      <Link to="/user" handlePageChange={props.handlePageChange}>User</Link>
     </li>
     <li
       className={
@@ -37,7 +43,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/contractor" handlepagechange={props.handlepagechange}>Contractor</Link>
+      <Link to="/contractor" handlePageChange={props.handlePageChange}>Contractor</Link>
     </li>
     <li
       className={
@@ -46,7 +52,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/login" handlepagechange={props.handleagechange}>Log In</Link>
+      <Link to="/login" handlePageChange={props.handlePageChange}>Log In</Link>
     </li>
     <li
       className={
@@ -55,7 +61,7 @@ const Navbar = props =>
           : ""
       }
     >
-      <Link to="/signup" handlepagechange={props.handleagechange}>Sign Up</Link>
+      <Link to="/signup" handlePageChange={props.handlePageChange}>Sign Up</Link>
     </li>
 
   </ul>

@@ -15,6 +15,7 @@ mongoose.connect(
 const taskSeed = [
   {
     jobTitle: "House chore",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
     user_id: "5a83a2e6c2f7fe031bafe4ec",
     username:"Johnny",
     contractor_id: "1",
@@ -26,6 +27,7 @@ const taskSeed = [
   },
   {
     jobTitle: "Fix frige",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
     user_id: "5a83a2e6c2f7fe031bafe4ec",
     username:"edobb",
     contractor_id: "2",
@@ -37,6 +39,7 @@ const taskSeed = [
   },
   {
     jobTitle: "Fix roof",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
     user_id: "3",
     username:"Tom",
     contractor_id: "2",
@@ -48,6 +51,7 @@ const taskSeed = [
   },
   {
     jobTitle: "Paint house",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
     user_id: "3",
     username:"Hugh",
     contractor_id: "2",

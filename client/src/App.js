@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import { 
+import {
   BrowserRouter as Router, Route,
   Link,
   Redirect,
@@ -42,15 +42,13 @@ class App extends Component {
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
         <PrivateRoute path="/user" component={UserPage} />
+        <PrivateRoute path="/contractor" component={ProviderPage} />
 
-        <PrivateRoute path="/test" component={Test} />
-        <PrivateRoute path="/contractor" component={UserPage} />
+        </Wrapper>
 
-      </Wrapper>
+      </div>
 
-  </div>
-    
-  </Router>;
+    </Router>;
   }
 };
     /*
