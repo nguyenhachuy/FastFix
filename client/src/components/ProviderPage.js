@@ -3,10 +3,17 @@ import AvailableJobsList from './AvailableJobsList';
 import PendingBidList from './PendingBidList';
 import InProgressJob from './InProgressJob';
 import API from '../utils/API';
+
+
+const fakeInProgressJob = {
+    _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
+}
+
 class ProviderPage extends React.Component{
 
     state = {
-        availableJobs: []
+        availableJobs: [],
+        inProgress: fakeInProgressJob
     };
     
     componentDidMount() {

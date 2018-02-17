@@ -3,6 +3,7 @@ import AvailableJob from './AvailableJob';
 import ProviderInfo from './ProviderInfo';
 import UserInfo from './UserInfo';
 
+
 const fakeInProgressJob = {
         _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
     }
@@ -15,7 +16,16 @@ class InProgressJob extends React.Component{
 
     state = {
         jobData : fakeInProgressJob,
-        providerData: {}
+        providerData: {},
+        chatDisplay: 'isHidden'
+    };
+
+    _openUserChat = event => {
+        alert('User Chat Open');
+    };
+
+    _openProviderChat = event => {
+        alert('Provider Chat Open');
     };
 
     // componentDidMount() {
@@ -43,7 +53,7 @@ class InProgressJob extends React.Component{
                     </div>
                     <div className="panel-body">
                         
-        {props.isUser ? <UserInfo /> : <ProviderInfo />}
+        {props.isUser ? <UserInfo onClick={this._openUserChat} /> : <ProviderInfo onClick={this._openProviderChat}  />}
    
                         
 

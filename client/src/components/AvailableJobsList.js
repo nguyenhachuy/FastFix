@@ -19,10 +19,15 @@ const fakeJobs =
 
 class AvailableJobsList extends React.Component {
 
-    constructor(props){
-        super(props);
-    };
+
       
+    _bidOnJob(event){
+        alert('Button Clicked');
+        // API.createQuote()
+        //     .then( res => {props.setState({})})
+        //     .catch( err => cosole.log(err));
+    }
+
 
   render() {
       return(
@@ -35,6 +40,7 @@ class AvailableJobsList extends React.Component {
                 id={job._id}
                 timeFrame={job.timeFrame}
                 description={job.description}
+                onClick={this._bidOnJob}
                 />
         
             )

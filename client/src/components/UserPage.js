@@ -20,15 +20,13 @@ class UserPage extends React.Component{
 
 
     componentDidMount() {
-        this.getUserTasks('TestGuy')
+        this.getUserTasks(this.state.user_id)
     };    
 
     getUserTasks = user => {
         //API.getTasksByUserID(user)
-        API.getTasksByUserName("Johnny")
-            //.then(res => {this.setState({openJobs: res.data})
-            //    console.log(this.state.openJobs)})
-            .then(res => console.log(res.data))
+        API.getTasksByUserName(user)
+            .then(res => this.setState({openJobs: res.data}))
             .catch(err => console.log(err));
     };
 
@@ -81,7 +79,10 @@ class UserPage extends React.Component{
                 budget={this.state.budget}
                 />
                 <hr />
-                <InProgressJob isUser={true}/>
+                <InProgressJob
+                isUser={true}
+                userName={this.state.userName}
+                />
                 <hr />
                 
                 <PendingJobsList userJobs={this.state.openJobs}

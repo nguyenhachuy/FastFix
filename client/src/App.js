@@ -21,7 +21,7 @@ import Test from './components/test';
 class App extends Component {
   state = {
     currentPage: "Home",
-    isAuthenticated: true
+    isAuthenticated: false
   };
 
   handlepagechange = page => {
@@ -40,7 +40,7 @@ class App extends Component {
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
-        <PrivateRoute path="/user" component={UserPage} />
+        <Route path="/user" component={UserPage} />
         <PrivateRoute path="/test" component={Test} />
 
       </Wrapper>
