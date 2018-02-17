@@ -30,7 +30,7 @@ const fakePendingJobs =
                     zipCode={job.zipCode}
                     id={job._id}
                     description={job.requestDescription}
-                    onClick={props.handleJobRemoval}
+                    onClick={props.handleJobRemoval.bind(this, job.jobTitle)}
                     bids={job.bids}
                     />
                 )

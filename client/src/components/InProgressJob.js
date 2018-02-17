@@ -23,7 +23,8 @@ class InProgressJob extends React.Component{
         jobData : fakeInProgressJob,
         providerData: {},
         chatSendMsg: "",
-        chatRecvMsg: []
+        chatRecvMsg: [],
+        chatDisplay: false
     };
 
     componentDidMount() {
@@ -40,6 +41,10 @@ class InProgressJob extends React.Component{
         }.bind(this));
     };
 
+    _toggleUserChat = event => {
+        alert('User Chat Open');
+        this.setState({chatDisplay: !this.state.chatDisplay});
+    };
 
     processChat(sender, msg) {
 
@@ -67,7 +72,7 @@ class InProgressJob extends React.Component{
         content[content.length] = msg;
         this.setState({ chatRecvMsg: content});
         let response = document.getElementById('response');
-        response.scrollTop = response.scrollHeight;
+        // response.scrollTop = response.scrollHeight;
     }
 
 
@@ -84,14 +89,7 @@ class InProgressJob extends React.Component{
         this.setState({ chatSendMsg: ""});
     }
 
-    // componentDidMount() {
-    //     axios
-    //         .get('/ROUTEGOESHERE')
-    //         .then((data) => {
-    //             this.setState({ jobData: res.data.FILL_IN_WHEN_CREATED, providerData: res.data.FILL_IN_WHEN_CREATED});
-
-    //         })
-    // }
+ 
 
     render() {
         const props = this.props;
@@ -108,10 +106,11 @@ class InProgressJob extends React.Component{
                         {this.state.jobData.description}<br />
                     </div>
                     <div className="panel-body">
-                        {props.isUser ? <UserInfo /> : <ProviderInfo />}
+                    {props.isUser ? <UserInfo onClick={this._toggleUserChat} toggleChat={this._toggleUserChat.bind(this)}/> : <ProviderInfo onClick={this._openProviderChat}  />}
                     </div>
                 </div>
                 <hr />
+                {this.state.chatDisplay ? (
                 <div>
                     <div>
                         <textarea readOnly id = "response" rows="4" cols="60"
@@ -123,6 +122,7 @@ class InProgressJob extends React.Component{
                     </div>
                     <hr />
                 </div>
+                ): <div></div>}
             </div>
         )
     }

@@ -84,8 +84,8 @@ class UserPage extends React.Component{
             
     };
 
-    _handleJobRemoval = event => {
-        API.deleteTask(this.state.jobTitle);
+    _handleJobRemoval = (jobTitle, event) => {
+        API.deleteTask(jobTitle);
         alert("button pressed");
             
     }
