@@ -116,12 +116,14 @@ const SignupForm = ({
                         </div>
                     </div>
                 </div>
-                <div className="form-group">
-                    <label className="col-md-4 control-label">Contact No.</label>
-                    <div className="col-md-4 inputGroupContainer">
-                        <div className="input-group">
-                            <span className="input-group-addon"><i className="glyphicon glyphicon-earphone"></i></span>
-                            <input name="contact_no" placeholder="(639)" className="form-control" type="text" />
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Contact No.</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input name="contact_no" placeholder="(639)" class="form-control" type="text" />
+
                         </div>
                     </div>
                 </div> */}

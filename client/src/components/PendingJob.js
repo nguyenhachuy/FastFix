@@ -6,9 +6,9 @@ const PendingJob = props => {
             <p><span className="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {props.id} | {props.title} - {props.zipCode}</p>
            
              
-              <PendingJobBid 
+              {/* <PendingJobBid 
                 bids={props.bids}
-                />
+                /> */}
 
             
             </div>

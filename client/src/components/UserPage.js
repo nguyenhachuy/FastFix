@@ -5,9 +5,7 @@ import InProgressJob from './InProgressJob';
 import API from '../utils/API';
 class UserPage extends React.Component{
 
-    constructor(props){
-        super(props);
-    };
+
 
     state = {
         status: 'open',
@@ -16,16 +14,30 @@ class UserPage extends React.Component{
         jobDescription: '',
         zipCode: '',
         budget: '',
-        timeFrame: ''
+        timeFrame: '',
+        openJobs: [],
+        InProgressJobs: []
     };
 
 
     componentDidMount() {
-        console.log("butt");
-        API.getAllTasks()
-            .then(res => this.setState({availableJobs: res.data}) , console.log(this.state))
-            .catch(err => console.log(err));
+        this.getUserTasks('TestGuy')
     };    
+
+    getUserTasks = user => {
+        //API.getTasksByUserID(user)
+        API.getTasksByUserName("Johnny")
+            //.then(res => {this.setState({openJobs: res.data})
+            //    console.log(this.state.openJobs)})
+            .then(res => this.setState({openJobs: res.data}))
+            .catch(err => console.log(err));
+
+        API.getInProgressTasksByUserName("Johnny")
+            //.then(res => {this.setState({openJobs: res.data})
+            //    console.log(this.state.openJobs)})
+            .then(res => this.setState({InProgressJobs: res.data}))
+            .catch(err => console.log(err));
+    };
 
     _handleInputChange = event => {
         const target = event.target;
@@ -79,7 +91,8 @@ class UserPage extends React.Component{
                 <InProgressJob isUser={true}/>
                 <hr />
                 
-                <PendingJobsList />
+                <PendingJobsList userJobs={this.state.openJobs}
+                />
 
             </div>
 

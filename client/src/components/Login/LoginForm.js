@@ -93,10 +93,11 @@ const LoginForm = ({
                 </div>
                 
                 } */}
-                <div className="form-group">
-                    <label className="col-md-4 control-label"></label>
-                    <div className="col-md-4"><br />
-                        <button type="submit" className="btn btn-warning">Log In <span className="glyphicon glyphicon-send"></span></button>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4"><br />
+                        <button type="submit" class="btn btn-warning" onClick={this.handleFormSubmit}>Log In <span class="glyphicon glyphicon-send"></span></button>
+
                     </div>
                 </div>
                 <div className="alert alert-warning" role="alert" id="signup_message">

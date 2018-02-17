@@ -15,18 +15,22 @@ mongoose.connect(
 const taskSeed = [
   {
     jobTitle: "House chore",
-    user_id: "1",
+    user_id: "5a83a2e6c2f7fe031bafe4ec",
+    username:"Johnny",
     contractor_id: "1",
+    contractorname: "Tom",
     budget: 100,
     timeFrame: 4,
-    status: "open",
+    status: "in progress",
     openData: new Date(Date.now()),
     payment: false
   },
   {
     jobTitle: "Fix frige",
-    user_id: "3",
+    user_id: "5a83a2e6c2f7fe031bafe4ec",
+    username:"Johnny",
     contractor_id: "2",
+    contractorname: "Tom",
     budget: 50,
     timeFrame: 4,
     status: "open",
@@ -36,7 +40,9 @@ const taskSeed = [
   {
     jobTitle: "Fix roof",
     user_id: "3",
+    username:"Gus",
     contractor_id: "2",
+    contractorname: "Ken",
     budget: 545,
     timeFrame: 7,
     status: "closed",
@@ -46,7 +52,9 @@ const taskSeed = [
   {
     jobTitle: "Paint house",
     user_id: "3",
+    username:"Hugh",
     contractor_id: "2",
+    contractorname: "Ken",
     budget: 545,
     timeFrame: 7,
     status: "open",
@@ -73,9 +81,47 @@ const userSeed = [
         {
           firstName: 'Johnny',
           lastName: 'American',
+          username: "Johnny",
+          password: "Johnny",
           streetAddress: '123 Fake Street',
-          zipCode: '90210'
-      
+          zipCode: '90210',
+          attribute: 'User'
+        },
+        {
+          firstName: 'Tom',
+          lastName: 'American',
+          username: "Tom",
+          password: "Tom",
+          streetAddress: '123 Fake Street',
+          zipCode: '90211',
+          attribute: 'Contractor'
+        },
+        {
+          firstName: 'Ken',
+          lastName: 'American',
+          username: "Ken",
+          password: "Ken",
+          streetAddress: '123 Fake Street',
+          zipCode: '90212',
+          attribute: 'Contractor'
+        },
+        {
+          firstName: 'Gus',
+          lastName: 'American',
+          username: "Gus",
+          password: "Ken",
+          streetAddress: '123 Fake Street',
+          zipCode: '90213',
+          attribute: 'User'
+        },
+        {
+          firstName: 'Hugh',
+          lastName: 'Japanese',
+          username: "Hugh",
+          password: "Hugh",
+          streetAddress: '123 Fake Street',
+          zipCode: '90214',
+          attribute: 'User'
         }
       ]
 

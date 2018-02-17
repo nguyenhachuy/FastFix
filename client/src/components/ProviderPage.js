@@ -32,8 +32,7 @@ class ProviderPage extends React.Component{
                 <PendingBidList />
             </div>
 
- 
-            
+
         );
 
     }

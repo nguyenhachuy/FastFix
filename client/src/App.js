@@ -17,6 +17,7 @@ import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 import PrivateRoute from './components/PrivateRoute';
+import Test from './components/test';
 import Auth from './components/Auth';
 
 class App extends Component {
@@ -50,14 +51,17 @@ class App extends Component {
     </Router>;
   }
 };
-
+    /*
+    Auth.isAuthenticated ? (
+    */
 const AuthButton = withRouter(
   ({ history }) =>
-    Auth.isAuthenticated ? (
+    Cookies.get('token') ? (
       <p>
         Welcome!{" "}
         <button
           onClick={() => {
+            Cookies.remove('token');
             Auth.signout(() => {
             })
             history.push('/');              

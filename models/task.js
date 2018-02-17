@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
   user_id: { type: String, required: true },
+  username: String,
   contractor_id: String,
+  contractorname: String,
   requestDescription: String,
   budget: Number,
   timeFrame: Number,
