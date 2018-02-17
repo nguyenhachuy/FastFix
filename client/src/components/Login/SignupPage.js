@@ -38,6 +38,7 @@ class SignupPage extends React.Component {
         this.setState({
             user
         });
+        console.log(user);
 
     }
     
@@ -49,17 +50,27 @@ class SignupPage extends React.Component {
         }
         else
         {
+            console.log(this.state.user);
             API.createUser(this.state.user)
               .then(res =>
-                this.setState({
-                    username: '',
-                    password: ''
-                })
+                //this.setState({
+                //    username: '',
+                //    password: ''
+                //})
+                console.log(res.data)
               )
               .catch(err => console.log(err));
         }
         event.preventDefault();
     }
+    /*
+    handleSubmit(event) {
+        let user = this.state.user;
+        Auth.signup(user, this.handleSignupSucces, this.handleSignupFailure);
+        event.preventDefault();
+    }
+    */
+
     clearUser() {
         this.setState({
             user: {
@@ -72,12 +83,6 @@ class SignupPage extends React.Component {
             }
         });
     }
-    handleSubmit(event) {
-        let user = this.state.user;
-        Auth.signup(user, this.handleSignupSucces, this.handleSignupFailure);
-        event.preventDefault();
-    }
-
 
     handleSignupSucces() {
         this.clearUser();
