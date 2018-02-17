@@ -2,6 +2,7 @@ import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
 import PendingBidList from './PendingBidList';
 import InProgressJob from './InProgressJob';
+import Cookies from 'js-cookie';
 import API from '../utils/API';
 
 
@@ -12,8 +13,8 @@ const fakeInProgressJob = {
 class ProviderPage extends React.Component{
 
     state = {
-        availableJobs: [],
-        inProgress: fakeInProgressJob
+        contractor: Cookies.get('id'),
+        availableJobs: []
     };
     
     componentDidMount() {
@@ -27,7 +28,7 @@ class ProviderPage extends React.Component{
 
     
     render() {
- 
+        console.log(this.state.contractor);
         return(
             <div>
                 <InProgressJob isUser={false} />

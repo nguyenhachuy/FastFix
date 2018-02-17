@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import { 
+import {
   BrowserRouter as Router, Route,
   Link,
   Redirect,
@@ -18,6 +18,8 @@ import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 import PrivateRoute from './components/PrivateRoute';
 import Test from './components/test';
+import Auth from './components/Auth';
+
 class App extends Component {
   state = {
     currentPage: "Home",
@@ -36,21 +38,22 @@ class App extends Component {
       <AuthButton/>
       <Wrapper>
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/contractor" component={ProviderPage} />
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
-        <Route path="/user" component={UserPage} />
-        <PrivateRoute path="/test" component={Test} />
+        <PrivateRoute path="/user" component={UserPage} />
+        <PrivateRoute path="/contractor" component={ProviderPage} />
 
-      </Wrapper>
+        </Wrapper>
 
-  </div>
-    
-  </Router>;
+      </div>
+
+    </Router>;
   }
 };
-
+    /*
+    Auth.isAuthenticated ? (
+    */
 const AuthButton = withRouter(
   ({ history }) =>
     Cookies.get('token') ? (
@@ -59,7 +62,10 @@ const AuthButton = withRouter(
         <button
           onClick={() => {
             Cookies.remove('token');
-            history.push('/');
+            Auth.signout(() => {
+            })
+            history.push('/');              
+            
           }}
         >
           Sign out

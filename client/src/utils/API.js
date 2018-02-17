@@ -11,8 +11,8 @@ export default {
     return axios.get("/api/task/userid/" + id);
   },
   // Gets Tasks by User Name
-  getTasksByUserName: function(name) {
-    return axios.get("/api/task/username/" + name);
+  getTasksByUserName: function(username) {
+    return axios.get("/api/task/username/" + username);
   },
   // Gets Tasks by Contractor ID
   getTasksByContractorID: function(id) {
@@ -78,6 +78,9 @@ export default {
   updateTask: function(taskData) {
     return axios.put("/api/task", taskData);
   },
+  deleteTask: function(jobTitle) {
+    return axios.delete("/api/task/" +  jobTitle)
+  },
   // Get a User By ID
   getUserByID: function(id) {
     return axios.get("/api/user/id/" + id);
@@ -93,22 +96,6 @@ export default {
   // Update a User
   updateUser: function(userData) {
     return axios.put("/api/user", userData);
-  },
-  // Get a Contractor By ID
-  getContractorByID: function(id) {
-    return axios.get("/api/contractor/id/" + id);
-  },
-  // Get a Contractor By name
-  getContractorByName: function(name) {
-    return axios.get("/api/contractor/name/" + name);
-  },
-  // Create a Contractor
-  createContractor: function(contractorData) {
-    return axios.post("/api/contractor", contractorData);
-  },
-  // Update a Contractor
-  updateContractor: function(contractorData) {
-    return axios.put("/api/contractor", contractorData);
   },
   // Create a Quote (Bid a task)
   createQuote: function(quoteData) {

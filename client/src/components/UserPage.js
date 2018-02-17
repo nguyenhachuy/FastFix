@@ -2,34 +2,56 @@ import React from 'react';
 import CreateJobForm from './CreateJobForm';
 import PendingJobsList from './PendingJobsList';
 import InProgressJob from './InProgressJob';
+import Cookies from 'js-cookie';
 import API from '../utils/API';
 class UserPage extends React.Component{
 
-
+    constructor(props) {
+        super(props);
+        this._handleJobRemoval = this._handleJobRemoval.bind(this);
+    }
 
     state = {
+        user: Cookies.get('id'),
         status: 'open',
-        user_id: 'TestGuy',
+        username: Cookies.get('id'),
+        user_id: Cookies.get('id'),
         jobTitle: '',
         jobDescription: '',
         zipCode: '',
         budget: '',
         timeFrame: '',
-        openJobs: []
+        openJobs: [],
+        InProgressJobs: []
     };
 
 
     componentDidMount() {
-        this.getUserTasks(this.state.user_id)
-    };    
+        this.setState({user: Cookies.get('id')});
+        console.log(this.state);
+        this.getInProgressTasks(Cookies.get('id'));
+        this.getUserTasks(Cookies.get('id'));
+    };
+
+    getInProgressTasks = user => {
+    API.getInProgressTasksByUserName(user)
+        //.then(res => {this.setState({openJobs: res.data})
+        //    console.log(this.state.openJobs)})
+        .then(res => this.setState({InProgressJobs: res.data}))
+        .catch(err => console.log(err));
+
+    };
 
     getUserTasks = user => {
         //API.getTasksByUserID(user)
         API.getTasksByUserName(user)
+            //.then(res => {this.setState({openJobs: res.data})
+            //    console.log(this.state.openJobs)})
             .then(res => this.setState({openJobs: res.data}))
             .catch(err => console.log(err));
-    };
 
+        };
+        
     _handleInputChange = event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -62,8 +84,14 @@ class UserPage extends React.Component{
             
     };
 
-    render() {
+    _handleJobRemoval = event => {
+        API.deleteTask(this.state.jobTitle);
+        alert("button pressed");
+            
+    }
 
+    render() {
+        console.log(this.state.InProgressJobs);
         return(
 
             <div>
@@ -85,7 +113,9 @@ class UserPage extends React.Component{
                 />
                 <hr />
                 
-                <PendingJobsList userJobs={this.state.openJobs}
+                <PendingJobsList 
+                userJobs={this.state.openJobs}
+                handleJobRemoval={this._handleJobRemoval}
                 />
 
             </div>

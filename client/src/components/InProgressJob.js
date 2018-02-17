@@ -2,7 +2,10 @@ import React from 'react';
 import AvailableJob from './AvailableJob';
 import ProviderInfo from './ProviderInfo';
 import UserInfo from './UserInfo';
-
+import ChatSendForm from './ChatSendForm';
+//import ChatRecvForm from './ChatRecvForm';
+import chat from '../chat';
+var fb = require('../fb');
 
 const fakeInProgressJob = {
         _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
@@ -12,21 +15,74 @@ class InProgressJob extends React.Component{
 
     constructor(props){
         super(props);
+        this.sendChat = this.sendChat.bind(this);
+        this.displayResponse = this.displayResponse.bind(this);
     };
 
     state = {
         jobData : fakeInProgressJob,
         providerData: {},
-        chatDisplay: 'isHidden'
+        chatSendMsg: "",
+        chatRecvMsg: []
     };
 
-    _openUserChat = event => {
-        alert('User Chat Open');
+    componentDidMount() {
+
+        let folder = chat.getRef();
+
+        //  receive latest message from Firebase
+        fb.ref(folder).on("child_added", function(childSnapshot, prevChildKey) {
+
+            console.log("Msg from Firebase");
+            console.log(childSnapshot.val());
+
+            this.processChat(childSnapshot.val().sender, childSnapshot.val().msg);
+        }.bind(this));
     };
 
-    _openProviderChat = event => {
-        alert('Provider Chat Open');
-    };
+
+    processChat(sender, msg) {
+
+        if (sender === "user")
+        {
+            if (this.props.isUser === false)
+            {
+              this.displayResponse(msg);
+              console.log("Sending msg to contractor: ");
+            }
+        }
+        else 
+        {
+            if (this.props.isUser === true)
+            {
+              this.displayResponse(msg);
+              console.log("Sending msg to user: ");
+            }
+        }
+    } 
+
+
+    displayResponse(msg) {
+        let content = this.state.chatRecvMsg;
+        content[content.length] = msg;
+        this.setState({ chatRecvMsg: content});
+        let response = document.getElementById('response');
+        response.scrollTop = response.scrollHeight;
+    }
+
+
+    sendChat(msg) {
+        var sender;
+        if (this.props.isUser === true)
+            sender = "user";
+        else
+            sender = "contractor";
+
+        this.state.chatInit = true;
+
+        chat.post(sender, msg);
+        this.setState({ chatSendMsg: ""});
+    }
 
     // componentDidMount() {
     //     axios
@@ -52,12 +108,20 @@ class InProgressJob extends React.Component{
                         {this.state.jobData.description}<br />
                     </div>
                     <div className="panel-body">
-                        
-        {props.isUser ? <UserInfo onClick={this._openUserChat} /> : <ProviderInfo onClick={this._openProviderChat}  />}
-   
-                        
-
+                        {props.isUser ? <UserInfo /> : <ProviderInfo />}
                     </div>
+                </div>
+                <hr />
+                <div>
+                    <div>
+                        <textarea readOnly id = "response" rows="4" cols="60"
+                            value={this.state.chatRecvMsg.join("\n")}/>         
+                    </div>
+                    <hr />
+                    <div>
+                        <ChatSendForm sendChat={this.sendChat} />
+                    </div>
+                    <hr />
                 </div>
             </div>
         )
