@@ -9,11 +9,13 @@ import {
 
 import Auth from './Auth';
 const verifyPath = (props) => {
-  if(props.location.pathname === ('/' + Cookies.get('type')))
-    return true;
-  else {
-    return false;
-  }
+  // if(props.location.pathname === ('/' + Cookies.get('type')))
+  //   return true;
+  // else {
+  //   return false;
+  // }
+  //Temporarily always return true
+  return true;
 }
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route

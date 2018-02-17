@@ -46,7 +46,7 @@ const LoginForm = ({
                     </div>
                 </div>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label className="col-md-4 control-label">Type</label>
                     <div className="col-md-6 inputGroupContainer">
                         <div className="input-group">
@@ -61,7 +61,7 @@ const LoginForm = ({
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* <div className="form-group">
                     <label className="col-md-4 control-label">E-Mail</label>
