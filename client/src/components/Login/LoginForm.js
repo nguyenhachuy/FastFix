@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 const LoginForm = ({
-    handleChange, 
-    handleSubmit, 
-    user
+    handleChange,
+    handleSubmit,
+    user,
+    loginFailed
 }) => {
     return (
-        <form class="well form-horizontal" action=" " method="post" id="login_form" onSubmit={handleSubmit}>
+        <form className="well form-horizontal" action=" " method="post" id="login_form" onSubmit={handleSubmit}>
             <fieldset>
                 <legend>
                     <center>
@@ -17,12 +17,12 @@ const LoginForm = ({
 
 
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Username</label>
-                    <div class="col-md-6 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-log-in"></i></span>
-                            <input name="username" placeholder="Username" class="form-control" type="text"
+                <div className="form-group">
+                    <label className="col-md-4 control-label">Username</label>
+                    <div className="col-md-6 inputGroupContainer">
+                        <div className="input-group">
+                            <span className="input-group-addon"><i className="glyphicon glyphicon-log-in"></i></span>
+                            <input name="username" placeholder="Username" className="form-control" type="text"
                                 required
                                 onChange={handleChange}
                                 value={user.username}
@@ -32,12 +32,12 @@ const LoginForm = ({
                 </div>
 
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Password</label>
-                    <div class="col-md-6 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-log-in"></i></span>
-                            <input name="password" placeholder="Password" class="form-control" type="password"
+                <div className="form-group">
+                    <label className="col-md-4 control-label">Password</label>
+                    <div className="col-md-6 inputGroupContainer">
+                        <div className="input-group">
+                            <span className="input-group-addon"><i className="glyphicon glyphicon-log-in"></i></span>
+                            <input name="password" placeholder="Password" className="form-control" type="password"
                                 required
                                 onChange={handleChange}
                                 value={user.password}
@@ -46,33 +46,33 @@ const LoginForm = ({
                     </div>
                 </div>
 
-                {/* <div class="form-group">
-                    <label class="col-md-4 control-label">E-Mail</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input name="email" placeholder="E-Mail Address" class="form-control" type="text" />
+                {/* <div className="form-group">
+                    <label className="col-md-4 control-label">E-Mail</label>
+                    <div className="col-md-4 inputGroupContainer">
+                        <div className="input-group">
+                            <span className="input-group-addon"><i className="glyphicon glyphicon-envelope"></i></span>
+                            <input name="email" placeholder="E-Mail Address" className="form-control" type="text" />
                         </div>
                     </div>
                 </div>
 
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Contact No.</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input name="contact_no" placeholder="(639)" class="form-control" type="text" />
+                <div className="form-group">
+                    <label className="col-md-4 control-label">Contact No.</label>
+                    <div className="col-md-4 inputGroupContainer">
+                        <div className="input-group">
+                            <span className="input-group-addon"><i className="glyphicon glyphicon-earphone"></i></span>
+                            <input name="contact_no" placeholder="(639)" className="form-control" type="text" />
                         </div>
                     </div>
                 </div> */}
 
-{/* 
+                {/* 
                 {signupSuccess &&
                 
-                <div class="alert alert-success" role="alert" id="success_message">
+                <div className="alert alert-success" role="alert" id="success_message">
                     Success 
-                    <i class="glyphicon glyphicon-thumbs-up"></i> Success!.
+                    <i className="glyphicon glyphicon-thumbs-up"></i> Success!.
                 </div>
                 
                 } */}
@@ -80,15 +80,22 @@ const LoginForm = ({
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4"><br />
                         <button type="submit" class="btn btn-warning" onClick={this.handleFormSubmit}>Log In <span class="glyphicon glyphicon-send"></span></button>
+
                     </div>
                 </div>
-                <div class="alert alert-warning" role="alert" id="signup_message">
+                <div className="alert alert-warning" role="alert" id="signup_message">
                     <Link to={'/signup'}>Sign Up</Link>
-                </div>   
+                </div>
+                {   loginFailed &&
+                    <div className="alert alert-danger" role="alert" id="signup_message">
+                        Sign In failed. Please try again or Sign Up!
+                    </div>
+
+                }
 
             </fieldset>
         </form>
     )
 }
 
-export {LoginForm};
+export { LoginForm };

@@ -1,35 +1,38 @@
 import React from 'react';
 
-import {Redirect} from 'react-router-dom';
-import {LoginForm} from './LoginForm';
-import {Row, Col } from "./../Grid";
+import { Redirect } from 'react-router-dom';
+import { LoginForm } from './LoginForm';
+import { Row, Col } from "./../Grid";
 import Cookies from 'js-cookie';
 import API from "../../utils/API";
-class LoginPage extends React.Component{
+import Auth from '../Auth';
+class LoginPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             errors: {},
             user: {
-              username: '',
-              password: ''
+                username: '',
+                password: ''
             },
             userInfo: [],
-            redirectToReferrer: false
-            
+            redirectToReferrer: false,
+            loginFailed: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    
+        this.handleAuthSuccess = this.handleAuthSuccess.bind(this);
+        this.handleAuthFailure = this.handleAuthFailure.bind(this);
+        this.clearUser = this.clearUser.bind(this);
     }
 
     handleChange(event) {
         const field = event.target.name;
         const user = this.state.user;
         user[field] = event.target.value;
-    
+
         this.setState({
-          user
+            user
         });
     }
     
@@ -69,38 +72,74 @@ class LoginPage extends React.Component{
         /*
         let user = this.state.user;        
         console.log('A name was submitted: ' + user.username + " " + user.password);
+=======
+    handleAuthSuccess() {
+        this.clearUser();
+>>>>>>> gus-front-end
         this.setState({
-            username: '',
-            password: ''
+            redirectToReferrer: true,
+            loginFailed: false
+            
         });
+<<<<<<< HEAD
         Cookies.set('token', 'password');
         this.state.redirectToReferrer = true;
         */
       
     }
+
+
+    clearUser() {
+        let user = this.state.user;
+        user.username = '';
+        user.password ='';
+        this.setState({
+            user
+        })        
+    }
+
+    handleAuthFailure() {
+        this.clearUser();
+        this.setState({
+            loginFailed: true
+        });
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        let user = this.state.user;
+        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
+    }
     render() {
         const { from } = this.props.location.state || { from: { pathname: "/" } };
         const { redirectToReferrer } = this.state;
         if (redirectToReferrer) {
-            return <Redirect to={from} />;
-          }
-      
-          
+            if (from.pathname !== '/')
+                return <Redirect to={from} />;
+            else if(Cookies.get('type') === 'user')
+                return <Redirect to={'/user'}/>;
+            else
+                return <Redirect to={'/contractor'}/>;
+        }
+
+
         return (
             <Row className="row">
                 <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
-                    <p>You must log in to view the page at {from.pathname}</p>
+                    {(from.pathname !== '/') &&
+                                        <p>You must log in to view the page at {from.pathname}</p>                                        
+                    }
 
                     <LoginForm
-                    handleChange={this.handleChange}
-                    handleSubmit={this.handleSubmit}
-                    user={this.state.user}
+                        handleChange={this.handleChange}
+                        handleSubmit={this.handleSubmit}
+                        user={this.state.user}
+                        loginFailed={this.state.loginFailed}
                     />
                 </Col>
             </Row>
-        )    
+        )
     }
 }
-  
 
-export {LoginPage};
+
+export { LoginPage };

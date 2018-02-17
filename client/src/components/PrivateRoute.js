@@ -7,11 +7,13 @@ import {
   withRouter
 } from "react-router-dom";
 
+import Auth from './Auth';
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
-      render={props =>
-        Cookies.get('token') ? (
+      render={props => 
+        Auth.isAuthenticated ? (
           <Component {...props} />
         ) : (
           <Redirect
