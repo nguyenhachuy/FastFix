@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import { 
+import {
   BrowserRouter as Router, Route,
   Link,
   Redirect,
@@ -29,44 +29,24 @@ class App extends Component {
 
   render() {
     return <Router>
-    <div>
-      <Navbar 
-        handlePageChange={this._handlePageChange} />
-      <AuthButton/>
-      <Wrapper>
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/contractor" component={ProviderPage} />
-        <Route exact path="/login" component={LoginPage}/>
-        {/* <Route exact path="/landing" component={LandingPage}/> */}
-        <Route exact path="/signup" component={SignupPage}/>
-        <PrivateRoute path="/user" component={UserPage} />
+      <div>
+        <Navbar
+          handlePageChange={this._handlePageChange} />
+        <Wrapper>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/contractor" component={ProviderPage} />
+          <Route exact path="/login" component={LoginPage} />
+          {/* <Route exact path="/landing" component={LandingPage}/> */}
+          <Route exact path="/signup" component={SignupPage} />
+          <PrivateRoute path="/user" component={UserPage} />
 
-      </Wrapper>
+        </Wrapper>
 
-  </div>
-    
-  </Router>;
+      </div>
+
+    </Router>;
   }
 };
-
-const AuthButton = withRouter(
-  ({ history }) =>
-    Cookies.get('token') ? (
-      <p>
-        Welcome!{" "}
-        <button
-          onClick={() => {
-            Cookies.remove('token');
-            history.push('/');
-          }}
-        >
-          Sign out
-        </button>
-      </p>
-    ) : (
-      <p>You are not logged in.</p>
-    )
-);
 
 
 export default App;

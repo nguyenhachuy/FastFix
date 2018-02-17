@@ -1,6 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Cookies from 'js-cookie';
+import {
+  BrowserRouter as Router, Route,
+  Link,
+  Redirect,
+  withRouter
+} from "react-router-dom";
 
+const AuthButton = withRouter(
+  ({ history }) =>
+    Cookies.get('token') ? (
+        <a
+          onClick={() => {
+            Cookies.remove('token');
+            history.push('/');
+          }}
+          className="float-right"
+          href="#"
+        >
+          Sign out
+        </a>
+    ) : ( null
+      )
+);
 
 const Navbar = props =>
 
@@ -57,7 +79,12 @@ const Navbar = props =>
     >
       <Link to="/signup" handlePageChange={props.handleagechange}>Sign Up</Link>
     </li>
-    
+    <li
+      className=""
+    >
+      <AuthButton/>
+    </li>
+
   </ul>
 </div>
 </nav>;
