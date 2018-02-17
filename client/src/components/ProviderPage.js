@@ -22,7 +22,7 @@ class ProviderPage extends React.Component{
 
     
     render() {
- 
+        console.log(this.state.contractor);
         return(
             <div>
                 <InProgressJob isUser={false} />

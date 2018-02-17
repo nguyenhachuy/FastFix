@@ -2,12 +2,14 @@ import React from 'react';
 import CreateJobForm from './CreateJobForm';
 import PendingJobsList from './PendingJobsList';
 import InProgressJob from './InProgressJob';
+import Cookies from 'js-cookie';
 import API from '../utils/API';
 class UserPage extends React.Component{
 
 
 
     state = {
+        user: 'edobb',
         status: 'open',
         user_id: 'TestGuy',
         jobTitle: '',
@@ -21,24 +23,31 @@ class UserPage extends React.Component{
 
 
     componentDidMount() {
-        this.getUserTasks('TestGuy')
-    };    
+        this.setState({user: Cookies.get('id')});
+        console.log(this.state);
+        this.getUserTasks(this.state.user);
+        this.getInProgressTasks(this.state.user);
+    };
+
+    getInProgressTasks = user => {
+    API.getInProgressTasksByUserName(user)
+        //.then(res => {this.setState({openJobs: res.data})
+        //    console.log(this.state.openJobs)})
+        .then(res => this.setState({InProgressJobs: res.data}))
+        .catch(err => console.log(err));
+
+    };
 
     getUserTasks = user => {
         //API.getTasksByUserID(user)
-        API.getTasksByUserName("Johnny")
+        API.getTasksByUserName(user)
             //.then(res => {this.setState({openJobs: res.data})
             //    console.log(this.state.openJobs)})
             .then(res => this.setState({openJobs: res.data}))
             .catch(err => console.log(err));
 
-        API.getInProgressTasksByUserName("Johnny")
-            //.then(res => {this.setState({openJobs: res.data})
-            //    console.log(this.state.openJobs)})
-            .then(res => this.setState({InProgressJobs: res.data}))
-            .catch(err => console.log(err));
-    };
-
+        };
+        
     _handleInputChange = event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;

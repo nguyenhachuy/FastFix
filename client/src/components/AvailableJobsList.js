@@ -1,5 +1,6 @@
 import React from 'react';
 import AvailableJob from './AvailableJob';
+import API from '../utils/API'
 
 
 
@@ -19,28 +20,33 @@ const fakeJobs =
 
 class AvailableJobsList extends React.Component {
 
-    constructor(props){
-        super(props);
-    };
-      
 
-  render() {
-      return(
-    this.props.availableJobs.map( (job) => {
-            return (
-           
-               <AvailableJob 
-                title={job.jobTitle}
-                zipCode={job.zipCode}
-                id={job._id}
-                timeFrame={job.timeFrame}
-                description={job.description}
-                />
-        
-            )
-            }
-        ))
+    _addBid = event => {
+        API.createQuote()
+        .then(res => {
+            this.setState({availableJobs: res.data});
+
+        })
+        .catch(err => console.log(err));
     }
+
+    render() {
+        return(
+            this.props.availableJobs.map( (job) => {
+                return (
+            
+                <AvailableJob 
+                    title={job.jobTitle}
+                    zipCode={job.zipCode}
+                    id={job._id}
+                    timeFrame={job.timeFrame}
+                    description={job.description}
+                    />
+            
+                )
+                }
+            ))
+        }
 };
 
 

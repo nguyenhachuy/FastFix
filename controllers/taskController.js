@@ -93,14 +93,14 @@ module.exports = {
   findInProgressByUserID: function(req, res) {
     console.log("findInProgressByUserID");
     db.Task
-      .find({status: "in progress", user_id: req.user_id})
+      .find({status: "closed", user_id: req.username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInProgressByUserName: function(req, res) {
     console.log("findInProgressByUserName");
     db.Task
-      .find({status: "in progress", username: req.username})
+      .find({username: req.username, status: "closed"})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
