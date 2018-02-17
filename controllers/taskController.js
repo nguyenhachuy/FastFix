@@ -3,6 +3,7 @@ const db = require("../models");
 // Defining methods for the taskController
 module.exports = {
   create: function(req, res) {
+    console.log(req.body);
     db.Task
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -10,7 +11,7 @@ module.exports = {
   },
   findAll: function(req, res) {
     console.log("findAll");
-    console.log(req.query)
+    console.log(req.query);
     db.Task
       .find()
       // .sort({ date: -1 })

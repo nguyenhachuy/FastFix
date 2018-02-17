@@ -13,7 +13,8 @@ class LoginPage extends React.Component {
             errors: {},
             user: {
                 username: '',
-                password: ''
+                password: '',
+                type:'User'
             },
             userInfo: [],
             redirectToReferrer: false,
@@ -30,7 +31,6 @@ class LoginPage extends React.Component {
         const field = event.target.name;
         const user = this.state.user;
         user[field] = event.target.value;
-
         this.setState({
             user
         });
@@ -54,7 +54,7 @@ class LoginPage extends React.Component {
             }
         }
     }
-
+/*
     handleSubmit(event) {
         event.preventDefault();
         let user = this.state.user;
@@ -69,11 +69,14 @@ class LoginPage extends React.Component {
           )
           .catch(err => console.log(err));
 
-        /*
-        let user = this.state.user;        
-        console.log('A name was submitted: ' + user.username + " " + user.password);
-
-        */
+    }
+    */
+    
+    handleSubmit(event) {
+        event.preventDefault();
+        let user = this.state.user;
+        console.log(user);
+        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
     }
 
     handleAuthSuccess() {
@@ -93,6 +96,7 @@ class LoginPage extends React.Component {
         let user = this.state.user;
         user.username = '';
         user.password ='';
+        user.type = '';
         this.setState({
             user
         })        
@@ -103,11 +107,6 @@ class LoginPage extends React.Component {
         this.setState({
             loginFailed: true
         });
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        let user = this.state.user;
-        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
     }
     render() {
         const { from } = this.props.location.state || { from: { pathname: "/" } };
