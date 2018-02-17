@@ -1,6 +1,7 @@
 import React from 'react';
 import {SignupForm} from './SignupForm';
 import { Container, Row, Col } from "./../Grid";
+import API from "../../utils/API";
 
 class SignupPage extends React.Component{
     constructor(props) {
@@ -30,11 +31,22 @@ class SignupPage extends React.Component{
     }
     
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.username + " " + this.state.password);
-        this.setState({
-            username: '',
-            password: ''
-        });
+        console.log("User Info" + this.state.user);
+        if (this.state.user.password != this.state.user.confirmPassword)
+        {
+            alert("The passwords do not match!");
+        }
+        else
+        {
+            API.createUser(this.state.user)
+              .then(res =>
+                this.setState({
+                    username: '',
+                    password: ''
+                })
+              )
+              .catch(err => console.log(err));
+        }
         event.preventDefault();
     }
     
@@ -49,7 +61,7 @@ class SignupPage extends React.Component{
                 <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
                     <SignupForm
                     handleChange={this.handleChange}
-                    handleSignup={this.handleSignup}
+                    //handleSignup={this.handleSignup}
                     handleSubmit={this.handleSubmit}
                     user={this.state.user}
                     errors={this.state.errors}
