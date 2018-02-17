@@ -14,12 +14,14 @@ class LoginPage extends React.Component {
                 username: '',
                 password: ''
             },
-            redirectToReferrer: false
-
+            redirectToReferrer: false,
+            loginFailed: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleAuth = this.handleAuth.bind(this);
+        this.handleAuthSuccess = this.handleAuthSuccess.bind(this);
+        this.handleAuthFailure = this.handleAuthFailure.bind(this);
+        this.clearUser = this.clearUser.bind(this);
     }
 
     handleChange(event) {
@@ -31,24 +33,35 @@ class LoginPage extends React.Component {
             user
         });
     }
-    handleAuth(token) {
-        Cookies.set('token', token);
+    handleAuthSuccess() {
+        this.clearUser();
         this.setState({
-            redirectToReferrer: true
+            redirectToReferrer: true,
+            loginFailed: false
+            
         });
     }
 
+
+    clearUser() {
+        let user = this.state.user;
+        user.username = '';
+        user.password ='';
+        this.setState({
+            user
+        })        
+    }
+
+    handleAuthFailure() {
+        this.clearUser();
+        this.setState({
+            loginFailed: true
+        });
+    }
     handleSubmit(event) {
         event.preventDefault();
         let user = this.state.user;
-        this.setState({
-            username: '',
-            password: ''
-        });
-
-        console.log('A name was submitted: ' + user.username + " " + user.password);
-        Auth.authenticate(user, this.handleAuth);
-
+        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
     }
     render() {
         const { from } = this.props.location.state || { from: { pathname: "/" } };
@@ -66,12 +79,15 @@ class LoginPage extends React.Component {
         return (
             <Row className="row">
                 <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
-                    <p>You must log in to view the page at {from.pathname}</p>
+                    {(from.pathname !== '/') &&
+                                        <p>You must log in to view the page at {from.pathname}</p>                                        
+                    }
 
                     <LoginForm
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSubmit}
                         user={this.state.user}
+                        loginFailed={this.state.loginFailed}
                     />
                 </Col>
             </Row>

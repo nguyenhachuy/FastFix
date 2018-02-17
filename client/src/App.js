@@ -17,6 +17,8 @@ import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 import PrivateRoute from './components/PrivateRoute';
+import Auth from './components/Auth';
+
 class App extends Component {
   state = {
     currentPage: "Home",
@@ -29,16 +31,17 @@ class App extends Component {
 
   render() {
     return <Router>
-      <div>
-        <Navbar
-          handlePageChange={this._handlePageChange} />
-        <Wrapper>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/contractor" component={ProviderPage} />
-          <Route exact path="/login" component={LoginPage} />
-          {/* <Route exact path="/landing" component={LandingPage}/> */}
-          <Route exact path="/signup" component={SignupPage} />
-          <PrivateRoute path="/user" component={UserPage} />
+    <div>
+      <Navbar 
+        handlePageChange={this._handlePageChange} />
+      <AuthButton/>
+      <Wrapper>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/login" component={LoginPage}/>
+        {/* <Route exact path="/landing" component={LandingPage}/> */}
+        <Route exact path="/signup" component={SignupPage}/>
+        <PrivateRoute path="/user" component={UserPage} />
+        <PrivateRoute path="/contractor" component={UserPage} />
 
         </Wrapper>
 
