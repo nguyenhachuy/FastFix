@@ -23,7 +23,7 @@ class ChatSendForm extends Component {
 
     render() {
         return <form>
-	            <textarea rows="4" cols="60"
+	            <textarea rows="2" cols="60"
 	                name="Your Message"
 	                value={this.state.message}
 	                onChange={this.changeHandler} /> <br />

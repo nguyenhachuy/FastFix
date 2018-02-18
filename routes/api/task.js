@@ -100,7 +100,7 @@ router
 // Matches with "/api/task/id/:id"
 router
   .route("/:jobTitle")
-  .get(taskController.findById)
+  .get(taskController.findAvailableByUserName)
   .put(taskController.update)
   .delete(taskController.remove);
 

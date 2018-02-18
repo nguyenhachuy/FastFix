@@ -42,7 +42,6 @@ class InProgressJob extends React.Component{
     };
 
     _toggleUserChat = event => {
-        alert('User Chat Open');
         this.setState({chatDisplay: !this.state.chatDisplay});
     };
 
@@ -111,8 +110,9 @@ class InProgressJob extends React.Component{
                 </div>
                 <hr />
                 {this.state.chatDisplay ? (
-                <div>
+                <div className="chat-widget">
                     <div>
+                        <p>Chat</p>
                         <textarea readOnly id = "response" rows="4" cols="60"
                             value={this.state.chatRecvMsg.join("\n")}/>         
                     </div>

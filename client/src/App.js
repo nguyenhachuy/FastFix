@@ -33,10 +33,11 @@ class App extends Component {
   render() {
     return <Router>
     <div>
+      <Wrapper>
       <Navbar 
         handlePageChange={this._handlePageChange} />
-      <AuthButton/>
-      <Wrapper>
+      
+      <AuthButton />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
@@ -58,7 +59,7 @@ const AuthButton = withRouter(
   ({ history }) =>
     Cookies.get('token') ? (
       <p>
-        Welcome!{" "}
+        Welcome {Cookies.get('id')}
         <button
           onClick={() => {
             Cookies.remove('token');
