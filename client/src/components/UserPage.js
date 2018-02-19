@@ -34,7 +34,7 @@ class UserPage extends React.Component{
     };
 
     getInProgressTasks = user => {
-    API.getInProgressTasksByUserName(user)
+        API.getInProgressTasksByUserName(user)
         //.then(res => {this.setState({openJobs: res.data})
         //    console.log(this.state.openJobs)})
         .then(res => this.setState({InProgressJobs: res.data}))
@@ -76,6 +76,7 @@ class UserPage extends React.Component{
                     timeFrame: ''
                 }
             );
+            this.getUserTasks(Cookies.get('id'));
 
         })
         .catch(err => console.log(err));
@@ -85,8 +86,10 @@ class UserPage extends React.Component{
     };
 
     _handleJobRemoval = (jobTitle, event) => {
-        API.deleteTask(jobTitle);
-        alert("button pressed");
+        API.deleteTaskByJobTitle(jobTitle)
+      .then(res => this.getUserTasks(Cookies.get('id')))
+      .catch(err => console.log(err));
+        //alert("button pressed");
             
     }
 

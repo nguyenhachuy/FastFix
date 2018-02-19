@@ -54,7 +54,7 @@ class LoginPage extends React.Component {
             }
         }
     }
-
+/*
     handleSubmit(event) {
         event.preventDefault();
         let user = this.state.user;
@@ -69,14 +69,17 @@ class LoginPage extends React.Component {
           )
           .catch(err => console.log(err));
 
-        
-               
-        console.log('A name was submitted: ' + user.username + " " + user.password);
-        };
+    */
+    
+    handleSubmit(event) {
+        event.preventDefault();
+        let user = this.state.user;
+        console.log(user);
+        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
+    }
     
     handleAuthSuccess() {
         this.clearUser();
-
         this.setState({
             redirectToReferrer: true,
             loginFailed: false
@@ -105,12 +108,6 @@ class LoginPage extends React.Component {
         this.setState({
             loginFailed: true
         });
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        let user = this.state.user;
-        console.log(user);
-        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
     }
     render() {
         const { from } = this.props.location.state || { from: { pathname: "/" } };

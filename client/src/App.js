@@ -43,6 +43,7 @@ class App extends Component {
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
         <PrivateRoute path="/user" component={UserPage} />
+        <Route path="/test" component={Test} />
         <PrivateRoute path="/contractor" component={ProviderPage} />
 
         </Wrapper>

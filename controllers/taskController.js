@@ -3,6 +3,7 @@ const db = require("../models");
 // Defining methods for the taskController
 module.exports = {
   create: function(req, res) {
+    console.log(req.body);
     db.Task
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -10,7 +11,7 @@ module.exports = {
   },
   findAll: function(req, res) {
     console.log("findAll");
-    console.log(req.query)
+    console.log(req.query);
     db.Task
       .find()
       // .sort({ date: -1 })
@@ -72,14 +73,14 @@ module.exports = {
   findAvailableByContractorID: function(req, res) {
     console.log("findAvailableByContractorID");
     db.Task
-      .find({status: "open", contractor_id: req.contractor_id})
+      .find({status: "open", contractor_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findAvailableByContractorName: function(req, res) {
     console.log("findAvailableByContractorName");
     db.Task
-      .find({status: "open", contractorname: req.contractorname})
+      .find({status: "open", contractorname: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -93,28 +94,29 @@ module.exports = {
   findInProgressByUserID: function(req, res) {
     console.log("findInProgressByUserID");
     db.Task
-      .find({status: "closed", user_id: req.name})
+      .find({status: "in progress", user_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInProgressByUserName: function(req, res) {
     console.log("findInProgressByUserName");
+    console.log(req.params.name);
     db.Task
-      .find({status: "closed", username: req.params.name})
+      .find({status: "in progress", username: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInProgressByContractorID: function(req, res) {
     console.log("findInProgressByContractorID");
     db.Task
-      .find({status: "in progress", contractor_id: req.contractor_id})
+      .find({status: "in progress", contractor_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInProgressByContractorName: function(req, res) {
     console.log("findInProgressByContractorName");
     db.Task
-      .find({status: "in progress", contractorname: req.contractorname})
+      .find({status: "in progress", contractorname: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -128,28 +130,28 @@ module.exports = {
   findClosedByUserID: function(req, res) {
     console.log("findClosedByUserID");
     db.Task
-      .find({status: "closed", user_id: req.user_id})
+      .find({status: "closed", user_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findClosedByUserName: function(req, res) {
     console.log("findClosedByUserName");
     db.Task
-      .find({status: "closed", username: req.name})
+      .find({status: "closed", username: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findClosedByContractorID: function(req, res) {
     console.log("findClosedByContractorID");
     db.Task
-      .find({status: "closed", contractor_id: req.contractor_id})
+      .find({status: "closed", contractor_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findClosedByContractorName: function(req, res) {
     console.log("findClosedByContractorName");
     db.Task
-      .find({status: "closed", contractorname: req.contractorname})
+      .find({status: "closed", contractorname: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -162,6 +164,15 @@ module.exports = {
   remove: function(req, res) {
     db.Task
       .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  removeByJobTitle: function(req, res) {
+    console.log("removeByJobTitle");
+    console.log(req.params.jobtitle);
+    db.Task
+      .findOne({ jobTitle: req.params.jobtitle })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
