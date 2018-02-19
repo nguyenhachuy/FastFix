@@ -27,7 +27,7 @@ class ChatSendForm extends Component {
 	                name="Your Message"
 	                value={this.state.message}
 	                onChange={this.changeHandler} /> <br />
-	            	<button onClick={this.clickHandler}> Submit Message </button>
+	            	<button type="submit" onClick={this.clickHandler}>Send</button>
 	        </form>
     }
 }

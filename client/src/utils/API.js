@@ -107,6 +107,10 @@ export default {
   createQuote: function(quoteData) {
     return axios.post("/api/quote", quoteData);
   },
+  // Delete a Bid by jobTitle
+  deleteQuote: function(quoteData) {
+   
+  },
   // Update a Quote
   updateQuote: function(quoteData) {
     return axios.put("/api/quote", quoteData);

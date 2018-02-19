@@ -117,7 +117,7 @@ class UserPage extends React.Component{
                     id={inProgressJob._id}
                     description={inProgressJob.requestDescription}
                     isUser={true}
-                    userName={this.state.username}
+                    userName={inProgressJob.username}
       
                     />
                 )

@@ -14,7 +14,8 @@ class ProviderPage extends React.Component{
 
     state = {
         contractor: Cookies.get('id'),
-        availableJobs: []
+        availableJobs: [],
+        jobBids: []
     };
     
     componentDidMount() {
@@ -24,7 +25,22 @@ class ProviderPage extends React.Component{
 
             })
             .catch(err => console.log(err));
-    };  
+    }; 
+    
+    _handleBidRemoval = (jobTitle, event) => {
+        API.deleteTaskByJobTitle(jobTitle)
+      .then(res => this.getAvailableUserTasks(Cookies.get('id')))
+      .catch(err => console.log(err));
+        alert("Your Job Has Been Deleted!");
+            
+    }
+
+    _bidOnJob = event => {
+        alert('Button Clicked');
+        API.createQuote()
+        .then( res => {this.setState({jobBids: 'Bid Test'})})
+        .catch( err => console.log(err));
+    };
 
     
     render() {
@@ -35,6 +51,7 @@ class ProviderPage extends React.Component{
 
                 <AvailableJobsList 
                 availableJobs={this.state.availableJobs}
+                bidOnJob={this._bidOnJob}
                 />
 
                 <PendingBidList />
