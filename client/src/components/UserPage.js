@@ -12,6 +12,7 @@ class UserPage extends React.Component{
     }
 
     state = {
+        user: Cookies.get('id'),
         status: 'open',
         username: Cookies.get('id'),
         user_id: Cookies.get('id'),
@@ -79,7 +80,7 @@ class UserPage extends React.Component{
         })
         .catch(err => console.log(err));
 
-    event.preventDefault();
+    // event.preventDefault();
             
     };
 
@@ -87,7 +88,7 @@ class UserPage extends React.Component{
         API.deleteTaskByJobTitle(jobTitle)
       .then(res => this.getAvailableUserTasks(Cookies.get('id')))
       .catch(err => console.log(err));
-        alert("button pressed");
+        alert("Your Job Has Been Deleted!");
             
     }
 

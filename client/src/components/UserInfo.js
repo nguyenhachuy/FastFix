@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserInfo = props => <div>
-    <h5>You Selected The Following Service Provider:</h5><p>{props.firstName} {props.lastName}<br />Expected Date: {props.date} Time: {props.time}<br />
+    <h5>You Selected The Following Service Provider:</h5><p>{props.firstName} {props.lastName}<br />
     <button 
     onClick={props.onClick}
     toggleChat={props.toggleChat}
