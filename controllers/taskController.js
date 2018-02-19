@@ -102,7 +102,7 @@ module.exports = {
     console.log("findInProgressByUserName");
     console.log(req.params.name);
     db.Task
-      .find({status: "in progress", username: req.params.name})
+      .find({status: "closed", username: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

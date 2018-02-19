@@ -7,9 +7,7 @@ import ChatSendForm from './ChatSendForm';
 import chat from '../chat';
 var fb = require('../fb');
 
-const fakeInProgressJob = {
-        _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
-    }
+
 
 class InProgressJob extends React.Component{
 
@@ -17,10 +15,11 @@ class InProgressJob extends React.Component{
         super(props);
         this.sendChat = this.sendChat.bind(this);
         this.displayResponse = this.displayResponse.bind(this);
+        
     };
 
     state = {
-        jobData : fakeInProgressJob,
+
         providerData: {},
         chatSendMsg: "",
         chatRecvMsg: [],
@@ -34,8 +33,8 @@ class InProgressJob extends React.Component{
         //  receive latest message from Firebase
         fb.ref(folder).on("child_added", function(childSnapshot, prevChildKey) {
 
-            console.log("Msg from Firebase");
-            console.log(childSnapshot.val());
+            // console.log("Msg from Firebase");
+            // console.log(childSnapshot.val());
 
             this.processChat(childSnapshot.val().sender, childSnapshot.val().msg);
         }.bind(this));
@@ -52,7 +51,7 @@ class InProgressJob extends React.Component{
             if (this.props.isUser === false)
             {
               this.displayResponse(msg);
-              console.log("Sending msg to contractor: ");
+            //   console.log("Sending msg to contractor: ");
             }
         }
         else 
@@ -60,7 +59,7 @@ class InProgressJob extends React.Component{
             if (this.props.isUser === true)
             {
               this.displayResponse(msg);
-              console.log("Sending msg to user: ");
+            //   console.log("Sending msg to user: ");
             }
         }
     } 
@@ -94,15 +93,16 @@ class InProgressJob extends React.Component{
         const props = this.props;
         const isUserPage = props.isUser;
 
+
         return(
             <div>
                 <h2>You Currently Have The Following Job In Progress</h2>
-                <div className="panel panel-success" data-value={this.state.jobData._id}>   
+                <div className="panel panel-success" data-value={props._id}>   
                     <div className="panel-heading">
-                        <h3 className="panel-title"><span className="glyphicon glyphicon-asterisk" aria-hidden="true"></span> {this.state.jobData._id} | {this.state.jobData.title} - {this.state.jobData.zipCode}</h3>
+                        <h3 className="panel-title"><span className="glyphicon glyphicon-asterisk" aria-hidden="true"></span> {props._id} | {props.title} - {props.zipCode}</h3>
                     </div>
                     <div className="panel-body panel-success">
-                        {this.state.jobData.description}<br />
+                        {props.description}<br />
                     </div>
                     <div className="panel-body">
                     {props.isUser ? <UserInfo onClick={this._toggleUserChat} toggleChat={this._toggleUserChat.bind(this)}/> : <ProviderInfo onClick={this._openProviderChat}  />}
