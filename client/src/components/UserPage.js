@@ -13,7 +13,8 @@ class UserPage extends React.Component{
 
     state = {
         user: Cookies.get('id'),
-        status: 'open',
+        status: 'closed',
+        contractorname: 'edobb',
         username: Cookies.get('id'),
         user_id: Cookies.get('id'),
         jobTitle: '',
@@ -27,7 +28,6 @@ class UserPage extends React.Component{
 
 
     componentDidMount() {
-        this.setState({user: Cookies.get('id')});
         this.getInProgressTasks(Cookies.get('id'));
         this.getAvailableUserTasks(Cookies.get('id'));
     };
@@ -80,7 +80,7 @@ class UserPage extends React.Component{
         })
         .catch(err => console.log(err));
 
-    // event.preventDefault();
+        event.preventDefault();
             
     };
 

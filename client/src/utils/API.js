@@ -118,5 +118,8 @@ export default {
   // Gets a quote by Contractor ID
   getQuote: function(id) {
     return axios.get("/api/quote/contractor/" + id);
+  },
+  getQuoteByContractorName: function(contractorname) {
+    return axios.get("/api/quote/contractor/" + contractorname);
   }
 };

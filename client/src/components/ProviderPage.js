@@ -5,53 +5,84 @@ import InProgressJob from './InProgressJob';
 import Cookies from 'js-cookie';
 import API from '../utils/API';
 
-
-const fakeInProgressJob = {
-    _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
-}
-
 class ProviderPage extends React.Component{
 
     state = {
         contractor: Cookies.get('id'),
+        inProgressJobs: [],
         availableJobs: [],
-        jobBids: []
+        openBids: []
     };
     
     componentDidMount() {
-        API.getAvailableTasks()
-            .then(res => {
-                this.setState({availableJobs: res.data});
-
-            })
-            .catch(err => console.log(err));
+        this.getAvailableTasks();
+        this.getInProgressTasksByContractorName(this.state.contractor);
+        this.getQuoteByContractorName(this.state.contractor);
     }; 
     
+    getAvailableTasks = () => {
+        API.getAvailableTasks()
+            .then(res => {this.setState({availableJobs: res.data})})
+            .catch(err => console.log(err));
+        
+    }
+
+    getInProgressTasksByContractorName = contractor => {
+        API.getInProgressTasksByContractorName(contractor)
+            .then(res => {this.setState({inProgressJobs: res.data})})
+            .catch(err => console.log(err));
+        
+    }
+
+    getQuoteByContractorName = contractor => {
+        API.getQuoteByContractorName(contractor)
+            .then(res => {this.setState({openBids: res.data})})
+            .catch(err => console.log(err));
+        
+    }
+
     _handleBidRemoval = (jobTitle, event) => {
         API.deleteTaskByJobTitle(jobTitle)
       .then(res => this.getAvailableUserTasks(Cookies.get('id')))
       .catch(err => console.log(err));
-        alert("Your Job Has Been Deleted!");
+        alert("Your Bid Has Been Deleted!");
             
     }
 
-    _bidOnJob = event => {
+    _bidOnJob = (jobTitle, event) => {
         alert('Button Clicked');
-        API.createQuote()
+        API.createQuote(jobTitle)
         .then( res => {this.setState({jobBids: 'Bid Test'})})
         .catch( err => console.log(err));
     };
 
     
     render() {
-        console.log(this.state.contractor);
+        console.log(this.state);
         return(
             <div>
-                <InProgressJob isUser={false} />
+                {this.state.inProgressJobs.map( (inProgressJob) => {
+                return (
+                <InProgressJob
+                    title={inProgressJob.jobTitle}
+                    zipCode={inProgressJob.zipCode}
+                    id={inProgressJob._id}
+                    description={inProgressJob.requestDescription}
+                    isUser={false}
+                    userName={inProgressJob.username}
+                    contractorName={inProgressJob.contractorname}
+      
+                    />
+                )
+                }
+            )
+        }
+                
 
                 <AvailableJobsList 
                 availableJobs={this.state.availableJobs}
                 bidOnJob={this._bidOnJob}
+                handleBidRemoval={this._handleBidRemoval}
                 />
 
                 <PendingBidList />
