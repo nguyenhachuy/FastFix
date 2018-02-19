@@ -69,7 +69,6 @@ class LoginPage extends React.Component {
           )
           .catch(err => console.log(err));
 
-    }
     */
     
     handleSubmit(event) {
@@ -78,7 +77,7 @@ class LoginPage extends React.Component {
         console.log(user);
         Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
     }
-
+    
     handleAuthSuccess() {
         this.clearUser();
         this.setState({
@@ -86,8 +85,10 @@ class LoginPage extends React.Component {
             loginFailed: false
             
         });
+
         Cookies.set('token', 'password');
         this.state.redirectToReferrer = true;
+        
       
     }
 

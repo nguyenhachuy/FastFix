@@ -18,7 +18,7 @@ const fakePendingJobs =
     
     const PendingJobsList = props => {
     
-    console.log(props);
+    console.log(props.userJobs);
      
           return(
         <div>
@@ -26,10 +26,11 @@ const fakePendingJobs =
         {props.userJobs.map( (job) => {
                 return (
                 <PendingJob 
-                    title={job.title}
+                    title={job.jobTitle}
                     zipCode={job.zipCode}
                     id={job._id}
-                    description={job.description}
+                    description={job.requestDescription}
+                    onClick={props.handleJobRemoval.bind(this, job.jobTitle)}
                     bids={job.bids}
                     />
                 )

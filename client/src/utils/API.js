@@ -11,8 +11,8 @@ export default {
     return axios.get("/api/task/userid/" + id);
   },
   // Gets Tasks by User Name
-  getTasksByUserName: function(name) {
-    return axios.get("/api/task/username/" + name);
+  getTasksByUserName: function(username) {
+    return axios.get("/api/task/username/" + username);
   },
   // Gets Tasks by Contractor ID
   getTasksByContractorID: function(id) {
@@ -80,7 +80,12 @@ export default {
   },
   // Delete a Task
   deleteTaskByJobTitle: function(jobtitle) {
+    console.log(jobtitle);
     return axios.delete("/api/task/jobtitle/" + jobtitle);
+　/*
+  deleteTask: function(jobTitle) {
+    return axios.delete("/api/task/" +  jobTitle)
+  */
   },
   // Get a User By ID
   getUserByID: function(id) {

@@ -7,7 +7,7 @@ router
   .get(taskController.findAll)
   .post(taskController.create);
 
-// Matches with "/api/task/jobTitle/:jobtitle"
+// Matches with "/api/task/jobtitle/:jobtitle"
 router
   .route("/jobtitle/:jobtitle")
   .delete(taskController.removeByJobTitle);
@@ -104,8 +104,8 @@ router
 
 // Matches with "/api/task/id/:id"
 router
-  .route("/id/:id")
-  .get(taskController.findById)
+  .route("/:jobTitle")
+  .get(taskController.findAvailableByUserName)
   .put(taskController.update)
   .delete(taskController.remove);
 

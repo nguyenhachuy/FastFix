@@ -17,6 +17,7 @@ const taskSchema = new Schema({
   rate: Number,
   comment: String,
   jobTitle: String
+  
 });
 
 const Task = mongoose.model("Task", taskSchema);

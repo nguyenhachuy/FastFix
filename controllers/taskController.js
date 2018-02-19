@@ -59,7 +59,7 @@ module.exports = {
   findAvailableByUserID: function(req, res) {
     console.log("findAvailable");
     db.Task
-      .find({status: "open", user_id: req.params.id})
+      .find({status: "open", user_id: req.params.user_id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -87,7 +87,7 @@ module.exports = {
   findInProgress: function(req, res) {
     console.log("findInProgress");
     db.Task
-      .find({status: "in progress"})
+      .find({status: "closed"})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -169,8 +169,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   removeByJobTitle: function(req, res) {
+    console.log("removeByJobTitle");
+    console.log(req.params.jobtitle);
     db.Task
-      .find({ jobTitle: req.params.jobtitle })
+      .findOne({ jobTitle: req.params.jobtitle })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

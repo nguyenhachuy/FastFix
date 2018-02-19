@@ -2,10 +2,18 @@ import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
 import PendingBidList from './PendingBidList';
 import InProgressJob from './InProgressJob';
+import Cookies from 'js-cookie';
 import API from '../utils/API';
+
+
+const fakeInProgressJob = {
+    _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."
+}
+
 class ProviderPage extends React.Component{
 
     state = {
+        contractor: Cookies.get('id'),
         availableJobs: []
     };
     
@@ -20,7 +28,7 @@ class ProviderPage extends React.Component{
 
     
     render() {
- 
+        console.log(this.state.contractor);
         return(
             <div>
                 <InProgressJob isUser={false} />
