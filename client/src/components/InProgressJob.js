@@ -40,7 +40,7 @@ class InProgressJob extends React.Component{
         }.bind(this));
     };
 
-    _toggleUserChat = event => {
+    _toggleChat = event => {
         this.setState({chatDisplay: !this.state.chatDisplay});
     };
 
@@ -105,13 +105,14 @@ class InProgressJob extends React.Component{
                         {props.description}<br />
                     </div>
                     <div className="panel-body">
-                    {props.isUser ? <UserInfo onClick={this._toggleUserChat} toggleChat={this._toggleUserChat.bind(this)}/> : <ProviderInfo onClick={this._openProviderChat}  />}
+                    {props.isUser ? <UserInfo onClick={this._toggleChat} toggleChat={this._toggleChat.bind(this)}/> : <ProviderInfo onClick={this._toggleChat.bind(this)}  />}
                     </div>
                 </div>
                 <hr />
                 {this.state.chatDisplay ? (
                 <div className="chat-widget">
                     <div>
+                    <button className="float-right" type="button" onClick={this._toggleChat}>X</button>
                         <p>Chat</p>
                         <textarea readOnly id = "response" rows="4" cols="60"
                             value={this.state.chatRecvMsg.join("\n")}/>         

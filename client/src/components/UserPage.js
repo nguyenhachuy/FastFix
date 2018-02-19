@@ -12,8 +12,7 @@ class UserPage extends React.Component{
     }
 
     state = {
-        user: Cookies.get('id'),
-        status: 'closed',
+        status: 'open',
         username: Cookies.get('id'),
         user_id: Cookies.get('id'),
         jobTitle: '',
@@ -86,9 +85,9 @@ class UserPage extends React.Component{
 
     _handleJobRemoval = (jobTitle, event) => {
         API.deleteTaskByJobTitle(jobTitle)
-      .then(res => this.getUserTasks(Cookies.get('id')))
+      .then(res => this.getAvailableUserTasks(Cookies.get('id')))
       .catch(err => console.log(err));
-        //alert("button pressed");
+        alert("button pressed");
             
     }
 
@@ -117,7 +116,7 @@ class UserPage extends React.Component{
                     id={inProgressJob._id}
                     description={inProgressJob.requestDescription}
                     isUser={true}
-                    userName={this.state.userName}
+                    userName={this.state.username}
       
                     />
                 )
