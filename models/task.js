@@ -16,7 +16,8 @@ const taskSchema = new Schema({
   totalCost: Number,
   rate: Number,
   comment: String,
-  jobTitle: String
+  jobTitle: String,
+  zipCode: String
   
 });
 

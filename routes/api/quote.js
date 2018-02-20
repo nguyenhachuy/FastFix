@@ -6,10 +6,15 @@ router
   .route("/")
   .get(quoteController.findAll)
 
-// Matches with "/api/quote/contractor/:id"
+// Matches with "/api/quote/contractor/id/:id"
 router
-  .route("/contractor/:id")
+  .route("/contractor/id/:id")
   .get(quoteController.findByContractorId)
+
+// Matches with "/api/quote/contractor/name/:name"
+router
+  .route("/contractor/name/:name")
+  .get(quoteController.findByContractorName)
 
 // Matches with "/api/quote/id/:id"
 router

@@ -66,3 +66,4 @@ class InProgressJob extends React.Component{
 };
 
 export default InProgressJob;
+

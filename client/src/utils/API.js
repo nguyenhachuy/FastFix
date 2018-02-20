@@ -107,13 +107,20 @@ export default {
   createQuote: function(quoteData) {
     return axios.post("/api/quote", quoteData);
   },
+  // Delete a Bid by jobTitle
+  deleteQuote: function(quoteData) {
+   
+  },
   // Update a Quote
   updateQuote: function(quoteData) {
     return axios.put("/api/quote", quoteData);
   },
   // Gets a quote by Contractor ID
   getQuote: function(id) {
-    return axios.get("/api/quote/contractor/" + id);
+    return axios.get("/api/quote/contractor/id/" + id);
+  },
+  getQuoteByContractorName: function(name) {
+    return axios.get("/api/quote/contractor/name/" + name);
   },
   // Update a Quote By job title
   updateQuoteByJobTitle: function(quoteData) {

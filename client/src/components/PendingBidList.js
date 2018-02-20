@@ -16,25 +16,19 @@ const fakePendingBids =
 
     ];
 
-class PendingBidList extends React.Component {
-
-    constructor(props){
-        super(props);
-    };
+const PendingBidList = props => {  
 
 
-    
-
-  render() {
       return(
         <div>
-        <h4>You Currently Have the Following Open Bids:</h4>
-        {fakePendingBids.map( (job) => {
+        <h4>The Following Bids are Pending:</h4>
+        {fakePendingBids.map( (bid) => {
                 return <PendingBid 
-                    title={job.title}
-                    zipCode={job.zipCode}
-                    id={job._id}
-                    description={job.description}
+                    title={bid.title}
+                    zipCode={bid.zipCode}
+                    id={bid._id}
+                    description={bid.description}
+                    // onClick={props.handleBidRemoval.bind(this, bid.jobTitle)}
                 />
                 
                 }
@@ -42,7 +36,7 @@ class PendingBidList extends React.Component {
         }
         </div>
             )
-    }
+    
 };
 
 

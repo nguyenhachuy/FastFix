@@ -26,6 +26,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByContractorName: function(req, res) {
+    db.Quote
+      .findOne({ contractorname: req.params.contractorname })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   update: function(req, res) {
     db.Quote
       .findOneAndUpdate({ _id: req.params.id }, req.body)

@@ -13,38 +13,37 @@ class UserPage extends React.Component{
 
     state = {
         user: Cookies.get('id'),
-        status: 'open',
+        status: 'closed',
+        contractorname: 'edobb',
         username: Cookies.get('id'),
         user_id: Cookies.get('id'),
         jobTitle: '',
-        jobDescription: '',
+        requestDescription: '',
         zipCode: '',
         budget: '',
-        timeFrame: '',
+        // timeFrame: '',
         openJobs: [],
-        InProgressJobs: []
+        inProgressJobs: []
     };
 
 
     componentDidMount() {
-        this.setState({user: Cookies.get('id')});
-        console.log(this.state);
         this.getInProgressTasks(Cookies.get('id'));
-        this.getUserTasks(Cookies.get('id'));
+        this.getAvailableUserTasks(Cookies.get('id'));
     };
 
     getInProgressTasks = user => {
         API.getInProgressTasksByUserName(user)
         //.then(res => {this.setState({openJobs: res.data})
         //    console.log(this.state.openJobs)})
-        .then(res => this.setState({InProgressJobs: res.data}))
+        .then(res => this.setState({inProgressJobs: res.data}))
         .catch(err => console.log(err));
 
     };
 
-    getUserTasks = user => {
+    getAvailableUserTasks = user => {
         //API.getTasksByUserID(user)
-        API.getTasksByUserName(user)
+        API.getAvailableTasksByUserName(user)
             //.then(res => {this.setState({openJobs: res.data})
             //    console.log(this.state.openJobs)})
             .then(res => this.setState({openJobs: res.data}))
@@ -71,7 +70,7 @@ class UserPage extends React.Component{
                 {
                     jobTitle: '',
                     zipCode: '',
-                    jobDescription: '',
+                    requestDescription: '',
                     budget: '',
                     timeFrame: ''
                 }
@@ -81,20 +80,20 @@ class UserPage extends React.Component{
         })
         .catch(err => console.log(err));
 
-    event.preventDefault();
+        event.preventDefault();
             
     };
 
     _handleJobRemoval = (jobTitle, event) => {
         API.deleteTaskByJobTitle(jobTitle)
-      .then(res => this.getUserTasks(Cookies.get('id')))
+      .then(res => this.getAvailableUserTasks(Cookies.get('id')))
       .catch(err => console.log(err));
-        //alert("button pressed");
+        alert("Your Job Has Been Deleted!");
             
     }
 
     render() {
-        console.log(this.state.InProgressJobs);
+        console.log(this.state.inProgressJobs);
         return(
 
             <div>
@@ -105,15 +104,29 @@ class UserPage extends React.Component{
                 budget={this.state.budget}
                 jobTitle={this.state.jobTitle}
                 zipCode={this.state.zipCode}
-                jobDescription={this.state.jobDescription}
-                timeFrame={this.state.timeFrame}
+                requestDescription={this.state.requestDescription}
+                // timeFrame={this.state.timeFrame}
                 budget={this.state.budget}
                 />
                 <hr />
+                {this.state.inProgressJobs.map( (inProgressJob) => {
+                return (
                 <InProgressJob
-                isUser={true}
-                userName={this.state.userName}
-                />
+                    title={inProgressJob.jobTitle}
+                    zipCode={inProgressJob.zipCode}
+                    id={inProgressJob._id}
+                    description={inProgressJob.requestDescription}
+                    isUser={true}
+                    userName={inProgressJob.username}
+      
+                    />
+                )
+                }
+            )
+        }
+     
+            
+               
                 <hr />
                 
                 <PendingJobsList 
