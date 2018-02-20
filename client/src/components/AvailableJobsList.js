@@ -1,46 +1,34 @@
 import React from 'react';
 import AvailableJob from './AvailableJob';
+import API from '../utils/API'
 
 
 
-const fakeJobs = 
-    [
-        {
-            _id: 1, title: "Repair garage door and opener.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."  
-        },
-        {
-            _id: 2, title: "Install sprinkler system in front yard.", zipCode: "90210", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."  
-        },
-        {
-            _id: 3, title: "Remove tree and stump in back yard.", zipCode: "91915", description: "Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder Dummy text placeholder."  
-        }
+const AvailableJobsList = props => {
 
-    ];
-
-class AvailableJobsList extends React.Component {
-
-    constructor(props){
-        super(props);
-    };
+   
+ 
       
-
-  render() {
-      return(
-    this.props.availableJobs.map( (job) => {
+        return(
+            props.availableJobs.map( (job) => {
+            
             return (
            
                <AvailableJob 
                 title={job.jobTitle}
                 zipCode={job.zipCode}
                 id={job._id}
-                timeFrame={job.timeFrame}
-                description={job.description}
+                budget={job.budget}
+                description={job.requestDescription}
+                scheduleJob={props.scheduleJob}
                 />
         
             )
             }
         ))
-    }
+    
+
+
 };
 
 

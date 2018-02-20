@@ -17,6 +17,7 @@ import { LoginPage, SignupPage } from './components/Login';
 import LandingPage from './components/Landing';
 import { Container, Row, Col } from "./components/Grid";
 import PrivateRoute from './components/PrivateRoute';
+import Test from './components/test';
 import Auth from './components/Auth';
 
 class App extends Component {
@@ -32,15 +33,17 @@ class App extends Component {
   render() {
     return <Router>
     <div>
+      <Wrapper>
       <Navbar 
         handlePageChange={this._handlePageChange} />
-      <AuthButton/>
-      <Wrapper>
+      
+      <AuthButton />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={LoginPage}/>
         {/* <Route exact path="/landing" component={LandingPage}/> */}
         <Route exact path="/signup" component={SignupPage}/>
         <PrivateRoute path="/user" component={UserPage} />
+        <Route path="/test" component={Test} />
         <PrivateRoute path="/contractor" component={ProviderPage} />
 
         </Wrapper>
@@ -50,14 +53,17 @@ class App extends Component {
     </Router>;
   }
 };
-
+    /*
+    Auth.isAuthenticated ? (
+    */
 const AuthButton = withRouter(
   ({ history }) =>
-    Auth.isAuthenticated ? (
+    Cookies.get('token') ? (
       <p>
-        Welcome!{" "}
+        Welcome {Cookies.get('id')}
         <button
           onClick={() => {
+            Cookies.remove('token');
             Auth.signout(() => {
             })
             history.push('/');              

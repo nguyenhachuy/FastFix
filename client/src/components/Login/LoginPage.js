@@ -1,9 +1,10 @@
 import React from 'react';
+
 import { Redirect } from 'react-router-dom';
 import { LoginForm } from './LoginForm';
 import { Row, Col } from "./../Grid";
 import Cookies from 'js-cookie';
-// import API from '../../utils/API';
+import API from "../../utils/API";
 import Auth from '../Auth';
 class LoginPage extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class LoginPage extends React.Component {
                 password: '',
                 type:'User'
             },
+            userInfo: [],
             redirectToReferrer: false,
             loginFailed: false
         };
@@ -33,6 +35,49 @@ class LoginPage extends React.Component {
             user
         });
     }
+    
+    userExistCheck(data) {
+        let password = this.state.user.password;
+        console.log(data);
+        if (data.length === 0){
+            alert("User doesn't exist")
+        }
+        else {
+            // Password Check
+            console.log(data[0].password);
+            if (data[0].password !== password) {
+                alert("Password is wrong")
+            }
+            else {
+                // Move to User page
+                this.state.redirectToReferrer = true;
+            }
+        }
+    }
+/*
+    handleSubmit(event) {
+        event.preventDefault();
+        let user = this.state.user;
+        let userInfo = [];
+        console.log(user.username);
+
+        API.getUserByName(user.username)
+          .then(res =>
+            //console.log(res.data)
+            //this.setState({ userInfo: res.data})
+            this.userExistCheck(res.data)
+          )
+          .catch(err => console.log(err));
+
+    */
+    
+    handleSubmit(event) {
+        event.preventDefault();
+        let user = this.state.user;
+        console.log(user);
+        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
+    }
+    
     handleAuthSuccess() {
         this.clearUser();
         this.setState({
@@ -40,6 +85,11 @@ class LoginPage extends React.Component {
             loginFailed: false
             
         });
+
+        Cookies.set('token', 'password');
+        this.state.redirectToReferrer = true;
+        
+      
     }
 
 
@@ -58,12 +108,6 @@ class LoginPage extends React.Component {
         this.setState({
             loginFailed: true
         });
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        let user = this.state.user;
-        console.log(user);
-        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
     }
     render() {
         const { from } = this.props.location.state || { from: { pathname: "/" } };

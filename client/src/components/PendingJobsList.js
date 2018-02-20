@@ -15,37 +15,35 @@ const fakePendingJobs =
         }
 
     ];
-
-class PendingJobsList extends React.Component {
-
-    constructor(props){
-        super(props);
+    
+    const PendingJobsList = props => {
+    
+    console.log(props.userJobs);
+     
+          return(
+        <div>
+        <h4>Your Open Jobs:</h4>
+        {props.userJobs.map( (job) => {
+                return (
+                <PendingJob 
+                    title={job.jobTitle}
+                    zipCode={job.zipCode}
+                    id={job._id}
+                    description={job.requestDescription}
+                    onClick={props.handleJobRemoval.bind(this, job.jobTitle)}
+                    bids={job.bids}
+                    />
+                )
+                }
+            )
+        }
+        </div>
+            )
+        
     };
-
-
+    
+    
+    export default PendingJobsList;
     
 
-  render() {
-      return(
-    <div>
-    <h4>You Currently Have the Following Open Jobs:</h4>
-    {fakePendingJobs.map( (job) => {
-            return (
-            <PendingJob 
-                title={job.title}
-                zipCode={job.zipCode}
-                id={job._id}
-                description={job.description}
-                bids={job.bids}
-                />
-            )
-            }
-        )
-    }
-    </div>
-        )
-    }
-};
 
-
-export default PendingJobsList;

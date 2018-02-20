@@ -1,5 +1,6 @@
 import React from 'react';
 import ChatForm from './ChatForm';
+import ChatSendForm from './ChatSendForm';
 
 class Chat extends React.Component {
 

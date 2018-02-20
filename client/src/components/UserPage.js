@@ -2,31 +2,55 @@ import React from 'react';
 import CreateJobForm from './CreateJobForm';
 import PendingJobsList from './PendingJobsList';
 import InProgressJob from './InProgressJob';
+import Cookies from 'js-cookie';
 import API from '../utils/API';
 class UserPage extends React.Component{
 
-    constructor(props){
+    constructor(props) {
         super(props);
-    };
+        this._handleJobRemoval = this._handleJobRemoval.bind(this);
+    }
 
     state = {
+        user: Cookies.get('id'),
         status: 'open',
-        user_id: 'TestGuy',
+        contractorname: '',
+        username: Cookies.get('id'),
+        user_id: Cookies.get('id'),
         jobTitle: '',
-        jobDescription: '',
+        requestDescription: '',
         zipCode: '',
         budget: '',
-        timeFrame: ''
+        // timeFrame: '',
+        openJobs: [],
+        inProgressJobs: []
     };
 
 
     componentDidMount() {
-        console.log("butt");
-        API.getAllTasks()
-            .then(res => this.setState({availableJobs: res.data}) , console.log(this.state))
-            .catch(err => console.log(err));
-    };    
+        this.getInProgressTasks(Cookies.get('id'));
+        this.getAvailableUserTasks(Cookies.get('id'));
+    };
 
+    getInProgressTasks = user => {
+        API.getInProgressTasksByUserName(user)
+        //.then(res => {this.setState({openJobs: res.data})
+        //    console.log(this.state.openJobs)})
+        .then(res => this.setState({inProgressJobs: res.data}))
+        .catch(err => console.log(err));
+
+    };
+
+    getAvailableUserTasks = user => {
+        //API.getTasksByUserID(user)
+        API.getAvailableTasksByUserName(user)
+            //.then(res => {this.setState({openJobs: res.data})
+            //    console.log(this.state.openJobs)})
+            .then(res => this.setState({openJobs: res.data}))
+            .catch(err => console.log(err));
+
+        };
+        
     _handleInputChange = event => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -46,41 +70,80 @@ class UserPage extends React.Component{
                 {
                     jobTitle: '',
                     zipCode: '',
-                    jobDescription: '',
+                    requestDescription: '',
                     budget: '',
                     timeFrame: ''
                 }
             );
+            this.getUserTasks(Cookies.get('id'));
 
         })
         .catch(err => console.log(err));
 
-    event.preventDefault();
+        event.preventDefault();
             
     };
 
-    render() {
+    _handleJobRemoval = (jobTitle, event) => {
+        API.deleteTaskByJobTitle(jobTitle)
+      .then(res => this.getAvailableUserTasks(Cookies.get('id')))
+      .catch(err => console.log(err));
+        alert("Your Job Has Been Deleted!");
+            
+    }
 
+    _handleJobCompleted = (jobTitle, event) => {
+
+    }
+
+    render() {
+        console.log(this.state.inProgressJobs);
         return(
 
             <div>
-
-                <CreateJobForm 
-                handleInputChange={this._handleInputChange}
-                handleJobCreation={this._handleJobCreation}
-                budget={this.state.budget}
-                jobTitle={this.state.jobTitle}
-                zipCode={this.state.zipCode}
-                jobDescription={this.state.jobDescription}
-                timeFrame={this.state.timeFrame}
-                budget={this.state.budget}
-                />
-                <hr />
-                <InProgressJob isUser={true}/>
-                <hr />
+                <div className="list-wrapper off-white">
+                    <CreateJobForm 
+                    handleInputChange={this._handleInputChange}
+                    handleJobCreation={this._handleJobCreation}
+                    budget={this.state.budget}
+                    jobTitle={this.state.jobTitle}
+                    zipCode={this.state.zipCode}
+                    requestDescription={this.state.requestDescription}
+                    // timeFrame={this.state.timeFrame}
+                    budget={this.state.budget}
+                    />
+                </div>
                 
-                <PendingJobsList />
-
+                {this.state.inProgressJobs.map( (inProgressJob) => {
+                return (
+                <InProgressJob
+                title={inProgressJob.jobTitle}
+                zipCode={inProgressJob.zipCode}
+                id={inProgressJob._id}
+                description={inProgressJob.requestDescription}
+                isUser={true}
+                userName={inProgressJob.username}
+                jobCompleted={this._handleJobCompleted}
+                contractorName={inProgressJob.contractorname}
+      
+                    />
+                )
+                }
+            )
+        }
+     
+            
+               {this.state.openJobs.length > 0 ? 
+               <div className="list-wrapper">
+                
+                    <PendingJobsList 
+                    userJobs={this.state.openJobs}
+                    handleJobRemoval={this._handleJobRemoval}
+                    />
+                </div>
+                :
+                <div></div>
+                }
             </div>
 
         )

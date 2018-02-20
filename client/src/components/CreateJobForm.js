@@ -22,6 +22,16 @@ const CreateJobForm = props => {
         />
       <br />
       <input
+        name="requestDescription"
+        onChange={props.handleInputChange}
+        value={props.requestDescription}
+        type="text"
+        className="form-control"
+        placeholder="Enter Job Description"
+        id="requestDescription"
+        />
+      <br />
+      <input
         name="zipCode"
         onChange={props.handleInputChange}
         value={props.zipCode}
@@ -41,7 +51,7 @@ const CreateJobForm = props => {
         id="budget"
         />
       <br />
-      <input
+      {/* <input
         name="timeFrame"
         onChange={props.handleInputChange}
         value={props.timeFrame}
@@ -50,7 +60,7 @@ const CreateJobForm = props => {
         placeholder="Must Be Completed By"
         id="timeFrame"
         />
-      <br />
+      <br /> */}
       <button 
         type="submit"
         onClick={props.handleJobCreation}

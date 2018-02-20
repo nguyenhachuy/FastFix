@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
-  user_id: { type: String, required: true },
+  user_id: String,
+  username: String,
   contractor_id: String,
+  contractorname: String,
   requestDescription: String,
   budget: Number,
   timeFrame: Number,
@@ -14,7 +16,9 @@ const taskSchema = new Schema({
   totalCost: Number,
   rate: Number,
   comment: String,
-  jobTitle: String
+  jobTitle: String,
+  zipCode: String
+  
 });
 
 const Task = mongoose.model("Task", taskSchema);

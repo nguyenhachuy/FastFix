@@ -15,28 +15,37 @@ mongoose.connect(
 const taskSeed = [
   {
     jobTitle: "House chore",
-    user_id: "1",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
+    user_id: "5a83a2e6c2f7fe031bafe4ec",
+    username:"Johnny",
     contractor_id: "1",
+    contractorname: "Tom",
     budget: 100,
     timeFrame: 4,
-    status: "open",
+    status: "in progress",
     openData: new Date(Date.now()),
     payment: false
   },
   {
     jobTitle: "Fix frige",
-    user_id: "3",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
+    user_id: "5a83a2e6c2f7fe031bafe4ec",
+    username:"edobb",
     contractor_id: "2",
+    contractorname: "Tom",
     budget: 50,
     timeFrame: 4,
-    status: "open",
+    status: "closed",
     openData: new Date(Date.now()),
     payment: false
   },
   {
     jobTitle: "Fix roof",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
     user_id: "3",
+    username:"Tom",
     contractor_id: "2",
+    contractorname: "Ken",
     budget: 545,
     timeFrame: 7,
     status: "closed",
@@ -45,8 +54,11 @@ const taskSeed = [
   },
   {
     jobTitle: "Paint house",
+    requestDescription: "Fix random stuff place holder text. More placeholder text for the job description.",
     user_id: "3",
+    username:"Hugh",
     contractor_id: "2",
+    contractorname: "Ken",
     budget: 545,
     timeFrame: 7,
     status: "open",
@@ -69,25 +81,63 @@ db.Task
 });
       
 
-const userSeed = [
-        {
-          firstName: 'Johnny',
-          lastName: 'American',
-          streetAddress: '123 Fake Street',
-          zipCode: '90210'
-      
-        }
-      ]
+// const userSeed = [
+//         {
+//           firstName: 'Johnny',
+//           lastName: 'American',
+//           username: "Johnny",
+//           password: "Johnny",
+//           streetAddress: '123 Fake Street',
+//           zipCode: '90210',
+//           attribute: 'User'
+//         },
+//         {
+//           firstName: 'Tom',
+//           lastName: 'American',
+//           username: "Tom",
+//           password: "Tom",
+//           streetAddress: '123 Fake Street',
+//           zipCode: '90211',
+//           attribute: 'Contractor'
+//         },
+//         {
+//           firstName: 'Ken',
+//           lastName: 'American',
+//           username: "Ken",
+//           password: "Ken",
+//           streetAddress: '123 Fake Street',
+//           zipCode: '90212',
+//           attribute: 'Contractor'
+//         },
+//         {
+//           firstName: 'Gus',
+//           lastName: 'American',
+//           username: "Gus",
+//           password: "Ken",
+//           streetAddress: '123 Fake Street',
+//           zipCode: '90213',
+//           attribute: 'User'
+//         },
+//         {
+//           firstName: 'Hugh',
+//           lastName: 'Japanese',
+//           username: "Hugh",
+//           password: "Hugh",
+//           streetAddress: '123 Fake Street',
+//           zipCode: '90214',
+//           attribute: 'User'
+//         }
+//       ]
 
-db.User
-  .remove({})
-  .then(() => db.User.collection.insertMany(userSeed))
-  .then(data => {
-    console.log(data);
-    console.log(data.insertedIds.length + " records inserted!"); // undefined. maybe because of version
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.User
+//   .remove({})
+//   .then(() => db.User.collection.insertMany(userSeed))
+//   .then(data => {
+//     console.log(data);
+//     console.log(data.insertedIds.length + " records inserted!"); // undefined. maybe because of version
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });

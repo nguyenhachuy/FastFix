@@ -5,12 +5,18 @@ const userController = require("../../controllers/userController");
 router
   .route("/")
   .get(userController.findAll)
+  .post(userController.create)
 
-// Matches with "/api/user/:id"
+// Matches with "/api/user/id/:id"
 router
-  .route("/:id")
-  .get(userController.findById)
+  .route("/id/:id")
+  .get(userController.findByID)
   .put(userController.update)
   .delete(userController.remove);
+
+// Matches with "/api/user/name/:name"
+router
+  .route("/name/:name")
+  .get(userController.findByName)
 
 module.exports = router;

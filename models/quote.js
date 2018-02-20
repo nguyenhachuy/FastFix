@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const quoteSchema = new Schema({
-  task_id: { type: String, required: true },
-  contractor_id: { type: String, required: true },
+  task_id: String,
+  contractor_id: String,
   quote: String
 });
 
