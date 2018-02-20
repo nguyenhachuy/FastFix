@@ -38,5 +38,24 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  updateByJobTitle: function(req, res) {
+    db.Quote
+      .findOneAndUpdate({ jobTitle: req.params.jobtitle }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  removeByJobTitle: function(req, res) {
+    db.Quote
+      .findOne({ jobTitle: req.params.jobtitle })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByJobTitle: function(req, res) {
+    db.Quote
+      .findOne({ jobTitle: req.params.jobtitle })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

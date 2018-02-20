@@ -18,4 +18,11 @@ router
   .put(quoteController.update)
   .delete(quoteController.remove);
 
+// Matches with "/api/quote/jobtitle/:jobtitle"
+router
+  .route("/jobtitle/:jobtitle")
+  .get(quoteController.findByJobTitle)
+  .put(quoteController.updateByJobTitle)
+  .delete(quoteController.removeByJobTitle);
+
 module.exports = router;

@@ -114,5 +114,17 @@ export default {
   // Gets a quote by Contractor ID
   getQuote: function(id) {
     return axios.get("/api/quote/contractor/" + id);
+  },
+  // Update a Quote By job title
+  updateQuoteByJobTitle: function(quoteData) {
+    return axios.put("/api/quote/jobtile", quoteData);
+  },
+  // Delete a Quote By job title
+  deleteQuoteByJobTitle: function(jobtitle) {
+    return axios.delete("/api/quote/jobtile/" + jobtitle);
+  },
+  // Gets a quote by Job Title
+  getQuoteByJobTitle: function(jobtitle) {
+    return axios.get("/api/quote/jobtile/" + jobtitle);
   }
 };
