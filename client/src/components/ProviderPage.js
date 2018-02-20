@@ -1,6 +1,6 @@
 import React from 'react';
 import AvailableJobsList from './AvailableJobsList';
-import PendingBidList from './PendingBidList';
+import CompletedJobList from './CompletedJobList';
 import InProgressJob from './InProgressJob';
 import Cookies from 'js-cookie';
 import API from '../utils/API';
@@ -11,6 +11,7 @@ class ProviderPage extends React.Component{
         contractor: Cookies.get('id'),
         inProgressJobs: [],
         availableJobs: [],
+        closedJobs: [],
         openBids: []
     };
     
@@ -18,6 +19,7 @@ class ProviderPage extends React.Component{
         this.getAvailableTasks();
         this.getInProgressTasksByContractorName(this.state.contractor);
         this.getQuoteByContractorName(this.state.contractor);
+        this.getClosedTasksByContractor(this.state.contractor);
     }; 
     
     getAvailableTasks = () => {
@@ -34,6 +36,12 @@ class ProviderPage extends React.Component{
         
     }
 
+    getClosedTasksByContractor = contractor => {
+        API.getClosedTasksByContractorName(contractor)
+            .then(res => {this.setState({closedJobs: res.data})})
+            .catch(err => console.log(err));
+    } 
+
     getQuoteByContractorName = contractor => {
         API.getQuoteByContractorName(contractor)
             .then(res => {this.setState({openBids: res.data})})
@@ -49,12 +57,16 @@ class ProviderPage extends React.Component{
             
     }
 
-    _bidOnJob = (jobTitle, event) => {
-        alert('Button Clicked');
-        API.createQuote(jobTitle)
-        .then( res => {this.setState({jobBids: 'Bid Test'})})
-        .catch( err => console.log(err));
-    };
+    // _bidOnJob = (jobTitle, event) => {
+    //     alert('Button Clicked');
+    //     API.createQuote(jobTitle)
+    //     .then( res => {this.setState({jobBids: 'Bid Test'})})
+    //     .catch( err => console.log(err));
+    // };
+
+    _scheduleJob = (jobTitle, event) => {
+
+    }
 
     
     render() {
@@ -78,14 +90,27 @@ class ProviderPage extends React.Component{
             )
         }
                 
+                <div className="list-wrapper light-blue">
 
-                <AvailableJobsList 
-                availableJobs={this.state.availableJobs}
-                bidOnJob={this._bidOnJob}
-                handleBidRemoval={this._handleBidRemoval}
+                    {this.state.availableJobs.length > 0 ?
+                    <div>                   
+                        <h3>Available Jobs:</h3>
+                        <AvailableJobsList 
+                        availableJobs={this.state.availableJobs}
+                        scheduleJob={this._scheduleJob}
+                        />
+                    </div>
+                    
+                    :
+                    
+                    <h3 className="centered light-blue-text">There Are Currently No Jobs Available.</h3>
+                    }
+                </div>
+                <div className="list-wrapper">
+                <CompletedJobList 
+                completedJobs={this.state.closedJobs}
                 />
-
-                <PendingBidList />
+                </div>
             </div>
 
 

@@ -87,7 +87,7 @@ module.exports = {
   findInProgress: function(req, res) {
     console.log("findInProgress");
     db.Task
-      .find({status: "closed"})
+      .find({status: "in progress"})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -102,21 +102,21 @@ module.exports = {
     console.log("findInProgressByUserName");
     console.log(req.params.name);
     db.Task
-      .find({status: "closed", username: req.params.name})
+      .find({status: "in progress", username: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInProgressByContractorID: function(req, res) {
     console.log("findInProgressByContractorID");
     db.Task
-      .find({status: "closed", contractor_id: req.params.id})
+      .find({status: "in progress", contractor_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findInProgressByContractorName: function(req, res) {
     console.log("findInProgressByContractorName");
     db.Task
-      .find({status: "closed", contractorname: req.params.name})
+      .find({status: "in progress", contractorname: req.params.name})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

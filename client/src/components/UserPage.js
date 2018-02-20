@@ -13,8 +13,8 @@ class UserPage extends React.Component{
 
     state = {
         user: Cookies.get('id'),
-        status: 'closed',
-        contractorname: 'edobb',
+        status: 'open',
+        contractorname: '',
         username: Cookies.get('id'),
         user_id: Cookies.get('id'),
         jobTitle: '',
@@ -92,32 +92,39 @@ class UserPage extends React.Component{
             
     }
 
+    _handleJobCompleted = (jobTitle, event) => {
+
+    }
+
     render() {
         console.log(this.state.inProgressJobs);
         return(
 
             <div>
-
-                <CreateJobForm 
-                handleInputChange={this._handleInputChange}
-                handleJobCreation={this._handleJobCreation}
-                budget={this.state.budget}
-                jobTitle={this.state.jobTitle}
-                zipCode={this.state.zipCode}
-                requestDescription={this.state.requestDescription}
-                // timeFrame={this.state.timeFrame}
-                budget={this.state.budget}
-                />
-                <hr />
+                <div className="list-wrapper off-white">
+                    <CreateJobForm 
+                    handleInputChange={this._handleInputChange}
+                    handleJobCreation={this._handleJobCreation}
+                    budget={this.state.budget}
+                    jobTitle={this.state.jobTitle}
+                    zipCode={this.state.zipCode}
+                    requestDescription={this.state.requestDescription}
+                    // timeFrame={this.state.timeFrame}
+                    budget={this.state.budget}
+                    />
+                </div>
+                
                 {this.state.inProgressJobs.map( (inProgressJob) => {
                 return (
                 <InProgressJob
-                    title={inProgressJob.jobTitle}
-                    zipCode={inProgressJob.zipCode}
-                    id={inProgressJob._id}
-                    description={inProgressJob.requestDescription}
-                    isUser={true}
-                    userName={inProgressJob.username}
+                title={inProgressJob.jobTitle}
+                zipCode={inProgressJob.zipCode}
+                id={inProgressJob._id}
+                description={inProgressJob.requestDescription}
+                isUser={true}
+                userName={inProgressJob.username}
+                jobCompleted={this._handleJobCompleted}
+                contractorName={inProgressJob.contractorname}
       
                     />
                 )
@@ -126,14 +133,17 @@ class UserPage extends React.Component{
         }
      
             
-               
-                <hr />
+               {this.state.openJobs.length > 0 ? 
+               <div className="list-wrapper">
                 
-                <PendingJobsList 
-                userJobs={this.state.openJobs}
-                handleJobRemoval={this._handleJobRemoval}
-                />
-
+                    <PendingJobsList 
+                    userJobs={this.state.openJobs}
+                    handleJobRemoval={this._handleJobRemoval}
+                    />
+                </div>
+                :
+                <div></div>
+                }
             </div>
 
         )

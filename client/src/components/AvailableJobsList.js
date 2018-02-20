@@ -20,7 +20,7 @@ const AvailableJobsList = props => {
                 id={job._id}
                 budget={job.budget}
                 description={job.requestDescription}
-                onClick={props.bidOnJob}
+                scheduleJob={props.scheduleJob}
                 />
         
             )
