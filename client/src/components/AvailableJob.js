@@ -9,7 +9,7 @@ const AvailableJob = props =>
               <p>{props.description}</p>
               <p>Budget: ${props.budget}</p>
               <button 
-              onClick={props.scheduleJob}
+              onClick={props.scheduleJob.bind(this, props.title)}
               className="btn btn-primary">Schedule Job</button>
             </div>
             </div>;

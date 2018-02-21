@@ -57,15 +57,13 @@ class ProviderPage extends React.Component{
             
     }
 
-    // _bidOnJob = (jobTitle, event) => {
-    //     alert('Button Clicked');
-    //     API.createQuote(jobTitle)
-    //     .then( res => {this.setState({jobBids: 'Bid Test'})})
-    //     .catch( err => console.log(err));
-    // };
+
 
     _scheduleJob = (jobTitle, event) => {
-
+        API.updateTaskByJobTitle(jobTitle)
+            .then(res => {this.getInProgressTasksByContractorName(Cookies.get('id')), console.log})
+            .catch(err => console.log(err));
+            alert("This Job Has Been Assigned To You. Please Reach Out to Customer!");
     }
 
     

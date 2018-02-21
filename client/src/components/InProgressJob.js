@@ -81,7 +81,7 @@ class InProgressJob extends React.Component{
         else
             sender = "contractor";
 
-        this.state.chatInit = true;
+        this.setState({chatInit: true});
 
         chat.post(sender, msg);
         this.setState({ chatSendMsg: ""});
