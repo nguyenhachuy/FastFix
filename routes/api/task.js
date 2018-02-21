@@ -10,8 +10,8 @@ router
 // Matches with "/api/task/jobtitle/:jobtitle"
 router
   .route("/jobtitle/:jobtitle")
-  .delete(taskController.removeByJobTitle);
   .put(taskController.updateByJobTitle)
+  .delete(taskController.removeByJobTitle);
 
 // Matches with "/api/task/user/:id"
 router
