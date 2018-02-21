@@ -53,9 +53,6 @@ class App extends Component {
     </Router>;
   }
 };
-    /*
-    Auth.isAuthenticated ? (
-    */
 const AuthButton = withRouter(
   ({ history }) =>
     Cookies.get('token') ? (

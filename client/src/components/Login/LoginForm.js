@@ -4,7 +4,8 @@ const LoginForm = ({
     handleChange,
     handleSubmit,
     user,
-    loginFailed
+    loginFailed,
+    errors
 }) => {
     return (
         <form className="well form-horizontal" action=" " method="post" id="login_form" onSubmit={handleSubmit}>
@@ -93,10 +94,10 @@ const LoginForm = ({
                 </div>
                 
                 } */}
-                <div class="form-group">
-                    <label class="col-md-4 control-label"></label>
-                    <div class="col-md-4"><br />
-                        <button type="submit" class="btn btn-warning" onClick={this.handleFormSubmit}>Log In <span class="glyphicon glyphicon-send"></span></button>
+                <div className="form-group">
+                    <label className="col-md-4 control-label"></label>
+                    <div className="col-md-4"><br />
+                        <button type="submit" className="btn btn-warning" onClick={this.handleFormSubmit}>Log In <span className="glyphicon glyphicon-send"></span></button>
 
                     </div>
                 </div>
@@ -105,7 +106,9 @@ const LoginForm = ({
                 </div>
                 {loginFailed &&
                     <div className="alert alert-danger" role="alert" id="signup_message">
-                        Sign In failed. Please try again or Sign Up!
+                        Sign In failed. Please try again or Sign Up! 
+                        <br/>
+                        {errors}
                     </div>
 
                 }
