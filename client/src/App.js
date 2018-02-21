@@ -55,12 +55,12 @@ class App extends Component {
 };
 const AuthButton = withRouter(
   ({ history }) =>
-    Cookies.get('token') ? (
-      <p>
+    Cookies.get('id') === '' ? (
+      <p>      
+      
         Welcome {Cookies.get('id')}
         <button
           onClick={() => {
-            Cookies.remove('token');
             Auth.signout(() => {
             })
             history.push('/');              
