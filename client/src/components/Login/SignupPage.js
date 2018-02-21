@@ -38,7 +38,6 @@ class SignupPage extends React.Component {
         this.setState({
             user
         });
-        console.log(user);
 
     }
 
@@ -48,15 +47,17 @@ class SignupPage extends React.Component {
             alert("The passwords do not match!");
         }
         else {
-            console.log(this.state.user);
+            let user = this.state.user;
+            user.attribute = user.type;
             API.createUser(this.state.user)
-                .then( function(res) {
+                .then( (res) => {
                     //this.setState({
                     //    username: '',
                     //    password: ''
                     //})
                     console.log(res.data);
                     //Put auth set cookie here and we're done.
+                    Auth.setCookie(res.data.username, res.data.attribute);
                     this.handleSignupSucces();
                 })
                 .catch(err => this.handleSignupFailure(err));

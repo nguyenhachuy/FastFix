@@ -54,7 +54,7 @@ class App extends Component {
 };
 const AuthButton = withRouter(
   ({ history }) =>
-    Cookies.get('id') === '' ? (
+    Cookies.get('id') ? (
       <p>      
       
         Welcome {Cookies.get('id')}
