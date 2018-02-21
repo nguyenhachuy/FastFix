@@ -49,6 +49,8 @@ class LoginPage extends React.Component {
             }
             else {
                 // Move to User page
+                console.log(data);
+                Auth.setCookie(data[0].username, data[0].attribute)
                 this.handleAuthSuccess();
             }
         }
@@ -77,7 +79,6 @@ class LoginPage extends React.Component {
     }
 
     handleAuthSuccess() {
-        Auth.authenticate(user);
         this.clearUser();
         this.setState({
             redirectToReferrer: true,

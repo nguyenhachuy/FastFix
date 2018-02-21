@@ -8,8 +8,15 @@ const Auth = {
         console.log(Cookies.get('id') + " wtf");
         return Cookies.get('id') !== undefined ? true : false;
     },
+    setCookie(username, type){
+        Cookies.set('id', username);
+        Cookies.set('type', type.toString().toLowerCase());
+        this.isAuthenticated = true;
+
+    },
 
     authenticate(user, success, failure) {
+        console.log(user);
         if (this.data.indexOf(user.username) !== -1) {
             this.isAuthenticated = true;
             Cookies.set('id', user.username);
