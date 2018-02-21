@@ -163,8 +163,9 @@ module.exports = {
   },
   updateByJobTitle: function(req, res) {
     console.log('updateByJobTitle');
+    console.log(req);
     db.Task
-      .findOneAndUpdate({ jobTitle: req.params.jobtitle }, {status: 'in progress', contractorname: req.params.contractor}, {new:true})
+      .findOneAndUpdate({ jobTitle: req.body.jobTitle }, {status: 'in progress'}, {new:true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

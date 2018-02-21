@@ -21,6 +21,7 @@ const AvailableJobsList = props => {
                 budget={job.budget}
                 description={job.requestDescription}
                 scheduleJob={props.scheduleJob}
+                inProgressLength={props.inProgressJobs}
                 />
         
             )

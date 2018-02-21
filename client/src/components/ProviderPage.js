@@ -49,26 +49,27 @@ class ProviderPage extends React.Component{
         
     }
 
-    _handleBidRemoval = (jobTitle, event) => {
-        API.deleteTaskByJobTitle(jobTitle)
-      .then(res => this.getAvailableUserTasks(Cookies.get('id')))
-      .catch(err => console.log(err));
-        alert("Your Bid Has Been Deleted!");
+    // _handleBidRemoval = (jobTitle, event) => {
+    //     API.deleteTaskByJobTitle(jobTitle)
+    //   .then(res => this.getAvailableUserTasks(Cookies.get('id')))
+    //   .catch(err => console.log(err));
+    //     alert("Your Bid Has Been Deleted!");
             
-    }
+    // }
 
 
 
-    _scheduleJob = (jobTitle, event) => {
-        API.updateTaskByJobTitle(jobTitle)
-            .then(res => {this.getInProgressTasksByContractorName(Cookies.get('id')), console.log})
+    _scheduleJob = (jobTitle) => {
+        console.log(jobTitle);
+        API.updateTaskByJobTitle({jobTitle: jobTitle})
+            .then(res => {this.getInProgressTasksByContractorName(Cookies.get('id')), this.getAvailableTasks() })
             .catch(err => console.log(err));
             alert("This Job Has Been Assigned To You. Please Reach Out to Customer!");
     }
 
     
     render() {
-        console.log(this.state);
+        const inProgressJobLength = this.state.inProgressJobs.length;
         return(
             <div>
                 {this.state.inProgressJobs.map( (inProgressJob) => {
@@ -96,6 +97,7 @@ class ProviderPage extends React.Component{
                         <AvailableJobsList 
                         availableJobs={this.state.availableJobs}
                         scheduleJob={this._scheduleJob}
+                        inProgressJobs={inProgressJobLength}
                         />
                     </div>
                     
