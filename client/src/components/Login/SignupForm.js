@@ -150,9 +150,7 @@ const SignupForm = ({
                 {signupFailed &&
                     <div className="alert alert-danger" role="alert" id="signup_message">
                         Sign Up failed!
-                        {errors.map(error => {
-                            <p>error</p>
-                        })}
+                        
                     </div>
 
                 }

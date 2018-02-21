@@ -1,3 +1,7 @@
+*{
+    font-family: 'Raleway', sans-serif;
+}
+
 .button-centered {
     margin: auto 10rem;
 }
@@ -19,4 +23,26 @@
 
 .close-button{
     border-radius: 4px;
+}
+
+.list-wrapper{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding:15px;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+.off-white{
+    background-color: #f8f8f8;
+}
+
+.light-blue{
+    border: 1px solid #bce8f1;
+}
+
+.light-blue-text {
+    color: #bce8f1;
+    font-weight:200;
+    font-style: italic;
 }

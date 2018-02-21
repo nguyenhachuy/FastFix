@@ -14,11 +14,12 @@ class LoginPage extends React.Component {
             user: {
                 username: '',
                 password: '',
-                type:'User'
+                type: 'User'
             },
             userInfo: [],
             redirectToReferrer: false,
-            loginFailed: false
+            loginFailed: false,
+
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,90 +36,91 @@ class LoginPage extends React.Component {
             user
         });
     }
-    
+
     userExistCheck(data) {
         let password = this.state.user.password;
-        console.log(data);
-        if (data.length === 0){
-            alert("User doesn't exist")
+        if (data.length === 0) {
+            this.handleAuthFailure("User not found");
         }
         else {
             // Password Check
-            console.log(data[0].password);
             if (data[0].password !== password) {
-                alert("Password is wrong")
+                this.handleAuthFailure("Password does not match");
             }
             else {
                 // Move to User page
-                this.state.redirectToReferrer = true;
+                console.log(data);
+                Auth.setCookie(data[0].username, data[0].attribute)
+                this.handleAuthSuccess();
             }
         }
     }
-/*
+
     handleSubmit(event) {
         event.preventDefault();
         let user = this.state.user;
         let userInfo = [];
-        console.log(user.username);
 
         API.getUserByName(user.username)
-          .then(res =>
-            //console.log(res.data)
-            //this.setState({ userInfo: res.data})
-            this.userExistCheck(res.data)
-          )
-          .catch(err => console.log(err));
+            .then((res) => {
+                //console.log(res.data)
+                //this.setState({ userInfo: res.data})
+                this.userExistCheck(res.data)
+            })
+            .catch((err) => {
+                this.handleAuthFailure(err)
+            });
 
-    */
-    
-    handleSubmit(event) {
-        event.preventDefault();
-        let user = this.state.user;
-        console.log(user);
-        Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
+        /*
+        let user = this.state.user;        
+        console.log('A name was submitted: ' + user.username + " " + user.password);
+
+        */
     }
-    
+
     handleAuthSuccess() {
         this.clearUser();
         this.setState({
             redirectToReferrer: true,
             loginFailed: false
-            
-        });
 
-        Cookies.set('token', 'password');
-        this.state.redirectToReferrer = true;
-        
-      
+        });
     }
 
 
     clearUser() {
         let user = this.state.user;
         user.username = '';
-        user.password ='';
+        user.password = '';
         user.type = '';
         this.setState({
             user
-        })        
+        })
     }
 
-    handleAuthFailure() {
+    handleAuthFailure(errorsx) {
         this.clearUser();
         this.setState({
-            loginFailed: true
+            loginFailed: true,
+            errors: errorsx
+
         });
     }
+    // handleSubmit(event) {
+    //     event.preventDefault();
+    //     let user = this.state.user;
+    //     Auth.authenticate(user, this.handleAuthSuccess, this.handleAuthFailure);
+    // }
     render() {
         const { from } = this.props.location.state || { from: { pathname: "/" } };
         const { redirectToReferrer } = this.state;
         if (redirectToReferrer) {
             if (from.pathname !== '/')
                 return <Redirect to={from} />;
-            else if(Cookies.get('type') === 'user')
-                return <Redirect to={'/user'}/>;
+            else if (Cookies.get('type') === 'user')
+                return <Redirect to={'/user'} />;
             else
-                return <Redirect to={'/contractor'}/>;
+                return <Redirect to={'/contractor'} />;
         }
 
 
@@ -126,7 +128,7 @@ class LoginPage extends React.Component {
             <Row className="row">
                 <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
                     {(from.pathname !== '/') &&
-                                        <p>You must log in to view the page at {from.pathname}</p>                                        
+                        <p>You must log in to view the page at {from.pathname}</p>
                     }
 
                     <LoginForm
@@ -134,6 +136,8 @@ class LoginPage extends React.Component {
                         handleSubmit={this.handleSubmit}
                         user={this.state.user}
                         loginFailed={this.state.loginFailed}
+                        errors={this.state.errors}
+
                     />
                 </Col>
             </Row>

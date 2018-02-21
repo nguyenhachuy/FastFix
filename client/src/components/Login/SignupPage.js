@@ -38,28 +38,29 @@ class SignupPage extends React.Component {
         this.setState({
             user
         });
-        console.log(user);
 
     }
-    
+
     handleSubmit(event) {
         console.log("User Info" + this.state.user);
-        if (this.state.user.password != this.state.user.confirmPassword)
-        {
+        if (this.state.user.password != this.state.user.confirmPassword) {
             alert("The passwords do not match!");
         }
-        else
-        {
-            console.log(this.state.user);
+        else {
+            let user = this.state.user;
+            user.attribute = user.type;
             API.createUser(this.state.user)
-              .then(res =>
-                //this.setState({
-                //    username: '',
-                //    password: ''
-                //})
-                console.log(res.data)
-              )
-              .catch(err => console.log(err));
+                .then( (res) => {
+                    //this.setState({
+                    //    username: '',
+                    //    password: ''
+                    //})
+                    console.log(res.data);
+                    //Put auth set cookie here and we're done.
+                    Auth.setCookie(res.data.username, res.data.attribute);
+                    this.handleSignupSucces();
+                })
+                .catch(err => this.handleSignupFailure(err));
         }
         event.preventDefault();
     }
@@ -94,7 +95,7 @@ class SignupPage extends React.Component {
 
 
     handleSignupFailure(errorsx) {
-        this.clearUser();
+        //this.clearUser();
         this.setState({
             signupFailed: true,
             redirect: false,

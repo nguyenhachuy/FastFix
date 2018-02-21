@@ -96,7 +96,7 @@ class InProgressJob extends React.Component{
 
         return(
             <div>
-                <h2>You Currently Have The Following Job In Progress</h2>
+                <h3>Job In Progress:</h3>
                 <div className="panel panel-success" data-value={props._id}>   
                     <div className="panel-heading">
                         <h3 className="panel-title"><span className="glyphicon glyphicon-asterisk" aria-hidden="true"></span> {props._id} | {props.title} - {props.zipCode}</h3>
@@ -105,10 +105,10 @@ class InProgressJob extends React.Component{
                         {props.description}<br />
                     </div>
                     <div className="panel-body">
-                    {props.isUser ? <UserInfo onClick={this._toggleChat} toggleChat={this._toggleChat.bind(this)}/> : <ProviderInfo onClick={this._toggleChat.bind(this)}  />}
+                    {props.isUser ? <UserInfo contractorName={props.contractorName} toggleChat={this._toggleChat.bind(this)} /> : <ProviderInfo userName={props.userName} toggleChat={this._toggleChat.bind(this)}  />}
                     </div>
                 </div>
-                <hr />
+               
                 {this.state.chatDisplay ? (
                 <div className="chat-widget">
                     <div>

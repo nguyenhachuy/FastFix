@@ -19,7 +19,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
       render={props => 
-        (Auth.isAuthenticated && verifyPath(props)) ? (
+        (Cookies.get('id') && verifyPath(props)) ? (
           <Component {...props} />
         ) : (
           <Redirect 

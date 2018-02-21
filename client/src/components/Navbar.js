@@ -18,7 +18,7 @@ const Navbar = props =>
     </Link>
   </div>
   <ul className="nav navbar-nav">
-    <li
+    {/* <li
       className={
         window.location.pathname === "/"
           ? "active"
@@ -26,7 +26,7 @@ const Navbar = props =>
       }
     >
       <Link to="/" handlePageChange={props.handlePageChange}>Home</Link>
-    </li>
+    </li> */}
     <li
       className={
        window.location.pathname === "/user"

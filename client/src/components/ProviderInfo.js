@@ -1,9 +1,13 @@
 import React from 'react';
 
-const ProviderInfo = props => <div>
-    <h5>Customer Contact Information:</h5><p>{props.firstName} {props.lastName}<br />
-    <button
-    onClick={props.onClick}
-    type="button" className="btn btn-success"><span className="glyphicon glyphicon-comment" aria-hidden="true"> </span> Chat With Customer</button></p></div>;
+const ProviderInfo = props => 
+    <div>
+        <h5>Customer's Name: {props.userName}</h5>
+        <p>
+        <button
+        onClick={props.toggleChat}
+        type="button" className="btn btn-success"><span className="glyphicon glyphicon-comment" aria-hidden="true"> </span> Chat With {props.userName}</button>
+        </p>
+    </div>;
 
 export default ProviderInfo;

@@ -22,7 +22,7 @@ const fakePendingJobs =
      
           return(
         <div>
-        <h4>You Currently Have the Following Open Jobs:</h4>
+        <h4>Your Open Jobs:</h4>
         {props.userJobs.map( (job) => {
                 return (
                 <PendingJob 
