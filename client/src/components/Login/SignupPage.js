@@ -56,6 +56,7 @@ class SignupPage extends React.Component {
                     //    password: ''
                     //})
                     console.log(res.data);
+                    //Put auth set cookie here and we're done.
                     this.handleSignupSucces();
                 })
                 .catch(err => this.handleSignupFailure(err));

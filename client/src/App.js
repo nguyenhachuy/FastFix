@@ -23,7 +23,6 @@ import Auth from './components/Auth';
 class App extends Component {
   state = {
     currentPage: "Home",
-    isAuthenticated: false
   };
 
   handlepagechange = page => {
