@@ -12,6 +12,10 @@ router
  .route("/jobtitle")
  .put(taskController.updateByJobTitle)
  
+// // Matches with “/api/task/jobtitle”
+// router
+//  .route("/jobtitle/status")
+//  .put(taskController.completeByJobTitle)
 
 // Matches with "/api/task/jobtitle/:jobtitle"
 router

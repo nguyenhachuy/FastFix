@@ -20,7 +20,7 @@ const AvailableJobsList = props => {
                 id={job._id}
                 budget={job.budget}
                 description={job.requestDescription}
-                scheduleJob={props.scheduleJob}
+                scheduleJob={props.scheduleJob.bind(this, job.jobTitle, props.status, props.contractor)}
                 inProgressLength={props.inProgressJobs}
                 />
         

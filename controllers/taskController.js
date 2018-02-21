@@ -165,10 +165,18 @@ module.exports = {
     console.log('updateByJobTitle');
     console.log(req);
     db.Task
-      .findOneAndUpdate({ jobTitle: req.body.jobTitle }, {status: 'in progress'}, {new:true})
+      .findOneAndUpdate({ jobTitle: req.body.jobTitle }, {status: req.body.status, contractorname: req.body.contractor}, {new:true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  // completeByJobTitle: function(req, res) {
+  //   console.log('completeByJobTitle');
+  //   console.log(req);
+  //   db.Task
+  //     .findOneAndUpdate({ jobTitle: req.body.jobTitle }, {status: 'closed'}, {new:true})
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   remove: function(req, res) {
     db.Task
       .findById({ _id: req.params.id })

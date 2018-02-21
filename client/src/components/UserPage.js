@@ -3,6 +3,7 @@ import CreateJobForm from './CreateJobForm';
 import PendingJobsList from './PendingJobsList';
 import InProgressJob from './InProgressJob';
 import Cookies from 'js-cookie';
+import CompletedJobList from './CompletedJobList';
 import API from '../utils/API';
 class UserPage extends React.Component{
 
@@ -23,13 +24,15 @@ class UserPage extends React.Component{
         budget: '',
         // timeFrame: '',
         openJobs: [],
-        inProgressJobs: []
+        inProgressJobs: [],
+        closedJobs: []
     };
 
 
     componentDidMount() {
         this.getInProgressTasks(Cookies.get('id'));
         this.getAvailableUserTasks(Cookies.get('id'));
+        this.getClosedTasksByUserName(this.state.user)
     };
 
     getInProgressTasks = user => {
@@ -92,8 +95,17 @@ class UserPage extends React.Component{
             
     }
 
-    _handleJobCompleted = (jobTitle, event) => {
+    _handleJobCompleted = (jobTitle, contractor, status) => {
+        API.updateTaskByJobTitle({jobTitle: jobTitle, contractor: contractor , status: 'closed'})
+            .then(res => {this.getInProgressTasks(Cookies.get('id')), this.getClosedTasksByUserName(Cookies.get('id'))})
+            .catch(err => console.log(err));
+            alert("Your Job Has Been Completed!")
+    }
 
+    getClosedTasksByUserName = userName => {
+        API.getClosedTasksByUserName(userName)
+            .then(res => {this.setState({closedJobs: res.data})})
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -123,7 +135,7 @@ class UserPage extends React.Component{
                 description={inProgressJob.requestDescription}
                 isUser={true}
                 userName={inProgressJob.username}
-                jobCompleted={this._handleJobCompleted}
+                jobCompleted={this._handleJobCompleted.bind(this,inProgressJob.jobTitle, inProgressJob.contractorname)}
                 contractorName={inProgressJob.contractorname}
       
                     />
@@ -144,6 +156,11 @@ class UserPage extends React.Component{
                 :
                 <div></div>
                 }
+                <div className="list-wrapper">
+                <CompletedJobList 
+                completedJobs={this.state.closedJobs}
+                />
+                </div>
             </div>
 
         )

@@ -105,7 +105,17 @@ class InProgressJob extends React.Component{
                         {props.description}<br />
                     </div>
                     <div className="panel-body">
-                    {props.isUser ? <UserInfo contractorName={props.contractorName} toggleChat={this._toggleChat.bind(this)} /> : <ProviderInfo userName={props.userName} toggleChat={this._toggleChat.bind(this)}  />}
+                    {props.isUser ? 
+                                    <UserInfo 
+                                    contractorName={props.contractorName}
+                                    jobCompleted={props.jobCompleted.bind(props.jobTitle,  props.contractor, props.userName, props.status)}
+                                    toggleChat={this._toggleChat.bind(this)}
+                                    />
+                                     : 
+                                    <ProviderInfo
+                                    userName={props.userName}
+                                    toggleChat={this._toggleChat.bind(this)}
+                                    />}
                     </div>
                 </div>
                

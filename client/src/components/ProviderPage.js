@@ -12,7 +12,8 @@ class ProviderPage extends React.Component{
         inProgressJobs: [],
         availableJobs: [],
         closedJobs: [],
-        openBids: []
+        openBids: [],
+        status: 'in progress'
     };
     
     componentDidMount() {
@@ -59,10 +60,10 @@ class ProviderPage extends React.Component{
 
 
 
-    _scheduleJob = (jobTitle) => {
-        console.log(jobTitle);
-        API.updateTaskByJobTitle({jobTitle: jobTitle})
-            .then(res => {this.getInProgressTasksByContractorName(Cookies.get('id')), this.getAvailableTasks() })
+    _scheduleJob = (jobTitle, status, contractor) => {
+        console.log(jobTitle, contractor);
+        API.updateTaskByJobTitle({jobTitle: jobTitle, status: 'in progress', contractor: this.state.contractor})
+            .then(res => {this.getInProgressTasksByContractorName(Cookies.get('id')), this.getClosedTasksByContractorName(this.state.contractor) })
             .catch(err => console.log(err));
             alert("This Job Has Been Assigned To You. Please Reach Out to Customer!");
     }
@@ -97,7 +98,9 @@ class ProviderPage extends React.Component{
                         <AvailableJobsList 
                         availableJobs={this.state.availableJobs}
                         scheduleJob={this._scheduleJob}
+                        contractor={this.state.contractor}
                         inProgressJobs={inProgressJobLength}
+                        
                         />
                     </div>
                     

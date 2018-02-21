@@ -10,7 +10,7 @@ const AvailableJob = props =>
               <p>Budget: ${props.budget}</p>
               { props.inProgressLength < 1 ? 
               <button 
-              onClick={props.scheduleJob.bind(this, props.title)}
+              onClick={props.scheduleJob.bind(this, props.title, props.contractor)}
               className="btn btn-primary">Schedule Job</button> 
               :
               <h4>You Cannot Schedule More Work Untill You Complete Your In Progess Job</h4> }

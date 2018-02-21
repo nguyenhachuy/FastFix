@@ -82,9 +82,12 @@ export default {
   updateTaskByJobTitle: function(taskData) {
     return axios.put("/api/task/jobtitle", taskData);
   },
+  // completeTaskByJobTitle: function(taskData) {
+  //   console.log(taskData);
+  //   return axios.put("/api/task/jobtitle", taskData);
+  // },
   // Delete a Task
   deleteTaskByJobTitle: function(jobtitle) {
-    console.log(jobtitle);
     return axios.delete("/api/task/jobtitle/" + jobtitle);
 　/*
   deleteTask: function(jobTitle) {

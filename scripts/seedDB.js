@@ -45,7 +45,7 @@ const taskSeed = [
     user_id: "3",
     username:"Tom",
     contractor_id: "2",
-    contractorname: "Ken",
+    contractorname: "",
     budget: 545,
     timeFrame: 7,
     status: "open",
