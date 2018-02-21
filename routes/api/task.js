@@ -11,6 +11,7 @@ router
 router
   .route("/jobtitle/:jobtitle")
   .delete(taskController.removeByJobTitle);
+  .put(taskController.updateByJobTitle)
 
 // Matches with "/api/task/user/:id"
 router
