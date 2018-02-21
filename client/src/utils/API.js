@@ -78,6 +78,10 @@ export default {
   updateTask: function(taskData) {
     return axios.put("/api/task", taskData);
   },
+  // Update a Task By Job Title
+  updateTaskByJobTitle: function(taskData) {
+    return axios.put("/api/task/jobtitle", taskData);
+  },
   // Delete a Task
   deleteTaskByJobTitle: function(jobtitle) {
     console.log(jobtitle);
@@ -117,9 +121,21 @@ export default {
   },
   // Gets a quote by Contractor ID
   getQuote: function(id) {
-    return axios.get("/api/quote/contractor/" + id);
+    return axios.get("/api/quote/contractor/id/" + id);
   },
-  getQuoteByContractorName: function(contractorname) {
-    return axios.get("/api/quote/contractor/" + contractorname);
+  getQuoteByContractorName: function(name) {
+    return axios.get("/api/quote/contractor/name/" + name);
+  },
+  // Update a Quote By job title
+  updateQuoteByJobTitle: function(quoteData) {
+    return axios.put("/api/quote/jobtile", quoteData);
+  },
+  // Delete a Quote By job title
+  deleteQuoteByJobTitle: function(jobtitle) {
+    return axios.delete("/api/quote/jobtile/" + jobtitle);
+  },
+  // Gets a quote by Job Title
+  getQuoteByJobTitle: function(jobtitle) {
+    return axios.get("/api/quote/jobtile/" + jobtitle);
   }
 };

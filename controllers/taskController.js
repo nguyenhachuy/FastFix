@@ -161,6 +161,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  updateByJobTitle: function(req, res) {
+    db.Task
+      .findOneAndUpdate({ jobtitle: req.params.jobtitle }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   remove: function(req, res) {
     db.Task
       .findById({ _id: req.params.id })
