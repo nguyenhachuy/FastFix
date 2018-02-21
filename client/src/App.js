@@ -23,7 +23,6 @@ import Auth from './components/Auth';
 class App extends Component {
   state = {
     currentPage: "Home",
-    isAuthenticated: false
   };
 
   handlepagechange = page => {
@@ -55,7 +54,7 @@ class App extends Component {
 };
 const AuthButton = withRouter(
   ({ history }) =>
-    Cookies.get('id') === '' ? (
+    Cookies.get('id') ? (
       <p>      
       
         Welcome {Cookies.get('id')}

@@ -12,7 +12,9 @@ const Auth = {
         Cookies.set('id', username);
         Cookies.set('type', type.toString().toLowerCase());
         this.isAuthenticated = true;
-
+        console.log('id ' + username);
+        console.log('type' +  type.toString().toLowerCase());
+        console.log(Cookies.get('id'));
     },
 
     authenticate(user, success, failure) {
