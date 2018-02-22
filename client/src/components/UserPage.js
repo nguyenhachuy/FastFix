@@ -77,8 +77,8 @@ class UserPage extends React.Component{
                     budget: '',
                     timeFrame: ''
                 }
-            );
-            this.getUserTasks(Cookies.get('id'));
+            ) ,
+            this.getAvailableUserTasks(Cookies.get('id'))
 
         })
         .catch(err => console.log(err));
@@ -148,7 +148,8 @@ class UserPage extends React.Component{
                {this.state.openJobs.length > 0 ? 
                <div className="list-wrapper">
                 
-                    <PendingJobsList 
+                    <PendingJobsList
+                    username={this.state.user}
                     userJobs={this.state.openJobs}
                     handleJobRemoval={this._handleJobRemoval}
                     />

@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'js-cookie';
 import PendingJob from './PendingJob';
 
 
@@ -30,7 +31,7 @@ const fakePendingJobs =
                     zipCode={job.zipCode}
                     id={job._id}
                     description={job.requestDescription}
-                    onClick={props.handleJobRemoval.bind(this, job.jobTitle)}
+                    onClick={props.handleJobRemoval.bind(this, job.jobTitle, props.username)}
                     bids={job.bids}
                     />
                 )

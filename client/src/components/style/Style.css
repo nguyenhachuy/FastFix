@@ -2,6 +2,8 @@
     font-family: 'Raleway', sans-serif;
 }
 
+
+
 .button-centered {
     margin: auto 10rem;
 }
@@ -26,6 +28,7 @@
 }
 
 .list-wrapper{
+    background-color: #FFF;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding:15px;
