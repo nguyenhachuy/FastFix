@@ -2,6 +2,14 @@
     font-family: 'Raleway', sans-serif;
 }
 
+body {
+    background-image: url(fastfixBW.png);
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    background-size:480px;
+    background-attachment:fixed;
+}
+
 .navbar-brand {
     background-image: url(smallTruck.png);
     background-repeat:no-repeat;
