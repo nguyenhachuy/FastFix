@@ -2,7 +2,13 @@
     font-family: 'Raleway', sans-serif;
 }
 
-
+.navbar-brand {
+    background-image: url(smallTruck.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+    width:116px;
+    background-size:93px;
+}
 
 .button-centered {
     margin: auto 10rem;
@@ -48,4 +54,31 @@
     color: #bce8f1;
     font-weight:200;
     font-style: italic;
+}
+
+.contractor-icon{
+    background-image: url(contractorIcon.svg);
+    background-size:90%;
+    background-position:center center;
+    float:right !important;
+    background-repeat:no-repeat;
+    height:49px;
+    width:80px;
+}
+
+.user-icon{
+    background-image: url(userIcon.svg);
+    background-size:90%;
+    background-position:center center;
+    float:right !important;
+    background-repeat:no-repeat;
+    height:49px;
+    width:80px;
+}
+
+.display-hidden {
+    display: none;
+    visibility: hidden;
+    width:0;
+    height:0;
 }

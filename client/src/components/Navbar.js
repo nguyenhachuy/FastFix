@@ -14,7 +14,7 @@ const Navbar = props =>
 <div className="container-fluid">
   <div className="navbar-header">
     <Link className="navbar-brand" to="/">
-      FastFix
+     
     </Link>
   </div>
   <ul className="nav navbar-nav">
@@ -63,8 +63,16 @@ const Navbar = props =>
     >
       <Link to="/signup" handlePageChange={props.handlePageChange}>Sign Up</Link>
     </li>
+    
 
   </ul>
+    <div className={window.location.pathname === "/contractor"
+          ? "contractor-icon"  : "diplay-hidden"}>
+    </div>
+        
+    <div className={window.location.pathname === "/user"
+          ? "user-icon"  : "diplay-hidden"}>
+    </div>
 </div>
 </nav>;
 export default Navbar;
