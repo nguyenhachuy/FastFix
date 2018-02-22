@@ -44,24 +44,24 @@ class InProgressJob extends React.Component{
         this.setState({chatDisplay: !this.state.chatDisplay});
     };
 
+
     processChat(sender, msg) {
 
         if (sender === "user")
         {
-            if (this.props.isUser === false)
-            {
-              this.displayResponse(msg);
-            //   console.log("Sending msg to contractor: ");
-            }
+            if (this.props.isUser === true)
+                msg = "You >> " + msg;
+            else 
+                msg = "Customer >> " + msg;
         }
         else 
         {
             if (this.props.isUser === true)
-            {
-              this.displayResponse(msg);
-            //   console.log("Sending msg to user: ");
-            }
+                msg = "Contractor >> " + msg;
+            else
+                msg = "You >> " + msg;
         }
+        this.displayResponse(msg);
     } 
 
 
