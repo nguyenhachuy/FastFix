@@ -44,6 +44,7 @@ class InProgressJob extends React.Component{
         this.setState({chatDisplay: !this.state.chatDisplay});
     };
 
+
     processChat(sender, msg) {
 
         if (sender === "user")
@@ -61,7 +62,7 @@ class InProgressJob extends React.Component{
                 msg = "You >> " + msg;
         }
         this.displayResponse(msg);
-    }
+    } 
 
 
     displayResponse(msg) {

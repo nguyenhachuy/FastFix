@@ -17,7 +17,7 @@ class SignupPage extends React.Component {
                 username: '',
                 password: '',
                 confirmPassword: '',
-                type: ''
+                attribute: 'User'
             },
             errors: [],
             signupFailed: false,
@@ -38,17 +38,16 @@ class SignupPage extends React.Component {
         this.setState({
             user
         });
-
     }
 
     handleSubmit(event) {
-        console.log("User Info" + this.state.user);
+        console.log("User Info" + JSON.stringify(this.state.user));
         if (this.state.user.password != this.state.user.confirmPassword) {
             alert("The passwords do not match!");
         }
         else {
             let user = this.state.user;
-            user.attribute = user.type;
+
             API.createUser(this.state.user)
                 .then( (res) => {
                     //this.setState({
@@ -80,7 +79,7 @@ class SignupPage extends React.Component {
                 username: '',
                 password: '',
                 confirmPassword: '',
-                type: ''
+                attribute: ''
             }
         });
     }

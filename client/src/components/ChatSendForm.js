@@ -7,7 +7,7 @@ class ChatSendForm extends Component {
     }
 
     state = {
-        message: 'Type your message here ...'
+        message: ''
     };
 
     clickHandler = (event) => {
