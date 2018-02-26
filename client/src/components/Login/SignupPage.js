@@ -108,7 +108,7 @@ class SignupPage extends React.Component {
 
         return (
             <Row className="row">
-                <Col className={['col-xs-6', 'col-centered', 'col-xs-offset-3'].join(" ")}>
+                <Col className={['col-xs-10', 'col-sm-8',  'col-centered', 'col-xs-offset-1', 'col-sm-offset-2'].join(" ")}>
                     <SignupForm
 
                         handleChange={this.handleChange}
